@@ -18,6 +18,9 @@
           msg: 'Welcome to Your Vue.js App'
         }
       },
+      created: function () {
+          this.$translate.setLang('en_US');
+      },
       components:{
           top: Top,
           home: Home,

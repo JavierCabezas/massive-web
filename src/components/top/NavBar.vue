@@ -12,13 +12,32 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><router-link to="/">Home</router-link></li>
-                    <li><router-link to="/about">About</router-link></li>
-                    <li><router-link to="/music-packs"> Music Packs </router-link></li>
-                    <li><router-link to="/faq">FAQ</router-link></li>
+                    <li><router-link to="/"> {{ t('home') }} </router-link></li>
+                    <li><router-link to="/about">{{ t('about') }}</router-link></li>
+                    <li><router-link to="/music-packs"> {{ t('music_pack') }} </router-link></li>
+                    <li><router-link to="/faq">{{ t('faq') }}</router-link></li>
                     <li><router-link to="/blog">Blog</router-link></li>
                 </ul>
             </div>
         </div>
     </nav>
 </template>
+
+<script>
+    export default {
+        locales: {
+            es_ES: {
+                home: 'Inicio',
+                about: 'Sobre nosotros',
+                music_pack: 'Packs de música',
+                faq: 'Preguntas frecuentes',
+            },
+            en_US: {
+                home: 'Home',
+                about: 'About us',
+                music_pack: 'Music packs',
+                faq: 'FAQ',
+            }
+        }
+    }
+</script>
