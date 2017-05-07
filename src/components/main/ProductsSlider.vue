@@ -18,3 +18,15 @@
         </div>
     </section>
 </template>
+
+<script>
+    $(document).ready(function(){
+        $(".popularslider").bxSlider({
+            slideWidth: 200,
+            minSlides: 3,
+            maxSlides: 6,
+            slideMargin: 10,
+            auto: true
+        });
+    });
+</script>

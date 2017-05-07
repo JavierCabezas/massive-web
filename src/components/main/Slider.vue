@@ -26,3 +26,9 @@
         </div>
     </div>
 </template>
+
+<script>
+    $(document).ready(function(){
+        $(".slides").bxSlider({auto:true});
+    });
+</script>

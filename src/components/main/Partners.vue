@@ -16,3 +16,15 @@
         </div>
     </section>
 </template>
+
+<script>
+    $(document).ready(function(){
+        $(".partnerslider").bxSlider({
+            slideWidth: 200,
+            minSlides: 3,
+            maxSlides: 6,
+            slideMargin: 10,
+            auto: true
+        });
+    });
+</script>
