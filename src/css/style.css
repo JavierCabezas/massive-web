@@ -186,7 +186,7 @@ del {
 
 /**header style**/
 .header {
-  background-image:url("../images/trama.png");
+  background-image: url('../img/trama.png');
   background-color: #FFF;
   height: 135px;
 }
@@ -1026,7 +1026,7 @@ ul.redes-footer .list-inline li::before {
 
 .newsletter {
   padding: 5% 0;
-  background-image: url('../images/trama.png');
+  background-image: url('../img/trama.png');
 }
 
 .newsletter h3 {
