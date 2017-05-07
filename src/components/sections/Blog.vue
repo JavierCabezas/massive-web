@@ -9,18 +9,22 @@
         <!--end breadcrumb-->
 
         <div class="space-60"></div>
-        <div class="container">
-            <div v-for="i in [1, 2, 3]" class="col-sm-4">
+        <div class="container" id="blog-post-list">
+            <div v-for="post in posts" class="col-sm-4">
                 <div class="blog-item">
                     <a href="#">
-                        <img src="../../img/bg/bg-1.jpg" class="img-responsive" alt="">
+                        <img :src="post.img" class="img-responsive" alt="">
                     </a>
                     <div class="blog-desc">
-                        <ul>
-                            <li><a href="#" class="tag"><i class="fa fa-tag"></i> Lorem</a></li>
+                        <ul v-if="post.tags.length > 0">
+                            <li v-for="tag in post.tags">
+                            <a href="#" class="tag">
+                                <i class="fa fa-tag"></i> {{tag}} </a> &nbsp;
+                            </li>
                         </ul>
-                        <h4 class="title"><a href="#"> Title </a></h4>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.</p>
+                        <p v-else> <br> </p>
+                        <h4 class="title"><a href="#"> {{post.title}} </a></h4>
+                        <p>  {{post.text}} </p>
                         <a href="#" class="btn btn-skin">Continue</a>
                     </div><!--blog desc-->
                 </div><!--blog item-->
@@ -47,3 +51,36 @@
         </div>
     </div>
 </template>
+
+<script>
+    export default {
+        name: 'blog-post-list',
+        data () {
+            return {
+                posts: [
+                    {
+                        item_id: 1,
+                        img: '../src/img/bg/bg-1.jpg',
+                        title: 'Title 2',
+                        text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
+                        tags: ['tag1', 'tag2', 'tag3']
+                    },
+                    {
+                        item_id: 2,
+                        img: '../src/img/bg/bg-1.jpg',
+                        title: 'Título 3',
+                        text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
+                        tags: []
+                    },
+                    {
+                        item_id: 3,
+                        img: '../src/img/bg/bg-1.jpg',
+                        title: 'Title 4',
+                        text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
+                        tags: ['tag7', 'tag8', 'tag9']
+                    }
+                ]
+            }
+        }
+    }
+</script>
