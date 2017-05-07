@@ -1,18 +1,21 @@
 <template>
-  <div id="app">
-    <h3> asdfsaf </h3>
 
-    <p> holi </p>
-  </div>
+  <top></top>
+
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  import Top from './components/top/Top.vue'
+
+  export default {
+      name: 'app',
+      data () {
+        return {
+          msg: 'Welcome to Your Vue.js App'
+        }
+      },
+      components:{
+          'top': Top
+      }
   }
-}
 </script>
