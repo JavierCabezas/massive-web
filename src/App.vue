@@ -1,11 +1,13 @@
 <template>
-
-  <top></top>
-
+  <div>
+    <top></top>
+    <home></home>
+  </div>
 </template>
 
 <script>
   import Top from './components/top/Top.vue'
+  import Home from './components/main/Home.vue'
 
   export default {
       name: 'app',
@@ -15,7 +17,8 @@
         }
       },
       components:{
-          'top': Top
+          'top': Top,
+          'home': Home
       }
   }
 </script>
