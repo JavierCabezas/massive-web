@@ -1,12 +1,10 @@
 <template>
     <div class="container">
-        <!--breadcrumb start-->
         <div class="breadcrumb-wrapper">
             <div class="container">
                 <h1>Blog</h1>
             </div>
         </div>
-        <!--end breadcrumb-->
 
         <div class="space-60"></div>
         <div class="container" id="blog-post-list">
@@ -23,9 +21,11 @@
                             </li>
                         </ul>
                         <p v-else> <br> </p>
-                        <h4 class="title"><a href="#"> {{post.title}} </a></h4>
+                        <h4 class="title">
+                            <a :href="'#/blog/'+post.id"> {{post.title}} </a>
+                        </h4>
                         <p>  {{post.text}} </p>
-                        <a href="#" class="btn btn-skin">Continue</a>
+                        <a :href="'#/blog/'+post.id" class="btn btn-skin">Continue</a>
                     </div><!--blog desc-->
                 </div><!--blog item-->
             </div><!--grid blog-->
@@ -59,21 +59,21 @@
             return {
                 posts: [
                     {
-                        item_id: 1,
+                        id: 1,
                         img: '../src/img/bg/bg-1.jpg',
                         title: 'Title 2',
                         text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
                         tags: ['tag1', 'tag2', 'tag3']
                     },
                     {
-                        item_id: 2,
+                        id: 2,
                         img: '../src/img/bg/bg-1.jpg',
                         title: 'Título 3',
                         text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
                         tags: []
                     },
                     {
-                        item_id: 3,
+                        id: 3,
                         img: '../src/img/bg/bg-1.jpg',
                         title: 'Title 4',
                         text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
