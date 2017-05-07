@@ -1,5 +1,6 @@
 <template>
     <section>
+        <p>Post ID: {{id}} </p>
         <div class="space-60"></div>
         <div class="container">
             <div class="row">
@@ -42,6 +43,12 @@
         data() {
             return {
                 id: this.$route.params.id,
+                watch: {
+                    '$route'(to, from){
+                        this.id = params.id;
+                        //To-do: Do an ajax call to update the blog post
+                    }
+                },
                 post: {
                         id: 1,
                         title: "I mean, they have no respect for us up there! No respect whatsoever!",

@@ -1,5 +1,5 @@
 <template>
-    <section class="featured-products">
+    <section class="featured-products" id="featured-products">
         <div class="container">
             <h2 class="section-heading"> Popular Items</h2>
             <div class="row">
@@ -20,13 +20,26 @@
 </template>
 
 <script>
-    $(document).ready(function(){
-        $(".popularslider").bxSlider({
-            slideWidth: 200,
-            minSlides: 3,
-            maxSlides: 6,
-            slideMargin: 10,
-            auto: true
-        });
-    });
+    export default {
+        name: 'featured-products',
+        data () {
+            return {
+
+            }
+        },
+        mounted () {
+            this.start_slider()
+        },
+        methods:{
+            start_slider(){
+                    $(".popularslider").bxSlider({
+                        slideWidth: 200,
+                        minSlides: 3,
+                        maxSlides: 6,
+                        slideMargin: 10,
+                        auto: true
+                    });
+            }
+        }
+    }
 </script>

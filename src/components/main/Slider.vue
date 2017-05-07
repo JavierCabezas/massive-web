@@ -28,7 +28,20 @@
 </template>
 
 <script>
-    $(document).ready(function(){
-        $(".slides").bxSlider({auto:true});
-    });
+    export default {
+        name: 'slider',
+        data () {
+            return {
+
+            }
+        },
+        mounted () {
+            this.start_slider()
+        },
+        methods:{
+            start_slider(){
+                $(".slides").bxSlider({auto:true});
+            }
+        }
+    }
 </script>
