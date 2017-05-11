@@ -5,6 +5,7 @@
                 <img src="../../img/faq-bg.jpg" />
             </div>
             <div class="col-md-6">
+                <br>
                 <h3>Question 1</h3>
                 <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod
                     maxime placeat facere possimusNam libero tempore, cum soluta nobis est eligendi optio cumque

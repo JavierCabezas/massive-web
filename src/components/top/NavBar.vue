@@ -38,6 +38,12 @@
                 music_pack: 'Music packs',
                 faq: 'FAQ',
             }
+        },
+        mounted: function() {
+            $( window ).resize(function() {
+                $(".navbar-collapse").css({ maxHeight: $(window).height() - $(".navbar-header").height() + "px" });
+            });
+
         }
     }
 </script>

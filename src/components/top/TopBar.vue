@@ -13,7 +13,7 @@
                                 <a @click.prevent="changeLang('es_ES')"><img src="../../img/flag_es.png"> Spanish </a>
                             </div>
                         </li>
-                        <li><a href="javascript:void(0)" class="search-toggle"><i class="fa fa-search"></i></a></li>
+                        <li><a href="#" @click.prevent="openSearch()" class="search-toggle"><i class="fa fa-search"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -38,6 +38,11 @@
         methods:{
             changeLang(lang){
                 this.$translate.setLang(lang);
+            },
+            openSearch() {
+                $(".search-toggle").click(function(){
+                    $(".search-bar").slideDown('fast');
+                });
             }
         }
     }
