@@ -7,6 +7,7 @@ import Faq from './components/sections/Faq.vue'
 import Blog from './components/sections/Blog.vue'
 import BlogPost from './components/sections/BlogPost.vue'
 import MusicPacks from './components/music_packs/MusicPacks.vue'
+import MusicPackDetail from './components/music_packs/MusicPackDetail.vue'
 
 export const routes = [
     { path: '', component: Home },
@@ -15,6 +16,6 @@ export const routes = [
     { path: '/faq', component: Faq },
     { path: '/blog', component: Blog },
     { path: '/blog/:id', component: BlogPost },
-    { path: '/music-packs', component: MusicPacks }
-
+    { path: '/music-pack', component: MusicPacks },
+    { path: '/music-pack/:id', component: MusicPackDetail }
 ];

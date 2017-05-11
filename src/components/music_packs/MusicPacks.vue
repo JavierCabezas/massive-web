@@ -58,6 +58,7 @@
             return {
                 items: [
                     {
+                        id: 1,
                         link: "#",
                         img: '../src/img/bg/bg-1.jpg',
                         title: 'Title 2',
@@ -65,6 +66,7 @@
                         price: 24033
                     },
                     {
+                        id: 2,
                         link: "#",
                         img: '../src/img/bg/bg-1.jpg',
                         title: 'Title 2',
@@ -72,6 +74,7 @@
                         price: 24033
                     },
                     {
+                        id: 3,
                         link: "#",
                         img: '../src/img/bg/bg-1.jpg',
                         title: 'Title 2',

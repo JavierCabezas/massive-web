@@ -14,7 +14,7 @@
                 <ul class="nav navbar-nav">
                     <li><router-link to="/"> {{ t('home') }} </router-link></li>
                     <li><router-link to="/about">{{ t('about') }}</router-link></li>
-                    <li><router-link to="/music-packs"> {{ t('music_pack') }} </router-link></li>
+                    <li><router-link to="/music-pack"> {{ t('music_pack') }} </router-link></li>
                     <li><router-link to="/faq">{{ t('faq') }}</router-link></li>
                     <li><router-link to="/blog">Blog</router-link></li>
                 </ul>
