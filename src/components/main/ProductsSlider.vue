@@ -4,15 +4,9 @@
             <h2 class="section-heading"> Popular Items</h2>
             <div class="row">
                 <ul class="popularslider">
-                    <li class="slide item_holder"><img src="../../img/women/1.jpg"/></li>
-                    <li class="slide item_holder"><img src="../../img/men/1.jpg"/></li>
-                    <li class="slide item_holder"><img src="../../img/women/2.jpg"/></li>
-                    <li class="slide item_holder"><img src="../../img/men/2.jpg"/></li>
-                    <li class="slide item_holder"><img src="../../img/women/1.jpg"/></li>
-                    <li class="slide item_holder"><img src="../../img/men/1.jpg"/></li>
-                    <li class="slide item_holder"><img src="../../img/women/2.jpg"/></li>
-                    <li class="slide item_holder"><img src="../../img/men/2.jpg"/></li>
-                    <li class="slide item_holder"><img src="../../img/women/1.jpg"/></li>
+                    <li class="slide item_holder" v-for="p in products">
+                        <img :src="p.img">
+                    </li>
                 </ul>
             </div>
         </div>
@@ -22,6 +16,7 @@
 <script>
     export default {
         name: 'featured-products',
+        props: ['products'],
         data () {
             return {
 
