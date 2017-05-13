@@ -116,7 +116,7 @@ class SiteController extends Controller
             shuffle($text);
             array_push($out, [
                 'id'    => $i,
-                'img'   => 'http://localhost/massive-web/src/img/music-pack'.$img_name,
+                'img'   => 'http://localhost/massive-web/src/img/music-pack/'.$img_name,
                 'title' => $titles[0],
                 'text'  => $text[0]
             ]);

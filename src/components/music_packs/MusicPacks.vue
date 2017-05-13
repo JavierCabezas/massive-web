@@ -11,25 +11,6 @@
 
                 <music-pack-list :items="items"></music-pack-list>
 
-                <nav>
-                    <ul class="pagination pull-right clearfix">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
 
             <div class="col-md-3 col-md-offset-1">
@@ -56,36 +37,22 @@
     export default {
         data () {
             return {
-                items: [
-                    {
-                        id: 1,
-                        link: "#",
-                        img: '../src/img/bg/bg-1.jpg',
-                        title: 'Title 2',
-                        text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
-                        price: 24033
-                    },
-                    {
-                        id: 2,
-                        link: "#",
-                        img: '../src/img/bg/bg-1.jpg',
-                        title: 'Title 2',
-                        text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
-                        price: 24033
-                    },
-                    {
-                        id: 3,
-                        link: "#",
-                        img: '../src/img/bg/bg-1.jpg',
-                        title: 'Title 2',
-                        text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
-                        price: 24033
-                    }
-                ]
+                items: [ ]
             }
         },
+        created: function () {
+            let vm = this;
+            let url = vm.url_backend + '/site/music-packs';
+
+            $.ajax({
+                url: url,
+                success: function (result) {
+                    vm.items = result;
+                }
+            });
+        },
         components: {
-            musicPackList: MusicpackList
+            musicPackList: MusicpackList,
         }
     }
 </script>
