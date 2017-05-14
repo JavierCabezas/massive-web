@@ -32,7 +32,6 @@
         data () {
             return {
                 items_per_page: 12,
-                page_count: 3,
                 current_page: 1
             }
         },
@@ -42,7 +41,6 @@
         methods: {
             clickCallback: function(page) {
                 this.current_page = page;
-                console.log(this.computedItems);
             },
             is_index_in_range(index){
                 let item_number = index +1;

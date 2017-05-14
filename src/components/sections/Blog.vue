@@ -8,8 +8,8 @@
 
         <div class="space-60"></div>
         <div class="container" id="blog-post-list">
-            <div v-for="post in posts" class="col-sm-4">
-                <div class="blog-item">
+            <div v-for="(post, index) in posts" class="col-sm-4">
+                <div class="blog-item" v-if="is_index_in_range(index)">
                     <a href="#">
                         <img :src="post.img" class="img-responsive" alt="">
                     </a>
@@ -22,64 +22,57 @@
                         </ul>
                         <p v-else> <br> </p>
                         <h4 class="title">
-                            <a :href="'#/blog/'+post.id"> {{post.title}} </a>
+                            <a :href="'#/blog/'+post.id"> {{index}} {{post.title}} </a>
                         </h4>
                         <p>  {{post.text}} </p>
                         <a :href="'#/blog/'+post.id" class="btn btn-skin">Continue</a>
-                    </div><!--blog desc-->
-                </div><!--blog item-->
-            </div><!--grid blog-->
-            <nav>
-                <ul class="pagination pull-right clearfix">
-                    <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">«</span>
-                        </a>
-                    </li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">»</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+                    </div><
+                </div>
+            </div>
+
+            <paginate
+                    :pageCount="posts.length / items_per_page"
+                    :containerClass="'pagination'"
+                    :clickHandler="clickCallback">
+            </paginate>
+
         </div>
     </div>
 </template>
 
 <script>
+    import Paginate from 'vuejs-paginate'
+
     export default {
         name: 'blog-post-list',
         data () {
             return {
-                posts: [
-                    {
-                        id: 1,
-                        img: '../src/img/bg/bg-1.jpg',
-                        title: 'Title 2',
-                        text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
-                        tags: ['tag1', 'tag2', 'tag3']
-                    },
-                    {
-                        id: 2,
-                        img: '../src/img/bg/bg-1.jpg',
-                        title: 'Título 3',
-                        text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
-                        tags: []
-                    },
-                    {
-                        id: 3,
-                        img: '../src/img/bg/bg-1.jpg',
-                        title: 'Title 4',
-                        text: 'INGLÉS Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum commodo tellus nisl, ac fermentum ligula laoreet eu. In consequat diam sed est tempus convallis.',
-                        tags: ['tag7', 'tag8', 'tag9']
-                    }
-                ]
+                posts: [ ],
+                items_per_page: 3,
+                current_page: 1
+            }
+        },
+        created: function () {
+            let vm = this;
+            let url = vm.url_backend + '/site/blog-posts';
+
+            $.ajax({
+                url: url,
+                success: function (result) {
+                    vm.posts = result;
+                }
+            });
+        },
+        components: {
+            paginate: Paginate
+        },
+        methods: {
+            clickCallback: function(page) {
+                this.current_page = page;
+            },
+            is_index_in_range(index){
+                let item_number = index +1;
+                return index > ( (this.current_page -1 ) * this.items_per_page ) && index <= ( (this.current_page ) * this.items_per_page)
             }
         }
     }
