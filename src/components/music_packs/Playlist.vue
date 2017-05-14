@@ -11,18 +11,30 @@
                 </audio>
             </div>
             <div id="extraControls">
-                <button id="btnPrev" class="ctrlbtn">|&lt;&lt; {{ t('prev_track') }}</button>
-                <button id="btnNext" class="ctrlbtn"> {{ t('next_track') }} &gt;&gt;|</button>
+                <button id="btnPrev" class="ctrlbtn" v-if="active_track_index > 0" @click.prevent="change_track(active_track_index-1)">
+                    <span class="glyphicon glyphicon-step-backward"></span> {{ t('prev_track') }}
+                </button>
+                <button id="btnNext" class="ctrlbtn" v-if="active_track_index + 1 !== tracks.length" @click.prevent="change_track(active_track_index+1)">
+                    {{ t('next_track') }} <span class="glyphicon glyphicon-step-forward"> </span>
+                </button>
             </div>
         </div>
         <div id="plwrap">
             <ul id="plUL">
                 <li v-for="(track, index) in tracks">
                     <div class="plItem">
-
-                            <div class="plTitle"><a href="#"> {{ track.name }}</a></div>
-                            <div class="plLength">{{ track.lenght }}</div>
-
+                        <b v-if="index == active_track_index">
+                            <a href="#" @click.prevent="change_track(index)">
+                                <div class="plTitle"> {{ track.name }}</div>
+                                <div class="plLength">{{ track.lenght }}</div>
+                            </a>
+                        </b>
+                        <span v-else>
+                            <a href="#" @click.prevent="change_track(index)">
+                                <div class="plTitle"><a href="#"> {{ track.name }}</a></div>
+                                <div class="plLength">{{ track.lenght }}</div>
+                            </a>
+                        </span>
                     </div>
                 </li>
             </ul>
@@ -48,18 +60,23 @@
                 ]
             }
         },
+        methods:{
+            change_track: function(val){
+                this.active_track_index = val;
+            }
+        },
         locales: {
             es_ES: {
                 playlist: 'Listado de canciones',
                 prev_track: 'Anterior',
                 next_track: 'Siguiente',
-                html5_audio_support: 'Tu explorador no soporta el tag de audio HTML.'
+                html5_audio_support: 'Tu explorador no soporta el tag de audio HTML.',
             },
             en_US: {
                 playlist: 'Playlist',
                 prev_track: 'Prev. Track',
                 next_track: 'Next Track',
-                html5_audio_support: 'Your browser does not support the HTML5 Audio Tag.'
+                html5_audio_support: 'Your browser does not support the HTML5 Audio Tag.',
             }
         }
     }

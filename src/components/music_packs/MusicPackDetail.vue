@@ -1,5 +1,5 @@
 <template>
-    <div ng-controller="musicdetailController">
+    <div>
         <div class="space-60"></div>
         <div class="container">
             <div  class="row single-product">
@@ -22,7 +22,7 @@
                             </span>
                                 <div class="add-buttons">
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to cart"
-                                       class="btn btn-skin btn-lg"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
+                                       class="btn btn-skin btn-lg"><i class="fa fa-shopping-cart"></i> {{ t('add_cart') }}</a>
                                 </div>
                                 <playlist :tracks="product.tracks"></playlist>
                             </div>
@@ -30,14 +30,12 @@
                     </div><!--single product details end-->
                     <div class="row">
                         <div class="col-md-12 item-more-info">
-                            <div ng-controller="detailController" id="detail">
-                                <!-- Tab panes -->
+                            <div id="detail">
                                 <div class="col-sm-12">
                                     <h2>{{ t('description') }}</h2>
                                     <span v-html="product.description">  </span>
                                     <div class="space-40"></div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -88,10 +86,11 @@
         locales: {
             es_ES: {
                 description: 'Descripción',
-
+                add_cart: 'Añadir al carro'
             },
             en_US: {
-                description: 'Description'
+                description: 'Description',
+                add_cart: 'Add to cart'
             }
         },
         components: {
