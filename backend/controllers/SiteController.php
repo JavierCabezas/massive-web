@@ -146,7 +146,10 @@ class SiteController extends Controller
             [ "id" => 2, "name" => "Wedding March Variation 1", "lenght" => "1:30", "file" => $track_root."002.mp3" ],
             [ "id" => 3,  "name" => "Happy Birthday Variation: In the style of Tango",  "lenght" => "1:33",  "file" => $track_root."003.mp3" ],
             [ "id" => 4,  "name" => "Wedding March Variation 2",  "lenght" => "3:20",  "file" => $track_root."004.mp3" ],
-            [ "id" => 5,  "name" => "Random Classical",  "lenght" => "1:12",  "file" => $track_root."005.mp3" ]
+            [ "id" => 5,  "name" => "Random Classical",  "lenght" => "1:12",  "file" => $track_root."005.mp3" ],
+            [ "id" => 6,  "name" => "Everything is true",  "lenght" => "0:22",  "file" => $track_root."006.mp3" ],
+            [ "id" => 7,  "name" => "Cuicuitte ",  "lenght" => "12:00",  "file" => $track_root."007.mp3" ],
+            [ "id" => 8,  "name" => "J'aurai toujours peur de me perdre",  "lenght" => "2:32",  "file" => $track_root."008.mp3" ]
         ];
         $categories = [ 'RPG', 'Action', 'FPS', 'Puzzle' ];
 

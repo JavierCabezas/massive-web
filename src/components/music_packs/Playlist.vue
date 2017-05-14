@@ -24,6 +24,7 @@
                 <li v-for="(track, index) in tracks">
                     <div class="plItem">
                         <b v-if="index == active_track_index">
+                            <span class="glyphicon glyphicon-music"> </span>
                             <a href="#" @click.prevent="change_track(index)">
                                 <div class="plTitle"> {{ track.name }}</div>
                                 <div class="plLength">{{ track.lenght }}</div>
