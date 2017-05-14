@@ -22,7 +22,7 @@
     import Paginate from 'vuejs-paginate'
 
     export default {
-        props: ['items'],
+        props: [ 'items' ],
         components: {
             paginate: Paginate
         },
