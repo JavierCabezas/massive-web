@@ -1,13 +1,45 @@
 /**
  * Created by javier on 5/7/17.
  */
-import About from './components/sections/About.vue'
 import Home from './components/main/Home.vue'
-import Faq from './components/sections/Faq.vue'
-import Blog from './components/sections/Blog.vue'
-import BlogPost from './components/sections/BlogPost.vue'
-import MusicPacks from './components/music_packs/MusicPacks.vue'
-import MusicPackDetail from './components/music_packs/MusicPackDetail.vue'
+
+const About = resolve => {
+    require.ensure(['./components/sections/About.vue'], () => {
+        resolve(require('./components/sections/About.vue'));
+    });
+};
+
+const Faq = resolve => {
+    require.ensure(['./components/sections/Faq.vue'], () => {
+        resolve(require('./components/sections/Faq.vue'));
+    });
+};
+
+const Blog = resolve => {
+    require.ensure(['./components/sections/Blog.vue'], () => {
+        resolve(require('./components/sections/Blog.vue'));
+    }, 'blog');
+};
+
+const BlogPost = resolve => {
+    require.ensure(['./components/sections/BlogPost.vue'], () => {
+        resolve(require('./components/sections/BlogPost.vue'));
+    }, 'blog');
+};
+
+
+const MusicPacks = resolve => {
+    require.ensure(['./components/music_packs/MusicPacks.vue'], () => {
+        resolve(require('./components/music_packs/MusicPacks.vue'));
+    }, 'music-pack');
+};
+
+const MusicPackDetail = resolve => {
+    require.ensure(['./components/music_packs/MusicPackDetail.vue'], () => {
+        resolve(require('./components/music_packs/MusicPackDetail.vue'));
+    }, 'music-pack');
+};
+
 
 export const routes = [
     { path: '', component: Home },
