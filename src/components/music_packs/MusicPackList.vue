@@ -3,7 +3,10 @@
 
         <div class="col-sm-4" v-for="(item, index) in items">
             <div class="item_holder" v-if="is_index_in_range(index)">
-                <a :href="'#/music-pack/'+item.id"><img :src="item.img" :alt="item.title" class="img-responsive"></a>
+                <router-link  tag="a" :to="{ name: 'musicPackDetail', params: { id: item.id} }" >
+                    <img :src="item.img" :alt="item.title" class="img-responsive">
+                </router-link>
+
                 <div class="title">
                     <h5>{{index}} : {{item.title}}</h5>
                     <span class="price">{{item.price}}</span>

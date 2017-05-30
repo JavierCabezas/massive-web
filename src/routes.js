@@ -17,5 +17,5 @@ export const routes = [
     { path: '/blog', component: Blog },
     { path: '/blog/:id', component: BlogPost },
     { path: '/music-pack', component: MusicPacks },
-    { path: '/music-pack/:id', component: MusicPackDetail }
+    { path: '/music-pack/:id', component: MusicPackDetail, name: 'musicPackDetail' }
 ];
