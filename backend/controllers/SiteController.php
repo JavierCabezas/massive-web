@@ -289,6 +289,7 @@ class SiteController extends Controller
             }
 
             array_push($out, [
+                'id' => rand(1, 100),
                 'title' => $titles[0],
                 'description' => $text[0],
                 'img' => $img_root.'00'.rand(1, 6).'.jpg',

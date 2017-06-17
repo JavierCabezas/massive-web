@@ -10,7 +10,6 @@
                 </ul>
 
                 <music-track-list :items="items"></music-track-list>
-
             </div>
         </div>
     </div>

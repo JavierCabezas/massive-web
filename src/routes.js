@@ -45,6 +45,12 @@ const MusicPackDetail = resolve => {
     }, 'music-pack');
 };
 
+const MusicTrackDetail = resolve => {
+    require.ensure(['./components/music_tracks/MusicTrackDetail.vue'], () => {
+        resolve(require('./components/music_tracks/MusicTrackDetail.vue'));
+    }, 'music-track');
+};
+
 
 export const routes = [
     { path: '', component: Home },
@@ -55,5 +61,6 @@ export const routes = [
     { path: '/blog/:id', component: BlogPost },
     { path: '/music-pack', component: MusicPacks },
     { path: '/music-track', component: MusicTracks },
-    { path: '/music-pack/:id', component: MusicPackDetail, name: 'musicPackDetail' }
+    { path: '/music-pack/:id', component: MusicPackDetail, name: 'musicPackDetail' },
+    { path: '/music-track/:id', component: MusicTrackDetail, name: 'musicTrackDetail' }
 ];

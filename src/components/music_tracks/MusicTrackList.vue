@@ -3,9 +3,9 @@
 
         <div class="col-sm-4" v-for="(item, index) in items">
             <div class="item_holder" v-if="is_index_in_range(index)">
-                <p>
+                <router-link  tag="a" :to="{ name: 'musicTrackDetail', params: { id: item.id} }" >
                     <img :src="item.img" :alt="item.title" class="img-responsive">
-                </p>
+                </router-link>
 
                 <div class="title">
                     <h5>{{index}} : {{item.title}}</h5>

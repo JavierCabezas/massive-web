@@ -15,7 +15,7 @@
 
             <div class="col-md-3 col-md-offset-1">
                 <div class="sidebar-widget">
-                    <h3 translate="categories"></h3>
+                    <h3>Categories</h3>
                     <ul class="list-unstyled">
                         <li><a href="#">New Arrivals</a></li>
                         <li><a href="#">Men</a></li>
