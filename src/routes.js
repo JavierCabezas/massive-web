@@ -27,11 +27,16 @@ const BlogPost = resolve => {
     }, 'blog');
 };
 
-
 const MusicPacks = resolve => {
     require.ensure(['./components/music_packs/MusicPacks.vue'], () => {
         resolve(require('./components/music_packs/MusicPacks.vue'));
     }, 'music-pack');
+};
+
+const MusicTracks = resolve => {
+    require.ensure(['./components/music_tracks/MusicTracks.vue'], () => {
+        resolve(require('./components/music_tracks/MusicTracks.vue'));
+    }, 'music-track');
 };
 
 const MusicPackDetail = resolve => {
@@ -49,5 +54,6 @@ export const routes = [
     { path: '/blog', component: Blog },
     { path: '/blog/:id', component: BlogPost },
     { path: '/music-pack', component: MusicPacks },
+    { path: '/music-track', component: MusicTracks },
     { path: '/music-pack/:id', component: MusicPackDetail, name: 'musicPackDetail' }
 ];

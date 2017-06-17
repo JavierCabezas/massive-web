@@ -15,6 +15,7 @@
                     <li><router-link to="/"> {{ t('home') }} </router-link></li>
                     <li><router-link to="/about">{{ t('about') }}</router-link></li>
                     <li><router-link to="/music-pack"> {{ t('music_pack') }} </router-link></li>
+                    <li><router-link to="/music-track"> {{ t('music_track') }} </router-link></li>
                     <li><router-link to="/faq">{{ t('faq') }}</router-link></li>
                     <li><router-link to="/blog">Blog</router-link></li>
                 </ul>
@@ -30,12 +31,14 @@
                 home: 'Inicio',
                 about: 'Sobre nosotros',
                 music_pack: 'Packs de música',
+                music_track: 'Música suelta',
                 faq: 'Preguntas frecuentes',
             },
             en_US: {
                 home: 'Home',
                 about: 'About us',
                 music_pack: 'Music packs',
+                music_track: 'Music files',
                 faq: 'FAQ',
             }
         },
