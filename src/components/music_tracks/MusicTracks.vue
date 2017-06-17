@@ -9,6 +9,7 @@
                     <li><a href="#"> UNa última</a></li>
                 </ul>
 
+                <music-track-list :items="items"></music-track-list>
 
             </div>
         </div>
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+    import MusicTrackList from './MusicTrackList.vue'
 
     export default {
         data () {
@@ -35,7 +37,7 @@
             });
         },
         components: {
-
+            musicTrackList: MusicTrackList,
         }
     }
 </script>
