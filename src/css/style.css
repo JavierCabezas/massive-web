@@ -45,6 +45,11 @@ h1, h2, h3, h4, h5, h6 {
   color: #333;
 }
 
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .section-heading {
   padding-bottom: 10px;
   text-transform: uppercase;
@@ -171,7 +176,7 @@ del {
 
 /**breadcrumb**/
 .breadcrumb-wrapper {
-  padding: 30px 0;
+  padding: 2%;
   background-color: #B67E90;
 }
 
@@ -370,7 +375,7 @@ del {
 }
 
 .container {
-  width: 95%;
+  width: 100%;
 }
 
 .content-scroll {
@@ -777,6 +782,10 @@ ul.redes-footer .list-inline li::before {
 
 
 /**feaatures box **/
+.featured-products {
+  padding: 5%;
+}
+
 .features-box {
   padding: 2% 1%;
   background-color: #FFF;
@@ -945,7 +954,9 @@ ul.redes-footer .list-inline li::before {
 /**new arrivals**/
 .new-arrivals {
   position: relative;
+  padding: 5%;
 }
+
 .new-arrivals .item {
   padding: 0 15px;
 }
@@ -1007,7 +1018,7 @@ ul.redes-footer .list-inline li::before {
 
 /**partners**/
 .partners {
-  padding: 60px 0;
+  padding: 5%;
   background-color: #695C78;
 }
 
@@ -1025,7 +1036,7 @@ ul.redes-footer .list-inline li::before {
 }
 
 .newsletter {
-  padding: 5% 0;
+  padding: 5%;
   background-image: url('../img/trama.png');
 }
 
@@ -1890,13 +1901,20 @@ audio {
   }
 
   .navbar-default .navbar-brand > img {
-    width: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
   .navbar-default .navbar-nav {
     padding-left: 100px;
+  }
+
+  .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin: 0;
+    padding: 0;
   }
 
   .navbar-default .navbar-brand > img {
