@@ -1,5 +1,11 @@
 <template>
     <div class="container">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <h1>Music Tracks</h1>
+            </div>
+        </div>
+        <div class="space-60"></div>
         <div class="row">
             <div class="col-md-12">
                 <ul class="product-filter-block list-inline clearfix">
