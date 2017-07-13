@@ -297,6 +297,10 @@ del {
 
 
 /**main navigation**/
+.navbar .container {
+  padding: 0;
+}
+
 .navbar-default {
   background-color: rgba(255, 255, 255, 0);
   border: 0;
@@ -312,6 +316,7 @@ del {
 .navbar-default .navbar-brand {
   font-family: "Raleway", serif;
   font-size: 30px;
+  padding: 0;
 }
 
 .navbar-default .navbar-nav > li > a {
@@ -376,6 +381,8 @@ del {
 
 .container {
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .content-scroll {
@@ -548,6 +555,10 @@ del {
 .yamm-content .mega-vertical-nav li a i {
   margin-right: 8px;
   color: #999;
+}
+
+#blog-post-list {
+  padding: 2%;
 }
 
 .blog-item .tag {

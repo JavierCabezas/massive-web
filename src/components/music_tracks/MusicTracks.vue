@@ -6,7 +6,7 @@
                     <li> Title </li>
                     <li class="active"><a href="#">Top rated</a></li>
                     <li><a href="#">Otra categoría</a></li>
-                    <li><a href="#"> UNa última</a></li>
+                    <li><a href="#"> Una última</a></li>
                 </ul>
 
                 <music-track-list :items="items"></music-track-list>

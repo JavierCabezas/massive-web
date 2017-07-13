@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h3>Videogames Music for All! </h3>
+                    <h3>Videogames Music for All!</h3>
                     <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
                         placeat facere possimusNam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
                         quo minus id quod maxime placeat facere possimus.</p>

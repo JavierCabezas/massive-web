@@ -1,12 +1,18 @@
 <template>
     <div class="container">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <h1>Music Packs</h1>
+            </div>
+        </div>
+        <div class="space-60"></div>
         <div class="row">
             <div class="col-md-8">
                 <ul class="product-filter-block list-inline clearfix">
                     <li> Title </li>
                     <li class="active"><a href="#">Top rated</a></li>
                     <li><a href="#">Otra categoría</a></li>
-                    <li><a href="#"> UNa última</a></li>
+                    <li><a href="#"> Una última</a></li>
                 </ul>
 
                 <music-pack-list :items="items"></music-pack-list>
@@ -28,6 +34,7 @@
                 </div>
             </div>
         </div>
+        <div class="space-60"></div>
     </div>
 </template>
 
