@@ -4,8 +4,7 @@
             <div class="row">
                 <div class="col-sm-12 text-right">
                     <ul class="list-inline">
-                        <li class="hidden-xs"><a href="#/register"><i class="fa fa-user"></i> {{ t('account') }} </a></li>
-                        <li><a href="#/login"><i class="pe-7s-lock"></i> {{ t('login') }} </a></li>
+                        <li><a href="#/user/login"><i class="fa fa-user"></i>{{ t('login') }} </a></li>
                         <li class="lang-dropdown">
                             <a> {{ t('active_lang') }}  </a>
                             <div class="lang-drop-menu">
@@ -46,6 +45,4 @@
             }
         }
     }
-
-
 </script>
