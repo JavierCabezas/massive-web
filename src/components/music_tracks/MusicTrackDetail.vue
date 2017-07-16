@@ -24,7 +24,7 @@
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to cart"
                                        class="btn btn-skin btn-lg"><i class="fa fa-shopping-cart"></i> {{ t('add_cart') }}</a>
                                 </div>
-                                <playlist :tracks="product.tracks"></playlist>
+                                <player :track="product.track"></player>
                             </div>
                         </div>
                     </div><!--single product details end-->
@@ -48,7 +48,7 @@
 
 <script>
     import ProductSlider from '../main/ProductsSlider.vue'
-    import Playlist from './../music_packs/Playlist.vue'
+    import Playlist from './Player.vue'
 
     export default {
         name: 'featured-products',
