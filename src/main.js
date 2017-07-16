@@ -3,7 +3,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueTranslate from 'vue-translate-plugin';
 import App from './App.vue'
+import GSignInButton from 'vue-google-signin-button'
 
+Vue.use(GSignInButton)
 Vue.use(VueRouter);
 Vue.use(VueTranslate);
 
