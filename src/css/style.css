@@ -1101,6 +1101,30 @@ ul.redes-footer .list-inline li::before {
 }
 
 
+/**search**/
+section.option-search, section.musictype-search {
+  margin-bottom: 2%;
+}
+
+section.option-search, section.musictype-search {
+  width: 100%;
+}
+
+section.option-search .option, section.musictype-search .option {
+  height: 8em;
+  background-color: #2F2E2A;
+  color: #FFF;
+  text-align: center;
+  padding: 1%;
+  border: 1px solid #FFF;
+}
+
+section.musictype-search .option {
+  background-color: #1B6D85;
+  height: 4em;
+}
+
+
 /**banner blocks**/
 .blocks-main .blocks-col {
   overflow: hidden;

@@ -7,12 +7,30 @@
         </div>
         <div class="space-60"></div>
         <div class="row">
-            <section class="col-sm-offset-1 col-sm-10">
-                <div class="col-sm-12 col-md-6">Positivo</div>
-                <div class="col-sm-12 col-md-6">Negativo</div>
-                <div class="col-sm-12 col-md-6">Activo</div>
-                <div class="col-sm-12 col-md-6">Pasivo</div>
+            <section class="col-sm-offset-1 col-sm-10 option-search">
+                <h3>Choose an Option!</h3>
+                <div class="col-sm-12 col-md-6 option">Positivo</div>
+                <div class="col-sm-12 col-md-6 option">Negativo</div>
+                <div class="col-sm-12 col-md-6 option">Activo</div>
+                <div class="col-sm-12 col-md-6 option">Pasivo</div>
             </section>
+
+            <section class="col-sm-offset-1 col-sm-10 musictype-search">
+                <h3>Choose a Music Style!</h3>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+                <div class="col-sm-12 col-md-2 option">Music Type</div>
+            </section>
+
             <div class="col-sm-12 col-md-offset-1 col-md-10">
                 <a href="#" @click.prevent="get_products()"> Clickeme </a>
                 <a href="#" @click.prevent="items=[]"> Borrar </a>
