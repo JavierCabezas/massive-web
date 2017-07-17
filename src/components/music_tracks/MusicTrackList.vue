@@ -1,8 +1,8 @@
 <template>
     <div class="row">
 
-        <div class="col-sm-4" v-for="(item, index) in items">
-            <div class="item_holder" v-if="is_index_in_range(index)">
+        <div class="col-sm-4" v-for="(item, index) in items" v-if="is_index_in_range(index)">
+            <div class="item_holder">
                 <router-link  tag="a" :to="{ name: 'musicTrackDetail', params: { id: item.id} }" >
                     <img :src="item.img" :alt="item.title" class="img-responsive">
                 </router-link>
