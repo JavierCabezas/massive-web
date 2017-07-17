@@ -940,6 +940,7 @@ ul.redes-footer .list-inline li::before {
 
 .item_holder p {
   height: 10em;
+  text-align: left;
 }
 
 .item_holder:hover {

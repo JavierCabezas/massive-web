@@ -7,13 +7,13 @@
         </div>
         <div class="space-60"></div>
         <div class="row">
-            <div class="col-md-12">
-                <ul class="product-filter-block list-inline clearfix">
-                    <li> Title </li>
-                    <li class="active"><a href="#">Top rated</a></li>
-                    <li><a href="#">Otra categoría</a></li>
-                    <li><a href="#"> Una última</a></li>
-                </ul>
+            <section class="col-sm-offset-1 col-sm-10">
+                <div class="col-sm-12 col-md-6">Positivo</div>
+                <div class="col-sm-12 col-md-6">Negativo</div>
+                <div class="col-sm-12 col-md-6">Activo</div>
+                <div class="col-sm-12 col-md-6">Pasivo</div>
+            </section>
+            <div class="col-sm-12 col-md-offset-1 col-md-10">
                 <a href="#" @click.prevent="get_products()"> Clickeme </a>
                 <a href="#" @click.prevent="items=[]"> Borrar </a>
                 <music-pack-list :items="items"></music-pack-list>
