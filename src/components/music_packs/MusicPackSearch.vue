@@ -7,31 +7,7 @@
         </div>
         <div class="space-60"></div>
         <div class="row">
-            <section class="col-sm-offset-1 col-sm-10 option-search">
-                <h3>Choose an Option!</h3>
-                <a href="#" @click.prevent="show_content('music_type')"><div class="col-sm-12 col-md-6 option">Positivo</div></a>
-                <a href="#" @click.prevent="show_content('music_type')"><div class="col-sm-12 col-md-6 option">Negativo</div></a>
-                <a href="#" @click.prevent="show_content('music_type')"><div class="col-sm-12 col-md-6 option">Activo</div></a>
-                <a href="#" @click.prevent="show_content('music_type')"><div class="col-sm-12 col-md-6 option">Pasivo</div></a>
-            </section>
-
-            <div v-if="content_to_show == 'music_type'">
-                <section class="col-sm-offset-1 col-sm-10 musictype-search">
-                    <h3>Choose a Music Style!</h3>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                    <a href="#" @click.prevent="get_products()"><div class="col-sm-12 col-md-2 option">Music Type</div></a>
-                </section>
-            </div>
+           <mood-selector v-on:get_parent_products="get_products"></mood-selector>
 
             <div class="col-sm-12 col-md-offset-1 col-md-10">
                 <a href="#" @click.prevent="get_products()"> Clickeme </a>
@@ -46,12 +22,12 @@
 
 <script>
     import MusicpackList from './MusicPackList.vue'
+    import MoodSelector from './search/MoodSelector.vue'
 
     export default {
         data () {
             return {
                 items: [ ],
-                content_to_show: " "
             }
         },
         methods:{
@@ -66,13 +42,11 @@
                         vm.items = result;
                     }
                 });
-            },
-            show_content: function(type_of_content) {
-                this.content_to_show = type_of_content
-            },
+            }
         },
         components: {
             musicPackList: MusicpackList,
+            moodSelector: MoodSelector
         }
     }
 </script>
