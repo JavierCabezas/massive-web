@@ -8,12 +8,10 @@
         <div class="space-60"></div>
         <div class="row">
            <mood-selector v-on:get_parent_products="get_products"></mood-selector>
-
             <div class="col-sm-12 col-md-offset-1 col-md-10">
                 <a href="#" @click.prevent="get_products()"> Clickeme </a>
                 <a href="#" @click.prevent="items=[]"> Borrar </a>
                 <music-pack-list :items="items"></music-pack-list>
-
             </div>
         </div>
         <div class="space-60"></div>
