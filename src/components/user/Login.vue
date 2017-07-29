@@ -9,6 +9,8 @@
 
                     <login-google></login-google>
 
+                    <login-facebook></login-facebook>
+
                 </div>
             </div>
         </div>
@@ -17,6 +19,7 @@
 
 <script>
     import LoginGoogle from './LoginGoogle.vue'
+    import LoginFacebook from './LoginFacebook.vue'
 
     export default {
         data () {
@@ -37,7 +40,8 @@
             }
         },
         components: {
-            loginGoogle: LoginGoogle
+            loginGoogle: LoginGoogle,
+            loginFacebook: LoginFacebook
         },
         methods: {
 
