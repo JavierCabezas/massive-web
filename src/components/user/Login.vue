@@ -7,12 +7,7 @@
 
                     <h4> {{ t('login_details') }} </h4>
 
-                    <g-signin-button
-                            :params="googleSignInParams"
-                            @success="onSignInSuccess"
-                            @error="onSignInError">
-                        Sign in with Google
-                    </g-signin-button>
+                    <login-google></login-google>
 
                 </div>
             </div>
@@ -21,15 +16,11 @@
 </template>
 
 <script>
+    import LoginGoogle from './LoginGoogle.vue'
+
     export default {
         data () {
             return {
-                /**
-                 * The Auth2 parameters, as seen on
-                 * https://developers.google.com/identity/sign-in/web/reference#gapiauth2initparams.
-                 * As the very least, a valid client_id must present.
-                 * @type {Object}
-                 */
                 googleSignInParams: {
                     client_id: '629002016280-i54mtm5av310m0as2i279s7aq5cvl37l.apps.googleusercontent.com'
                 }
@@ -45,20 +36,11 @@
                 login_details: 'The avaiable login methods are via Google or Facebook accounts.'
             }
         },
+        components: {
+            loginGoogle: LoginGoogle
+        },
         methods: {
-            onSignInSuccess (googleUser) {
-                // `googleUser` is the GoogleUser object that represents the just-signed-in user.
-                // See https://developers.google.com/identity/sign-in/web/reference#users
-                const profile = googleUser.getBasicProfile() // etc etc
-                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                console.log('Name: ' + profile.getName());
-                console.log('Image URL: ' + profile.getImageUrl());
-                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-            },
-            onSignInError (error) {
-                // `error` contains any error occurred.
-                console.log('OH NOES', error)
-            }
+
         }
     }
 </script>
