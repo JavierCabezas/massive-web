@@ -57,6 +57,13 @@ const User = resolve => {
     }, 'login');
 };
 
+const Profile = resolve => {
+    require.ensure(['./components/user/Profile.vue'], () => {
+        resolve(require('./components/user/Profile.vue'));
+    }, 'login');
+};
+
+
 
 export const routes = [
     { path: '', component: Home },
@@ -68,5 +75,7 @@ export const routes = [
     { path: '/music-pack', component: MusicPacks },
     { path: '/music-track', component: MusicTracks },
     { path: '/music-pack/:id', component: MusicPackDetail, name: 'musicPackDetail' },
-    { path: '/user/login', component: User, name: 'musicTrackDetail' }
+    { path: '/user/login', component: User, name: 'login' },
+    { path: '/user/profile', component: Profile }
+
 ];

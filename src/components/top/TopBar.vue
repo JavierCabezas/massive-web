@@ -4,7 +4,12 @@
             <div class="row">
                 <div class="col-sm-12 text-right">
                     <ul class="list-inline">
-                        <li><a href="#/user/login"><i class="fa fa-user"></i>{{ t('login') }} </a></li>
+                        <li v-if="!login_status.state.isLoggedIn">
+                            <a href="#/user/login"><i class="fa fa-user"></i>{{ t('login') }} </a>
+                        </li>
+                        <li v-if="login_status.state.isLoggedIn">
+                            <a href="#/user/profile"><i class="fa fa-user"></i>{{ t('account') }} </a>
+                        </li>
                         <li class="lang-dropdown">
                             <a> {{ t('active_lang') }}  </a>
                             <div class="lang-drop-menu">
@@ -32,6 +37,11 @@
                 account: 'My account',
                 login: 'Login',
                 active_lang: 'English'
+            }
+        },
+        data () {
+            return {
+                login_status: login_status
             }
         },
         methods:{
