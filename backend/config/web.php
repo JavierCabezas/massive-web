@@ -35,6 +35,11 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'modules' => [
+            'api' => [
+                'class' => 'app\module\api\Module',
+            ],
+        ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
