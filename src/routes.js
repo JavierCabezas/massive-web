@@ -57,6 +57,19 @@ const MusicTrackDetail = resolve => {
     }, 'music-track');
 };
 
+const User = resolve => {
+    require.ensure(['./components/user/Login.vue'], () => {
+        resolve(require('./components/user/Login.vue'));
+    }, 'login');
+};
+
+const Profile = resolve => {
+    require.ensure(['./components/user/Profile.vue'], () => {
+        resolve(require('./components/user/Profile.vue'));
+    }, 'login');
+};
+
+
 
 export const routes = [
     { path: '', component: Home },
@@ -69,5 +82,7 @@ export const routes = [
     { path: '/music-pack/search', component: MusicPackSearch },
     { path: '/music-track', component: MusicTracks },
     { path: '/music-pack/:id', component: MusicPackDetail, name: 'musicPackDetail' },
-    { path: '/music-track/:id', component: MusicTrackDetail, name: 'musicTrackDetail' }
+    { path: '/user/login', component: User, name: 'login' },
+    { path: '/user/profile', component: Profile }
+
 ];

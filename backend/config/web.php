@@ -45,6 +45,11 @@ $config = [
             ),
         ],
     ],
+    'modules' => [
+        'api' => [
+            'class' => 'app\module\api\Module',
+        ],
+    ],
     'params' => $params,
 ];
 
