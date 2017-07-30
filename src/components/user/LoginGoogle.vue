@@ -1,13 +1,13 @@
 <template>
     <div class="row">
-        <g-signin-button v-if="!isLoggedIn"
+        <g-signin-button v-if="!login_status.state.isLoggedIn"
                          :params="googleSignInParams"
                          @success="onSignInSuccess"
                          @error="onSignInError">
             Sign in with Google
         </g-signin-button>
 
-        <a href="#" v-if="isLoggedIn" @click.prevent="signOut" class="btn btn-primary">Log out</a>
+        <a href="#" v-if="login_status.state.isLoggedIn" @click.prevent="signOut" class="btn btn-primary">Log out</a>
     </div>
 </template>
 
@@ -18,18 +18,31 @@
                 googleSignInParams: {
                     client_id: '629002016280-i54mtm5av310m0as2i279s7aq5cvl37l.apps.googleusercontent.com'
                 },
-                isLoggedIn: false
+                login_status: login_status
             }
         },
         methods: {
             onSignInSuccess (googleUser) {
                 let vm = this;
-                const profile = googleUser.getBasicProfile(); // etc etc
-                vm.isLoggedIn = true;
-                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-                console.log('Name: ' + profile.getName());
-                console.log('Image URL: ' + profile.getImageUrl());
-                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+                const profile = googleUser.getBasicProfile();
+                let user_data = {
+                    token: googleUser.getAuthResponse().id_token,
+                    id: profile.getId(),
+                    name: profile.getName(),
+                    image_url: profile.getImageUrl(),
+                    email: profile.getEmail()
+                };
+                $.ajax({
+                    url: vm.url_backend + '/api/user/login',
+                    method: 'POST',
+                    data:{
+                        type: 'google',
+                        user_data: user_data
+                    },
+                    success: function (result) {
+                        vm.login_status.state =  vm.login_status.updateLogin('asdfasdf');
+                    }
+                });
             },
             onSignInError (error) {
                 console.log('OH NOES', error)
@@ -38,9 +51,9 @@
                 let auth2 = gapi.auth2.getAuthInstance();
                 let vm = this;
                 auth2.signOut().then(function () {
+                    vm.login_status.state =  vm.login_status.logOut();
                     console.log('User signed out.');
                 });
-                vm.isLoggedIn = false;
             },
         }
     }
