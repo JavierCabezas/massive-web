@@ -35,11 +35,6 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
-        'modules' => [
-            'api' => [
-                'class' => 'app\module\api\Module',
-            ],
-        ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => true,
@@ -48,6 +43,11 @@ $config = [
                 '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
+        ],
+    ],
+    'modules' => [
+        'api' => [
+            'class' => 'app\module\api\Module',
         ],
     ],
     'params' => $params,

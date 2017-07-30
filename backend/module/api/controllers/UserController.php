@@ -24,7 +24,7 @@ class UserController extends Controller
         return $behaviors;
     }
 
-    public function actionList()
+    public function actionLogin()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         return ['a' => 'b'];
