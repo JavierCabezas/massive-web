@@ -7,6 +7,8 @@
  */
 use Yii;
 use app\models\Razgo\{UserLoginTrait, UserGoogleLoginTrait};
+use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "user".
@@ -28,7 +30,7 @@ use app\models\Razgo\{UserLoginTrait, UserGoogleLoginTrait};
  * @property int $created_at
  * @property int $updated_at
  */
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
+class User extends ActiveRecord implements \yii\web\IdentityInterface
 {
     use UserLoginTrait;
     use UserGoogleLoginTrait;
@@ -44,13 +46,21 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
         return 'user';
     }
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+
     public function rules()
     {
         return [
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['email', 'auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
+            [['email', 'auth_key', 'password_hash'], 'required'],
+            [['google_token', 'facebook_token'], 'string'],
             [['name', 'surname'], 'string', 'max' => 200],
-            [['image_url', 'email', 'google_token', 'google_id', 'facebook_token', 'facebook_id', 'token', 'password_hash', 'password_reset_token'], 'string', 'max' => 255],
+            [['image_url', 'email', 'google_id', 'facebook_id', 'token', 'password_hash', 'password_reset_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
@@ -77,6 +87,18 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            $this->token = $this->generateRandomString(255);
+            $this->auth_key = $this->generateRandomString(32);
+            $this->password_hash = Yii::$app->security->generatePasswordHash($this->token);
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

@@ -9,12 +9,12 @@ use app\models\Login\User;
  */
 trait UserLoginTrait{
     /**
-     * Generates a random 256 lenght token to assign to a new user
+     * Generates a random string given by the given lenght lenght
      * @return string
      */
-    public function generateToken(){
+    public function generateRandomString($lenght){
         $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-        $bytes = random_bytes(256);
+        $bytes = random_bytes($lenght);
         $result = '';
         foreach (str_split($bytes) as $byte) {
             $result .= $chars[ord($byte) % 62];
@@ -59,5 +59,19 @@ trait UserLoginTrait{
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Returns the basic user information
+     * @return array
+     */
+    public function getBackendData(){
+        return [
+            'name'       => $this->name,
+            'surname'    => $this->surname,
+            'image_url'  => $this->image_url,
+            'email'      => $this->email,
+            'created_at' => $this->created_at
+        ];
     }
 }

@@ -47,15 +47,19 @@ class UserController extends Controller
 
         switch($type){
             case 'google':
-
-                if(!UserGoogleLoginTrait::verify($user_data['token'])){
+                $google_response = UserGoogleLoginTrait::verify($user_data['token']);
+                if(!$google_response){
                     throw new UnauthorizedHttpException();
-                }else{
-                    return 'Todo oK';
+                }
+                $user = User::find()->where(['email' => $google_response['email']])->one();
+                if(!$user){
+                    $user = User::createGoogleUser($google_response, $user_data);
+                }
+                if(!$user){
+                    throw new \yii\web\HttpException(500, 'An error occured while creating the user');
                 }
 
-                break;
+                return $user->backendData;
         }
-
     }
 }
