@@ -40,7 +40,7 @@
                         user_data: user_data
                     },
                     success: function (result) {
-                        vm.login_status.state =  vm.login_status.updateLogin('asdfasdf');
+                        vm.login_status.state =  vm.login_status.(result);
                     }
                 });
             },
