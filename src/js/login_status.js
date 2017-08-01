@@ -12,13 +12,13 @@ let login_status = {
         image_url: null,
         email: null,
         created_at: null,
-        token: '',
+        token: null,
     },
     updateLogin: function(data) {
         if (this.debug) console.log('Logged in with', data);
         this.user_data = data;
         this.state.isLoggedIn = true;
-        return (this.state.isLoggedIn);
+        return {state: this.state, user_data: this.user_data};
     },
     //Resets all the local variables
     logOut: function () {
@@ -30,6 +30,6 @@ let login_status = {
         this.user_data.image_url = null;
         this.user_data.email = null;
         this.user_data.created_at = null;
-        return (this.state.isLoggedIn);
+        return this.state.isLoggedIn;
     }
 };

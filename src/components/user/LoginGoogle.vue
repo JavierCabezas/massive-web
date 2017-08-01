@@ -18,7 +18,10 @@
                 googleSignInParams: {
                     client_id: '629002016280-i54mtm5av310m0as2i279s7aq5cvl37l.apps.googleusercontent.com'
                 },
-                login_status: login_status
+                login_status: {
+                    state: login_status.state,
+                    user_data: login_status.user_data
+                }
             }
         },
         methods: {
@@ -40,7 +43,7 @@
                         user_data: user_data
                     },
                     success: function (result) {
-                        vm.login_status.state =  vm.login_status.(result);
+                        vm.login_status =  login_status.updateLogin(result);
                     }
                 });
             },
@@ -51,7 +54,9 @@
                 let auth2 = gapi.auth2.getAuthInstance();
                 let vm = this;
                 auth2.signOut().then(function () {
-                    vm.login_status.state =  vm.login_status.logOut();
+                    login_status.logOut();
+                    vm.state = login_status.state;
+                    vm.user_data = login_status.user_data;
                     console.log('User signed out.');
                 });
             },
