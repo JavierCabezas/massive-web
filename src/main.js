@@ -15,11 +15,15 @@ const router = new VueRouter({
     routes
 });
 
+
 Vue.mixin({
     data: function() {
         return {
             get url_backend() {
                 return "http://localhost/massive-web/backend/web/index.php";
+            },
+            get is_logged_in() {
+                return localStorage.getItem("token") !== null;
             }
         }
     }

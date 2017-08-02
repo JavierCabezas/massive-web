@@ -6,18 +6,9 @@ let login_status = {
     state: {
         isLoggedIn: false
     },
-    user_data:{
-        name: null,
-        surname: null,
-        image_url: null,
-        email: null,
-        created_at: null,
-        token: null,
-    },
     updateLogin: function(data) {
         if (this.debug) console.log('Logged in with', data);
         this.user_data = data;
-        this.state.isLoggedIn = true;
         return {state: this.state, user_data: this.user_data};
     },
     //Resets all the local variables

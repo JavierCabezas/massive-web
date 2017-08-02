@@ -59,7 +59,12 @@ class UserController extends Controller
                     throw new \yii\web\HttpException(500, 'An error occured while creating the user');
                 }
 
-                return $user->backendData;
+                return $user->token;
         }
+    }
+
+    public function actionProfileData()
+    {
+
     }
 }

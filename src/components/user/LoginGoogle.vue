@@ -1,13 +1,14 @@
 <template>
     <div class="row">
-        <g-signin-button v-if="!login_status.state.isLoggedIn"
+        <g-signin-button v-if="!isLoggedIn"
                          :params="googleSignInParams"
                          @success="onSignInSuccess"
                          @error="onSignInError">
             Sign in with Google
         </g-signin-button>
 
-        <a href="#" v-if="login_status.state.isLoggedIn" @click.prevent="signOut" class="btn btn-primary">Log out</a>
+
+        <a href="#" v-if="isLoggedIn" @click.prevent="signOut" class="btn btn-primary">Log out</a>
     </div>
 </template>
 
@@ -18,11 +19,11 @@
                 googleSignInParams: {
                     client_id: '629002016280-i54mtm5av310m0as2i279s7aq5cvl37l.apps.googleusercontent.com'
                 },
-                login_status: {
-                    state: login_status.state,
-                    user_data: login_status.user_data
-                }
+                isLoggedIn: false
             }
+        },
+        created: function() {
+            this.isLoggedIn = this.is_logged_in
         },
         methods: {
             onSignInSuccess (googleUser) {
@@ -43,7 +44,7 @@
                         user_data: user_data
                     },
                     success: function (result) {
-                        vm.login_status =  login_status.updateLogin(result);
+                        localStorage.setItem("token", result);
                     }
                 });
             },
@@ -51,12 +52,10 @@
                 console.log('OH NOES', error)
             },
             signOut() {
+                localStorage.setItem("token", "");
                 let auth2 = gapi.auth2.getAuthInstance();
                 let vm = this;
                 auth2.signOut().then(function () {
-                    login_status.logOut();
-                    vm.state = login_status.state;
-                    vm.user_data = login_status.user_data;
                     console.log('User signed out.');
                 });
             },

@@ -15,7 +15,6 @@
         data () {
             return {
                 is_logged_in: login_status.state.isLoggedIn,
-                user_data: login_status.user_data
             }
         },
         created() {

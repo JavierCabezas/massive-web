@@ -4,10 +4,10 @@
             <div class="row">
                 <div class="col-sm-12 text-right">
                     <ul class="list-inline">
-                        <li v-if="!login_status.state.isLoggedIn">
+                        <li v-if="!isLoggedIn">
                             <a href="#/user/login"><i class="fa fa-user"></i>{{ t('login') }} </a>
                         </li>
-                        <li v-if="login_status.state.isLoggedIn">
+                        <li v-if="isLoggedIn">
                             <a href="#/user/profile"><i class="fa fa-user"></i>{{ t('account') }} </a>
                         </li>
                         <li class="lang-dropdown">
@@ -39,10 +39,8 @@
                 active_lang: 'English'
             }
         },
-        data () {
-            return {
-                login_status: login_status
-            }
+        created: function() {
+            this.isLoggedIn = this.is_logged_in
         },
         methods:{
             changeLang(lang){
