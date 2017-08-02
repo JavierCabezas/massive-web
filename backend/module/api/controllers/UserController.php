@@ -27,6 +27,7 @@ class UserController extends Controller
             'class' => VerbFilter::className(),
             'actions' => [
                 'login' => ['post'],
+                'profile-data' => ['get']
             ],
         ];
 
@@ -65,6 +66,11 @@ class UserController extends Controller
 
     public function actionProfileData()
     {
-
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $user = Yii::$app->user->identity;
+        if ($user) {
+            return $user->backendData;
+        }
+        throw new UnauthorizedHttpException('Usuario No Encontrado');
     }
 }
