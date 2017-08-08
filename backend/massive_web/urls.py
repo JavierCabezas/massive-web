@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^backend/', include('massive_web.backend.urls'))
+    url(r'^music_pack/', include('massive_web.music_pack.urls')),
+    url(r'^user/', include('massive_web.user.urls'))
 ]

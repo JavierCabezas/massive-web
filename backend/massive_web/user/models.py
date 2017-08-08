@@ -10,6 +10,6 @@ class User(models.Model):
     google_id = models.TextField(max_length=100, null=True)
     facebook_token = models.TextField(null=True)
     facebook_id = models.TextField(null=True)
-    token = models.TextField(max_length=400, null=True, unique=True)
+    token = models.TextField(max_length=500, null=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

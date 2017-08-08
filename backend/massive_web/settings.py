@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'massive_web.backend'
+    'massive_web.user',
+    'massive_web.music_pack'
 ]
 
 MIDDLEWARE = [
