@@ -13,3 +13,12 @@ class User(models.Model):
     token = models.TextField(max_length=500, null=True, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def backend_data(self):
+        return {
+            'name' : self.name,
+            'surname': self.surname,
+            'image_url': self.image_url,
+            'email': self.email,
+            'created_at': self.created_at
+        }
