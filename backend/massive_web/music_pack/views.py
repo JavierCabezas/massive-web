@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 import random
 
-BASE_URL = "http://localhost/massive-web/"
+BASE_URL = "http://localhost:8080/"
 BASE_IMG_PATH = BASE_URL + "src/img/"
 BASE_AUDIO_PATH = BASE_URL + "src/audio/"
 
@@ -22,7 +22,7 @@ def music_packs(request):
     for i in range(random.randint(20, 100)):
         out.append({
             'id': i,
-            'img': BASE_IMG_PATH+"/music-pack/00" + str(random.randint(1, 8)) + ".jpg",
+            'img': BASE_IMG_PATH+"music-pack/00" + str(random.randint(1, 8)) + ".jpg",
             'title': random.choice(titles),
             'text': random.choice(text)
         })

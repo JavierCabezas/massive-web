@@ -31,7 +31,7 @@
         methods:{
             get_products() {
                 let vm = this;
-                let url = vm.url_backend + '/site/music-packs';
+                let url = vm.url_backend + '/music-pack/index';
 
                 $.ajax({
                     url: url,

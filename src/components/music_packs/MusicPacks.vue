@@ -49,7 +49,7 @@
         },
         created: function () {
             let vm = this;
-            let url = vm.url_backend + '/site/music-packs';
+            let url = vm.url_backend + 'music_pack/index';
 
             $.ajax({
                 url: url,

@@ -99,11 +99,10 @@
         },
         created: function () {
             let vm = this;
-            let url = vm.url_backend + '/site/music-pack';
+            let url = vm.url_backend + '/music-pack/' + vm.id;
 
             $.ajax({
                 url: url,
-                data:{ id: vm.id },
                 success: function (result) {
                     vm.product = result;
                 }

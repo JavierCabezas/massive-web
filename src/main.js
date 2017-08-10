@@ -20,7 +20,7 @@ Vue.mixin({
     data: function() {
         return {
             get url_backend() {
-                return "http://localhost/massive-web/backend/web/index.php";
+                return "http://127.0.0.1:8000/";
             },
             get is_logged_in() {
                 return localStorage.getItem("token") !== null;
