@@ -48,11 +48,10 @@
         },
         created: function () {
             let vm = this;
-            let url = vm.url_backend + '/site/blog-post';
-
+            let id = this.$route.params.id;
+            let url = vm.url_backend + 'blog/post/' + id;
             $.ajax({
                 url: url,
-                data: { id: this.$route.params.id },
                 success: function (result) {
                     vm.post = result;
                 }

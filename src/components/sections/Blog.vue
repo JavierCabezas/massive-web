@@ -54,7 +54,7 @@
         },
         created: function () {
             let vm = this;
-            let url = vm.url_backend + '/site/blog-posts';
+            let url = vm.url_backend + 'blog/posts';
 
             $.ajax({
                 url: url,

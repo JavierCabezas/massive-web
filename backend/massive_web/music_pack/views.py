@@ -1,9 +1,9 @@
 from django.http import JsonResponse
+from django.conf import settings
 import random
 
-BASE_URL = "http://localhost:8080/"
-BASE_IMG_PATH = BASE_URL + "src/img/"
-BASE_AUDIO_PATH = BASE_URL + "src/audio/"
+BASE_IMG_PATH = settings.BASE_URL + "src/img/"
+BASE_AUDIO_PATH = settings.BASE_URL + "src/audio/"
 
 def music_packs(request):
     titles = ["Four loko", "Fixie nostrud", "Master Cleanse", "Scenester hell", "Shabby chic", "Blue bottle",

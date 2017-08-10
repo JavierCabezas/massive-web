@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'massive_web.user',
-    'massive_web.music_pack'
+    'massive_web.music_pack',
+    'massive_web.blog'
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+BASE_URL = "http://localhost:8080/"
