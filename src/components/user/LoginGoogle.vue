@@ -23,7 +23,7 @@
             }
         },
         created: function() {
-            this.isLoggedIn = this.is_logged_in
+            //this.isLoggedIn = this.is_logged_in
         },
         methods: {
             onSignInSuccess (googleUser) {
@@ -37,7 +37,7 @@
                     email: profile.getEmail()
                 };
                 $.ajax({
-                    url: vm.url_backend + '/api/user/login',
+                    url: vm.url_backend + 'user/login',
                     method: 'POST',
                     data:{
                         type: 'google',
