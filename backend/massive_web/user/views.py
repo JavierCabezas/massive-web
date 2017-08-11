@@ -16,6 +16,10 @@ def login(request):
        :param request:
        :return:
     """
-    out = request.POST
+    type = request.POST.type
+    user_data = request.POST.user_data
 
-    return JsonResponse(out, safe=False)
+    if type == 'google':
+        google_response = 'a'
+
+#    return JsonResponse(out, safe=False)

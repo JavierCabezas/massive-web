@@ -1,4 +1,10 @@
 from django.db import models
+from oauth2client import client, crypt
+
+STATUS_USER_ACTIVE = 10
+STATUS_ADMIN_ACTIVE = 11
+STATUS_INACTIVE = 12
+GOOGLE_USER_ID = '629002016280-i54mtm5av310m0as2i279s7aq5cvl37l.apps.googleusercontent.com'
 
 class User(models.Model):
     name = models.TextField(max_length=200, null=False)
@@ -22,3 +28,42 @@ class User(models.Model):
             'email': self.email,
             'created_at': self.created_at
         }
+
+    def create_google_user(self, payload, user_data):
+        u = User
+        u.email = payload['email']
+        u.name = payload['given_name']
+        u.surname = payload['family_name']
+        u.image_url = payload['image_url']
+        u.google_id = user_data['id']
+        u.google_token = user_data['token']
+        u.save()
+
+    def google_validate(self, token):
+        """
+        Validates if the request actually comes from Google.
+        :param token:
+        :return: payload in the format
+            azp:GOOGLE_USER_ID, (Unused, for android app)
+            aud:GOOGLE_USER_ID, (Used)
+            sub: Unused (and not sure what it does)
+            email: User email,
+            email_verified:bool,
+            at_hash: string
+            iss: Always accounts.google.com
+            iat: timestamp
+            exp: timestamp
+            name: name family name
+            picture: URL,
+            given_name: Name,
+            family_name: Family name,
+            locale: en
+        """
+        try:
+            payload = client.verify_id_token(token, GOOGLE_USER_ID)
+            if payload['iss'] not in ['accounts.google.com', 'https://accounts.google.com'] or payload['aud'] != GOOGLE_USER_ID:
+                return False
+            else:
+                return payload
+        except crypt.AppIdentityError:
+                return False
