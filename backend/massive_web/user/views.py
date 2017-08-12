@@ -18,6 +18,7 @@ def login(request):
        :return:
     """
     data = dict(request.POST)
+    u = User()
     if data['type'][0] == 'google':
         user_data = {
             'token': data['user_token'][0],
@@ -26,9 +27,9 @@ def login(request):
             'image_url': data['user_image_url'][0],
             'email': data['user_email'][0]
         }
-        payload =  User.google_validate(token=user_data['token'])
+        payload = u.google_validate(token=user_data['token'])
         if payload:
-            User.create_google_user(payload, user_data)
+            return JsonResponse(u.create_google_user(payload=payload, user_data=user_data), safe=False)
         else:
             return HttpResponse('Unauthorized', status=401)
 
