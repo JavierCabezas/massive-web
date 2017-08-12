@@ -5,7 +5,9 @@ import VueTranslate from 'vue-translate-plugin';
 import App from './App.vue'
 import GSignInButton from 'vue-google-signin-button'
 import FBSignInButton from 'vue-facebook-signin-button'
+import Vuex from 'vuex'
 
+Vue.use(Vuex);
 Vue.use(GSignInButton);
 Vue.use(VueRouter);
 Vue.use(VueTranslate);
