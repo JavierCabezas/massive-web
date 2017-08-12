@@ -29,19 +29,16 @@
             onSignInSuccess (googleUser) {
                 let vm = this;
                 const profile = googleUser.getBasicProfile();
-                let user_data = {
-                    token: googleUser.getAuthResponse().id_token,
-                    id: profile.getId(),
-                    name: profile.getName(),
-                    image_url: profile.getImageUrl(),
-                    email: profile.getEmail()
-                };
                 $.ajax({
                     url: vm.url_backend + 'user/login',
                     method: 'POST',
                     data:{
                         type: 'google',
-                        user_data: user_data
+                        user_token: googleUser.getAuthResponse().id_token,
+                        user_id: profile.getId(),
+                        user_name: profile.getName(),
+                        user_image_url: profile.getImageUrl(),
+                        user_email: profile.getEmail()
                     },
                     success: function (result) {
                         localStorage.setItem("token", result);

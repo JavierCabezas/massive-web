@@ -29,17 +29,17 @@ class User(models.Model):
             'created_at': self.created_at
         }
 
-    def create_google_user(self, payload, user_data):
-        u = User
+    def create_google_user(payload, user_data):
+        u = User()
         u.email = payload['email']
         u.name = payload['given_name']
         u.surname = payload['family_name']
-        u.image_url = payload['image_url']
+        u.image_url = user_data['image_url']
         u.google_id = user_data['id']
         u.google_token = user_data['token']
         u.save()
 
-    def google_validate(self, token):
+    def google_validate(token):
         """
         Validates if the request actually comes from Google.
         :param token:

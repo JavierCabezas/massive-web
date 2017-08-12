@@ -1,5 +1,6 @@
-from django.http import JsonResponse
-from .models import  User
+from django.http import JsonResponse, HttpResponse
+from .models import User
+import json
 
 def create_google_user(request):
     return JsonResponse(['a'], safe=False)
@@ -16,10 +17,19 @@ def login(request):
        :param request:
        :return:
     """
-    type = request.POST.type
-    user_data = request.POST.user_data
+    data = dict(request.POST)
+    if data['type'][0] == 'google':
+        user_data = {
+            'token': data['user_token'][0],
+            'id': data['user_id'][0],
+            'name': data['user_name'][0],
+            'image_url': data['user_image_url'][0],
+            'email': data['user_email'][0]
+        }
+        payload =  User.google_validate(token=user_data['token'])
+        if payload:
+            User.create_google_user(payload, user_data)
+        else:
+            return HttpResponse('Unauthorized', status=401)
 
-    if type == 'google':
-        google_response = 'a'
-
-#    return JsonResponse(out, safe=False)
+    return HttpResponse('Unauthorized', status=401)
