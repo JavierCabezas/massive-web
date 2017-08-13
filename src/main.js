@@ -5,7 +5,8 @@ import VueTranslate from 'vue-translate-plugin';
 import App from './App.vue'
 import GSignInButton from 'vue-google-signin-button'
 import FBSignInButton from 'vue-facebook-signin-button'
-import Vuex from 'vuex'
+import Vuex, { Store } from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex);
 Vue.use(GSignInButton);
@@ -17,6 +18,23 @@ const router = new VueRouter({
     routes
 });
 
+export const store = new Store({
+  state: {
+      is_logged_in: false,
+      token: null
+  },
+  plugins: [createPersistedState()],
+  mutations: {
+      login_with_token(state, token) {
+            state.is_logged_in = true;
+            state.token = token;
+      },
+      delete_token_and_logout(state){
+          state.is_logged_in = false;
+          state.token = null;
+      }
+  }
+});
 
 Vue.mixin({
     data: function() {
@@ -25,7 +43,7 @@ Vue.mixin({
                 return "http://127.0.0.1:8000/";
             },
             get is_logged_in() {
-                return localStorage.getItem("token") !== null;
+                return false;
             }
         }
     }

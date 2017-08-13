@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <g-signin-button v-if="!isLoggedIn"
+        <g-signin-button v-if="!is_user_logged_in"
                          :params="googleSignInParams"
                          @success="onSignInSuccess"
                          @error="onSignInError">
@@ -8,22 +8,25 @@
         </g-signin-button>
 
 
-        <a href="#" v-if="isLoggedIn" @click.prevent="signOut" class="btn btn-primary">Log out</a>
+        <a href="#" v-if="is_user_logged_in" @click.prevent="logout()" class="btn btn-primary">Log out</a>
     </div>
 </template>
 
 <script>
+    import { store } from '../../main'
+
     export default {
         data () {
             return {
                 googleSignInParams: {
                     client_id: '629002016280-i54mtm5av310m0as2i279s7aq5cvl37l.apps.googleusercontent.com'
                 },
-                isLoggedIn: false
             }
         },
-        created: function() {
-            //this.isLoggedIn = this.is_logged_in
+        computed: {
+            is_user_logged_in() {
+                return store.state.is_logged_in;
+            },
         },
         methods: {
             onSignInSuccess (googleUser) {
@@ -41,7 +44,7 @@
                         user_email: profile.getEmail()
                     },
                     success: function (result) {
-                        localStorage.setItem("token", result);
+                        vm.login(result)
                     }
                 });
             },
@@ -54,8 +57,15 @@
                 let vm = this;
                 auth2.signOut().then(function () {
                     console.log('User signed out.');
+                    vm.logout()
                 });
             },
+            login(token) {
+              store.commit('login_with_token', token)
+            },
+            logout() {
+              store.commit('delete_token_and_logout')
+            }
         }
     }
 </script>

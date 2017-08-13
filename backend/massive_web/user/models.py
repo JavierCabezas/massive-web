@@ -36,7 +36,7 @@ class User(models.Model):
         Creates (in case it does not exist) a new user by using google login.
         :param payload: In the format given by google. :see google_validate for the detailed format.
         :param user_data: In the format { 'id': google_id (string), 'name': string, 'image_url': string, 'email': string }
-        :return: An instance of the user given by parameters.
+        :return: The token of the logged in user.
         """
         if not User.objects.filter(email=payload['email']).exists():
             u = User()
@@ -51,7 +51,7 @@ class User(models.Model):
         else:
             u = User.objects.get(email=payload['email'])
 
-        return u
+        return u.token
 
 
     def generate_token(self):
