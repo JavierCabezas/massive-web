@@ -41,9 +41,6 @@ Vue.mixin({
         return {
             get url_backend() {
                 return "http://127.0.0.1:8000/";
-            },
-            get is_logged_in() {
-                return false;
             }
         }
     }
