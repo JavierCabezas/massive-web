@@ -42,9 +42,6 @@
         components: {
             loginGoogle: LoginGoogle,
             loginFacebook: LoginFacebook
-        },
-        methods: {
-
         }
     }
 </script>
