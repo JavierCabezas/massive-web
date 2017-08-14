@@ -21,7 +21,7 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def backend_data(self):
+    def get_user(self):
         return {
             'name': self.name,
             'surname': self.surname,

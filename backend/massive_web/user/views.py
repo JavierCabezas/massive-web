@@ -6,8 +6,13 @@ def create_google_user(request):
     return JsonResponse(['a'], safe=False)
 
 def get_user(request):
-    b = User.objects.get(pk=2)
-    return JsonResponse(b.backend_data(), safe=False)
+    token = request.POST['token']
+
+    if not User.objects.filter(token=token).exists():
+        return HttpResponse('Not Found', status=404)
+    else:
+        b = User.objects.get(token=token)
+        return JsonResponse(b.get_user(), safe=False)
 
 
 def login(request):
