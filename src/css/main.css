@@ -884,6 +884,13 @@ del {
   border-bottom: 2px solid #DD6D80;
   color: #000;
 }
+/*.g-signin-button, .fb-signin-button {
+  width: 50%;
+  padding: 5% 0 !important;
+  text-align: center;
+  font-size: 3em;
+  float: left;
+}*/
 /**parallax**/
 .parallax {
   padding: 100px 0;
@@ -1091,6 +1098,12 @@ section.musictype-search .option {
   padding: 15px 30px;
   padding-top: 30px;
   border: 1px solid #ddd;
+  height: auto;
+  overflow: auto;
+}
+.sky-form-login h4 {
+  text-align: center;
+  margin-bottom: 4%;
 }
 .sky-form-login fieldset {
   background-color: transparent;

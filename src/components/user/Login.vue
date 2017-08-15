@@ -1,10 +1,13 @@
 <template>
     <div class="container">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <h1><i class="fa fa-unlock"></i> &nbsp; {{ t('login') }}</h1>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="sky-form-login">
-                    <h1 class="text-center"><i class="fa fa-unlock"></i> &nbsp; {{ t('login') }} </h1>
-
                     <h4> {{ t('login_details') }} </h4>
 
                     <login-google></login-google>

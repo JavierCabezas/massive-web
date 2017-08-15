@@ -33,9 +33,15 @@
 <style>
     .fb-signin-button {
         display: inline-block;
-        padding: 4px 8px;
         border-radius: 3px;
         background-color: #4267b2;
         color: #fff;
+        width: 40%;
+        margin-left: 30%;
+        margin-right: auto;
+        margin-bottom: 1%;
+        font-size: 3em;
+        padding: 2% 0;
+        text-align: center;
     }
 </style>

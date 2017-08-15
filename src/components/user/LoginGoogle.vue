@@ -73,10 +73,16 @@
 <style>
     .g-signin-button {
         display: inline-block;
-        padding: 4px 8px;
         border-radius: 3px;
         background-color: #3c82f7;
         color: #fff;
         box-shadow: 0 3px 0 #0f69ff;
+        width: 40%;
+        margin-left: 30%;
+        margin-right: auto;
+        margin-bottom: 1%;
+        font-size: 3em;
+        padding: 2% 0;
+        text-align: center;
     }
 </style>

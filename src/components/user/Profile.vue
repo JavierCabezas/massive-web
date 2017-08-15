@@ -23,7 +23,7 @@
 
             <section class="music_profile col-sm-offset-1 col-sm-10">
                 <h3>Your Music Packs</h3>
-                
+                <!--- AQUÍ SE PONEN LOS PACKS DE MÚSICA --->
             </section>
         </div>
     </div>
