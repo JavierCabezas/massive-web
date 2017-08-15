@@ -1,15 +1,31 @@
 <template>
-    <div class="row">
-        <p>User data:</p>
-        <ul>
-            <li> Name: {{user_data.name}} {{user_data.surname}}</li>
-            <li> Picture: <img :src="user_data.image_url" :alt="user_data.name"> </li>
-            <li> Email: {{user_data.email}}</li>
-        </ul>
+    <div class="container">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <h1>{{user_data.name}} {{user_data.surname}}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <section class="profile col-sm-offset-1 col-sm-10">
+                <div class="prof-image col-sm-12 col-md-1">
+                    <img :src="user_data.image_url" :alt="user_data.name">
+                </div>
+                <div class="col-sm-12 col-md-11">
+                    <p class="col-sm-9">
+                        <b>{{user_data.name}} {{user_data.surname}}</b> |
+                        <b>{{user_data.email}}</b>
+                    </p>
+                    <a href="#" @click.prevent="logout()" class="btn btn-primary btn-lg col-sm-3">
+                        <span class="glyphicon glyphicon-log-out"> </span> {{ t('logout') }}
+                    </a>
+                </div>
+            </section>
 
-        <a href="#" @click.prevent="logout()" class="btn btn-primary btn-lg">
-            <span class="glyphicon glyphicon-log-out"> </span> {{ t('logout') }}
-        </a>
+            <section class="music_profile col-sm-offset-1 col-sm-10">
+                <h3>Your Music Packs</h3>
+                
+            </section>
+        </div>
     </div>
 </template>
 

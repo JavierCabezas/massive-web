@@ -8,8 +8,8 @@
 
         <div class="space-60"></div>
         <div class="container" id="blog-post-list">
-            <div v-for="(post, index) in posts" class="col-sm-4">
-                <div class="blog-item" v-if="is_index_in_range(index)">
+            <div v-for="(post, index) in posts">
+                <div class="blog-item col-sm-4" v-if="is_index_in_range(index)">
                     <a href="#">
                         <img :src="post.img" class="img-responsive" alt="">
                     </a>

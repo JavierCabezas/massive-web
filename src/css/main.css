@@ -717,7 +717,8 @@ del {
   color: #FFF;
 }
 /**img**/
-.item_holder {
+.item_holder,
+.blog-item {
   background-color: #FFF;
   text-align: center;
   padding: 0;
@@ -728,11 +729,13 @@ del {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.item_holder p {
+.item_holder p,
+.blog-item p {
   height: 10em;
   text-align: left;
 }
-.item_holder .offer-lablel {
+.item_holder .offer-lablel,
+.blog-item .offer-lablel {
   padding: 4px 10px;
   color: #FFF;
   position: absolute;
@@ -741,7 +744,8 @@ del {
   background-color: red;
   z-index: 99;
 }
-.item_holder .out-stock-label {
+.item_holder .out-stock-label,
+.blog-item .out-stock-label {
   position: absolute;
   top: 40px;
   right: 0;
@@ -750,7 +754,8 @@ del {
   display: inline-block;
   z-index: 2;
 }
-.item_holder .label-new {
+.item_holder .label-new,
+.blog-item .label-new {
   position: absolute;
   top: 40px;
   right: 0;
@@ -760,7 +765,8 @@ del {
   color: #FFF;
   z-index: 2;
 }
-.item_holder img {
+.item_holder img,
+.blog-item img {
   display: block;
   margin: 0 auto;
   -moz-transition: all 0.3s;
@@ -771,21 +777,25 @@ del {
   width: 100%;
   overflow-x: hidden;
 }
-.item_holder img:hover {
+.item_holder img:hover,
+.blog-item img:hover {
   -moz-transform: scale3d(0.95, 0.95, 0.95);
   -o-transform: scale3d(0.95, 0.95, 0.95);
   -ms-transform: scale3d(0.95, 0.95, 0.95);
   -webkit-transform: scale3d(0.95, 0.95, 0.95);
   transform: scale3d(0.95, 0.95, 0.95);
 }
-.item_holder .title {
+.item_holder .title,
+.blog-item .title {
   padding-top: 25px;
 }
-.item_holder .title span {
+.item_holder .title span,
+.blog-item .title span {
   font-size: 1.5em;
   color: #695C78;
 }
-.item_holder .title h5 {
+.item_holder .title h5,
+.blog-item .title h5 {
   font-size: 1.5em;
   line-height: 100%;
   letter-spacing: 1px;
@@ -842,6 +852,37 @@ del {
 }
 .new-arrivals .item {
   padding: 0 15px;
+}
+/**profile**/
+.profile {
+  margin-bottom: 2%;
+  padding: 1%;
+  background-color: #CCC;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  -webkit-box-shadow: 0em -0.1em 0.6em 0em #9E9E9E inset;
+  -moz-box-shadow: 0em -0.1em 0.6em 0em #9E9E9E inset;
+  box-shadow: 0em -0.1em 0.6em 0em #9E9E9E inset;
+}
+.profile .prof-image img {
+  width: 100%;
+}
+.profile .btn {
+  padding: 1% 2%;
+  background-color: #6E5C7A;
+}
+.music_profile {
+  margin-bottom: 5%;
+}
+.music_profile h3 {
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.8em;
+  margin-bottom: 0;
+  border-bottom: 2px solid #DD6D80;
+  color: #000;
 }
 /**parallax**/
 .parallax {
