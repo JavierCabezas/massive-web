@@ -482,9 +482,6 @@ del {
   margin-right: 8px;
   color: #999;
 }
-#blog-post-list {
-  padding: 2%;
-}
 .blog-item .tag {
   display: inline-block;
   color: #6E5C7A;
@@ -803,6 +800,15 @@ del {
   color: #FFF;
   background-color: #695C78;
   padding: 3%;
+}
+#blog-post-list {
+  padding: 2%;
+}
+#blog-post-list .blog-item p {
+  height: 10em;
+}
+.blog-item p {
+  height: auto;
 }
 .item_holder.out-of-stock img {
   opacity: 0.4;

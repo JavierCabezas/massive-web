@@ -40,7 +40,7 @@
         margin-left: 30%;
         margin-right: auto;
         margin-bottom: 1%;
-        font-size: 3em;
+        font-size: 2.5em;
         padding: 2% 0;
         text-align: center;
     }
