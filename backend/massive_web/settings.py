@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'massive_web.user',
-    'massive_web.music_pack',
+    'massive_web.users',
     'massive_web.blog',
-    'massive_web.music_track'
+    'massive_web.authors',
+    'massive_web.categories',
+    'massive_web.tags',
+    'massive_web.music_tracks',
+    'massive_web.music_packs',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +132,9 @@ STATIC_URL = '/static/'
 
 
 BASE_URL = "http://localhost:8080/"
+
+MEDIA_ROOT = os.path.abspath(
+    os.path.join(BASE_DIR, 'media')
+)
+
+MEDIA_URL = '/media/'
