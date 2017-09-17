@@ -7,7 +7,5 @@ class Tag(models.Model):
         null=False
     )
 
-    level = models.IntegerField()
-
     def __str__(self):
         return self.name
