@@ -11,10 +11,7 @@ class MusicTrack(models.Model):
         null=False
     )
 
-    author = models.OneToOneField(
-        Author,
-        on_delete=models.CASCADE
-    )
+    author = models.ForeignKey(Author)
 
     short_description = models.TextField(
         max_length=160,
