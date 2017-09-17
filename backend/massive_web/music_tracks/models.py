@@ -42,6 +42,11 @@ class MusicTrack(models.Model):
         null=True,
     )
 
+    price = models.FloatField(
+        null=False,
+        default=1
+    )
+
     category = models.ForeignKey(Category)
 
     tags = models.ManyToManyField(Tag)
