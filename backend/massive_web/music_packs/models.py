@@ -2,6 +2,7 @@ from django.db import models
 
 from ..categories.models import Category
 from ..tags.models import Tag
+from ..music_tracks.models import MusicTrack
 
 class MusicPack(models.Model):
     name = models.TextField(
@@ -32,6 +33,8 @@ class MusicPack(models.Model):
     category = models.ForeignKey(Category)
 
     tags = models.ManyToManyField(Tag)
+
+    music_tracks = models.ManyToManyField(MusicTrack)
 
     def __str__(self):
         return self.name
