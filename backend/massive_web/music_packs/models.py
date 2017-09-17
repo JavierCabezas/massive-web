@@ -20,7 +20,7 @@ class MusicPack(models.Model):
     )
 
     image = models.ImageField(
-        upload_to='music_tracks',
+        upload_to='music_packs',
         null=True,
     )
 
