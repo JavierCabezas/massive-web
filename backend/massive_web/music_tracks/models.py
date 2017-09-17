@@ -13,17 +13,16 @@ class MusicTrack(models.Model):
 
     author = models.OneToOneField(
         Author,
-        on_delete=models.CASCADE,
-        primary_key=True,
+        on_delete=models.CASCADE
     )
 
     short_description = models.TextField(
-        max_length=120,
+        max_length=160,
         null=False
     )
 
     long_description = models.TextField(
-        max_length=300,
+        max_length=2000,
         null=False
     )
 
@@ -31,9 +30,19 @@ class MusicTrack(models.Model):
         null=False
     )
 
-    image_url = models.TextField(
-        max_length=300,
-        null=True
+    image = models.ImageField(
+        upload_to='music_tracks',
+        null=True,
+    )
+
+    song_preview = models.FileField(
+        upload_to='music_tracks',
+        null=True,
+    )
+
+    song = models.FileField(
+        upload_to='private_music_tracks',
+        null=True,
     )
 
     category = models.ForeignKey(Category)
