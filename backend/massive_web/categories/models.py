@@ -7,6 +7,11 @@ class Category(models.Model):
         null=False
     )
 
+    name_es = models.TextField(
+        max_length=200,
+        null=False
+    )
+
     parent_category = models.ForeignKey(
         'self',
         blank=True,

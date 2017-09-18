@@ -12,6 +12,11 @@ class MusicTrack(models.Model):
         null=False
     )
 
+    name_es = models.TextField(
+        max_length=200,
+        null=False
+    )
+
     author = models.ForeignKey(Author)
 
     short_description = models.TextField(
@@ -20,6 +25,16 @@ class MusicTrack(models.Model):
     )
 
     long_description = models.TextField(
+        max_length=2000,
+        null=False
+    )
+
+    short_description_es = models.TextField(
+        max_length=160,
+        null=False
+    )
+
+    long_description_es = models.TextField(
         max_length=2000,
         null=False
     )

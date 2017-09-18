@@ -10,12 +10,28 @@ class MusicPack(models.Model):
         null=False
     )
 
+    name_es = models.TextField(
+        max_length=200,
+        null=False
+    )
+
     short_description = models.TextField(
         max_length=160,
         null=False
     )
 
     long_description = models.TextField(
+        max_length=2000,
+        null=False
+    )
+
+
+    short_description_es = models.TextField(
+        max_length=160,
+        null=False
+    )
+
+    long_description_es = models.TextField(
         max_length=2000,
         null=False
     )

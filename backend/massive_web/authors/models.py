@@ -17,6 +17,11 @@ class Author(models.Model):
         null=False
     )
 
+    description_es = models.TextField(
+        max_length=800,
+        null=False
+    )
+
     def __str__(self):
         return self.name
 
