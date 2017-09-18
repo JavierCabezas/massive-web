@@ -14,13 +14,16 @@
                         </div>
                         <div class="col-md-7">
                             <div class="product-detail-desc">
-                                <h3 class="title"><a href="#"> {{product.title}} </a></h3>
-                                <h4>Autor</h4>
+                                <h3 class="title" v-if="$translate.current == 'en_US'"> {{product.title}} </h3>
+                                <h3 class="title" v-if="$translate.current == 'es_ES'"> {{product.title_es}} </h3>
+
+                                <h4> {{ t('author') }} </h4>
                                 <span class="price"> Price: {{product.price | cash }}</span>
-                                <span> Category: {{product.category }} </span>
-                                <span class="rating">
-                                <p>{{product.short_description}}</p>
-                            </span>
+                                <span> {{ t('category') }}: {{product.category }} </span>
+
+                                <p v-if="$translate.current == 'en_US'">{{product.short_description}}</p>
+                                <p v-if="$translate.current == 'es_ES'">{{product.short_description_es}}</p>
+
                                 <div class="add-buttons">
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to cart"
                                        class="btn btn-skin btn-lg"><i class="fa fa-shopping-cart"></i> {{ t('add_cart') }}</a>
@@ -34,7 +37,8 @@
                             <div id="detail">
                                 <div class="col-sm-12">
                                     <h2>{{ t('description') }}</h2>
-                                    <span class="whitespace"> {{ product.long_description }} </span>
+                                    <span class="whitespace"  v-if="$translate.current == 'en_US'"> {{ product.long_description }} </span>
+                                    <span class="whitespace"  v-if="$translate.current == 'es_ES'"> {{ product.long_description_es }} </span>
                                     <div class="space-40"></div>
                                 </div>
                             </div>
@@ -76,11 +80,15 @@
         locales: {
             es_ES: {
                 description: 'Descripción',
-                add_cart: 'Añadir al carro'
+                add_cart: 'Añadir al carro',
+                author: 'Autor',
+                category: 'Categoría'
             },
             en_US: {
                 description: 'Description',
-                add_cart: 'Add to cart'
+                add_cart: 'Add to cart',
+                author: 'Author',
+                category: 'Category'
             }
         },
         filters: {

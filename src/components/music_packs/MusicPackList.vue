@@ -8,9 +8,11 @@
                 </router-link>
 
                 <div class="title">
-                    <h5> #{{item.id}} : {{item.title}}</h5>
+                    <h5 v-if="$translate.current == 'en_US'"> #{{item.id}} : {{item.title}}</h5>
+                    <h5 v-if="$translate.current == 'es_ES'"> #{{item.id}} : {{item.title_es}}</h5>
                     <span class="price">{{item.price | cash }}</span>
-                    <p>{{item.text}}</p>
+                    <p v-if="$translate.current == 'en_US'">{{item.text}}</p>
+                    <p v-if="$translate.current == 'es_ES'">{{item.text_es}}</p>
                 </div>
             </div>
         </div>
