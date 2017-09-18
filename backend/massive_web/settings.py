@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'massive_web.users',
-    'massive_web.blog',
+    'massive_web.blogs',
     'massive_web.authors',
     'massive_web.categories',
     'massive_web.tags',

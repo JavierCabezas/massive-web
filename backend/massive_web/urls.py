@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^music_pack/', include('massive_web.music_packs.urls')),
     url(r'^user/', include('massive_web.users.urls')),
-    url(r'^blog/', include('massive_web.blog.urls')),
+    url(r'^blog/', include('massive_web.blogs.urls')),
     url(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT
     })

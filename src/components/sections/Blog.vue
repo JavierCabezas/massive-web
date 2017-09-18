@@ -26,7 +26,7 @@
                         </h4>
                         <p>  {{post.text}} </p>
                         <a :href="'#/blog/'+post.id" class="btn btn-skin">Continue</a>
-                    </div><
+                    </div>
                 </div>
             </div>
 
