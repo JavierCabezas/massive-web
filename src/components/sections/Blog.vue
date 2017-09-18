@@ -11,20 +11,20 @@
             <div v-for="(post, index) in posts">
                 <div class="blog-item col-sm-4" v-if="is_index_in_range(index)">
                     <a href="#">
-                        <img :src="post.img" class="img-responsive" alt="">
+                        <img :src="post.image" class="img-responsive" :alt="post.name">
                     </a>
                     <div class="blog-desc">
                         <ul v-if="post.tags.length > 0">
                             <li v-for="tag in post.tags">
                             <a href="#" class="tag">
-                                <i class="fa fa-tag"></i> {{tag}} </a> &nbsp;
+                                <i class="fa fa-tag"></i> {{tag.name}} </a> &nbsp;
                             </li>
                         </ul>
                         <p v-else> <br> </p>
                         <h4 class="title">
-                            <a :href="'#/blog/'+post.id"> {{index}} {{post.title}} </a>
+                            <a :href="'#/blog/'+post.id"> #{{post.id}} {{post.name}} </a>
                         </h4>
-                        <p>  {{post.text}} </p>
+                        <p>  {{post.intro}} </p>
                         <a :href="'#/blog/'+post.id" class="btn btn-skin">Continue</a>
                     </div>
                 </div>
@@ -72,7 +72,7 @@
             },
             is_index_in_range(index){
                 let item_number = index +1;
-                return index > ( (this.current_page -1 ) * this.items_per_page ) && index <= ( (this.current_page ) * this.items_per_page)
+                return item_number > ( (this.current_page -1 ) * this.items_per_page ) && item_number <= ( (this.current_page ) * this.items_per_page)
             }
         }
     }

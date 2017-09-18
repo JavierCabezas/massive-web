@@ -20,11 +20,6 @@ class Blog(models.Model):
 
     author = models.ForeignKey(Author)
 
-    short_description = models.TextField(
-        max_length=160,
-        null=False
-    )
-
     intro = models.TextField(
         max_length=2000,
         null=False
@@ -47,13 +42,13 @@ class Blog(models.Model):
         upload_to='blog',
     )
 
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, blank=True)
 
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
 
-    music_packs = models.ManyToManyField(MusicPack)
+    music_packs = models.ManyToManyField(MusicPack, blank=True)
 
-    music_tracks = models.ManyToManyField(MusicTrack)
+    music_tracks = models.ManyToManyField(MusicTrack, blank=True)
 
     def __str__(self):
         return self.name
@@ -61,9 +56,12 @@ class Blog(models.Model):
     def backend(self):
         return {
             'id': self.id,
+            'name': self.name,
+            'name_es': self.name_es,
             'intro': self.intro,
             'intro_es': self.intro_es,
             'post': self.post,
             'post_es': self.post_es,
-            'image': settings.BASE_URL + self.image.name
+            'image': settings.BASE_URL + self.image.name,
+            'tags': [tag.backend() for tag in self.tags.all()]
         }

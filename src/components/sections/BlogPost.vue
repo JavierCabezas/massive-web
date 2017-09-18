@@ -2,19 +2,19 @@
     <div class="container">
         <div class="breadcrumb-wrapper">
             <div class="container">
-                <h1>{{post.title}}</h1>
+                <h1>{{post.name}}</h1>
             </div>
         </div>
         <div class="row">
             <div class="blog-item col-sm-10 col-sm-offset-1">
                 <div class="blog-desc">
-                    <img :src="post.img" class="img-responsive" alt="">
-                    <p v-html="post.summary"> </p>
+                    <img :src="post.image" class="img-responsive" alt="">
+                    <p class="whitespace"> {{post.post}} </p>
                     <div class="categories">
                         <a href="" class="tag"><i class="fa fa-tag"></i> </a>
                         <ul>
-                            <li v-for="cat in post.tags">
-                                {{cat}}
+                            <li v-for="tag in post.tags">
+                                {{tag.name}}
                             </li>
                         </ul>
                     </div>
@@ -53,3 +53,9 @@
         },
     }
 </script>
+
+<style>
+    .whitespace {
+        white-space: pre-wrap;
+    }
+</style>

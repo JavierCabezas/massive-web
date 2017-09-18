@@ -14,3 +14,10 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+    def backend(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'name_es': self.name_es
+        }
