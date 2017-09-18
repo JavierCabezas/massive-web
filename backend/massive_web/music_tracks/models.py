@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 from ..authors.models import Author
 from ..categories.models import Category
@@ -53,3 +54,11 @@ class MusicTrack(models.Model):
 
     def __str__(self):
         return self.name
+
+    def backend(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'lenght': self.duration,
+            'file': settings.BASE_URL + self.song_preview.name
+        }

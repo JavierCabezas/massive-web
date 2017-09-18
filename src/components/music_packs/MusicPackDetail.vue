@@ -3,7 +3,7 @@
         <div class="space-60"></div>
         <div class="container">
             <div  class="row single-product">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-5 margin-b-30">
                             <div id="product-single" class="single-product-slider">
@@ -16,9 +16,10 @@
                             <div class="product-detail-desc">
                                 <h3 class="title"><a href="#"> {{product.title}} </a></h3>
                                 <h4>Autor</h4>
-                                <span class="price"> {{product.price}}</span>
+                                <span class="price"> Price: {{product.price | cash }}</span>
+                                <span> Category: {{product.category }} </span>
                                 <span class="rating">
-                                <a href="#">2 reviews</a>
+                                <p>{{product.short_description}}</p>
                             </span>
                                 <div class="add-buttons">
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Add to cart"
@@ -33,7 +34,7 @@
                             <div id="detail">
                                 <div class="col-sm-12">
                                     <h2>{{ t('description') }}</h2>
-                                    <span v-html="product.description">  </span>
+                                    <span class="whitespace"> {{ product.long_description }} </span>
                                     <div class="space-40"></div>
                                 </div>
                             </div>
@@ -41,17 +42,6 @@
                     </div>
 
                 </div>
-
-                <div class="col-md-3" v-if="product.categories.length > 0">
-                    <div class="sidebar-widget">
-                        <h3>Categories</h3>
-                        <ul class="list-unstyled">
-                            <li v-for="category in product.categories">
-                                <a href="#"> {{ category }}</a>
-                            </li>
-                        </ul>
-                    </div><!--sidebar-widget end-->
-                </div><!--sidebar col-->
             </div>
             <div class="space-60"></div>
             <div class="similar-products">
@@ -72,7 +62,7 @@
         data () {
             return {
                 id: this.$route.params.id,
-                product: { id: null, img: null, title: null, price: null, author: null, description: null, tracks: [], categories: []  },
+                product: { id: null, img: null, title: null, price: null, author: null, description: null, tracks: [], category: ''  },
                 featured_products: [
                     { id: 1,  img: "../../src/img/women/1.jpg",  link: '#' },  { id: 2,  img: "../../src/img/women/2.jpg",  link: '#' },  { id: 3,  img: "../../src/img/women/3.jpg",  link: '#' },
                     { id: 4,  img: "../../src/img/women/4.jpg",  link: '#' },  { id: 5,  img: "../../src/img/women/5.jpg",  link: '#' },  { id: 6,  img: "../../src/img/women/6.jpg",  link: '#' },
@@ -91,6 +81,19 @@
             en_US: {
                 description: 'Description',
                 add_cart: 'Add to cart'
+            }
+        },
+        filters: {
+            cash: function (value) {
+              const pieces = parseFloat(value).toFixed(2).split('');
+              let ii = pieces.length - 3;
+              while ((ii-=3) > 0) {
+                pieces.splice(ii, 0, ',')
+              }
+              return "$" + pieces.join('')
+            },
+            nl2br: function (value){
+                return (value + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + '<br>' + '$2');
             }
         },
         components: {
@@ -121,3 +124,9 @@
         }
     }
 </script>
+
+<style>
+    .whitespace {
+        white-space: pre-wrap;
+    }
+</style>
