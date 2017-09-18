@@ -131,7 +131,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-BASE_URL = "http://localhost:8080/"
+BASE_URL = "http://localhost:8000/media/"
 
 MEDIA_ROOT = os.path.abspath(
     os.path.join(BASE_DIR, 'media')

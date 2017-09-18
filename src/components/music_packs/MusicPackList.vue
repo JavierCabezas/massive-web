@@ -8,8 +8,8 @@
                 </router-link>
 
                 <div class="title">
-                    <h5>{{index}} : {{item.title}}</h5>
-                    <span class="price">{{item.price}}</span>
+                    <h5> #{{item.id}} : {{item.title}}</h5>
+                    <span class="price">{{item.price | cash }}</span>
                     <p>{{item.text}}</p>
                 </div>
             </div>
@@ -38,6 +38,16 @@
                 current_page: 1
             }
         },
+        filters: {
+            cash: function (value) {
+              const pieces = parseFloat(value).toFixed(2).split('');
+              let ii = pieces.length - 3;
+              while ((ii-=3) > 0) {
+                pieces.splice(ii, 0, ',')
+              }
+              return "$" + pieces.join('')
+            }
+        },
         components: {
             paginate: Paginate
         },
@@ -47,7 +57,7 @@
             },
             is_index_in_range(index){
                 let item_number = index +1;
-                return index > ( (this.current_page -1 ) * this.items_per_page ) && index <= ( (this.current_page ) * this.items_per_page)
+                return item_number > ( (this.current_page -1 ) * this.items_per_page ) && item_number <= ( (this.current_page ) * this.items_per_page)
             }
         }
     }
