@@ -6,9 +6,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="blog-item col-sm-10 col-sm-offset-1">
+            <div class="blog-item blog-content col-sm-10 col-sm-offset-1">
                 <div class="blog-desc">
-                    <img :src="post.image" class="img-responsive" alt="">
+                    <img :src="post.image" class="img-responsive featured-blog" alt="">
                     <p class="whitespace"> {{post.post}} </p>
                     <div class="categories">
                         <a href="" class="tag"><i class="fa fa-tag"></i> </a>

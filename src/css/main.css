@@ -801,6 +801,14 @@ del {
   background-color: #695C78;
   padding: 3%;
 }
+img.featured-blog {
+  height: auto;
+  width: 50%;
+  float: left;
+}
+.blog-content {
+  margin-top: 2%;
+}
 #blog-post-list {
   padding: 2%;
 }
