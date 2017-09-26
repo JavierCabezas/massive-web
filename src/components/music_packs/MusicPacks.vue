@@ -5,6 +5,7 @@
                 <h1>Music Packs</h1>
             </div>
         </div>
+        <bread-crumbs></bread-crumbs>
         <div class="space-60"></div>
         <div class="row">
             <div class="col-md-8">
@@ -40,6 +41,7 @@
 
 <script>
     import MusicpackList from './MusicPackList.vue'
+    import BreadCrumbs from '../main/Breadcrumbs.vue'
 
     export default {
         data () {
@@ -60,6 +62,7 @@
         },
         components: {
             musicPackList: MusicpackList,
+            breadCrumbs: BreadCrumbs
         }
     }
 </script>

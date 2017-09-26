@@ -1,5 +1,6 @@
 <template>
     <div>
+        <bread-crumbs></bread-crumbs>
         <div class="space-60"></div>
         <div class="container">
             <div  class="row single-product">
@@ -49,6 +50,7 @@
 <script>
     import ProductSlider from '../main/ProductsSlider.vue'
     import Playlist from './Player.vue'
+    import BreadCrumbs from '../main/Breadcrumbs.vue'
 
     export default {
         name: 'featured-products',
@@ -69,7 +71,8 @@
             }
         },
         components: {
-            playlist: Playlist
+            playlist: Playlist,
+            breadCrumbs: BreadCrumbs
         },
         created: function () {
             let vm = this;

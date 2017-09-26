@@ -5,6 +5,7 @@
                 <h1>Music Tracks</h1>
             </div>
         </div>
+        <bread-crumbs></bread-crumbs>
         <div class="space-60"></div>
         <div class="row">
             <div class="col-md-12">
@@ -22,7 +23,8 @@
 </template>
 
 <script>
-    import MusicTrackList from './MusicTrackList.vue'
+    import MusicTrackList from './MusicTrackList.vue',
+    import BreadCrumbs from '../main/Breadcrumbs.vue'
 
     export default {
         data () {
@@ -43,6 +45,7 @@
         },
         components: {
             musicTrackList: MusicTrackList,
+            breadCrumbs: BreadCrumbs
         }
     }
 </script>
