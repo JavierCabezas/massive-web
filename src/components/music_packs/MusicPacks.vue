@@ -24,10 +24,10 @@
                 <div class="sidebar-widget">
                     <h3> {{ t('filter') }}</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#"> {{ t('all_categories') }} </a></li>
+                        <li><a href="#" @click.prevent="load_music_packs()"> {{ t('all_categories') }} </a></li>
                         <li v-for="c in categories">
-                            <a v-if="$translate.current == 'en_US'" href="#"> {{c.name_en}} </a>
-                            <a v-if="$translate.current == 'es_ES'" href="#"> {{c.name_es}} </a>
+                            <a v-if="$translate.current == 'en_US'" href="#" @click.prevent="load_music_packs(c.id)"> {{c.name_en}} </a>
+                            <a v-if="$translate.current == 'es_ES'" href="#" @click.prevent="load_music_packs(c.id)"> {{c.name_es}} </a>
                         </li>
                     </ul>
                 </div>
@@ -65,10 +65,11 @@
             this.get_categories();
         },
         methods: {
-            load_music_packs: function() {
+            load_music_packs: function(category_id = -1) {
                 let vm = this;
                 $.ajax({
                     url: vm.url_backend + 'music_pack/index',
+                    data: { category_id: category_id },
                     success: function (result) {
                         vm.items = result;
                     }

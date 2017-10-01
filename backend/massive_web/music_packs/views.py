@@ -1,9 +1,13 @@
 from django.http import JsonResponse
 from .models import MusicPack
-
+from ..categories.models import Category
 
 def music_packs(request):
-    mps = MusicPack.objects.all()
+    if 'category_id' in request.GET and int(request.GET['category_id']) > 0:
+        cat = Category.objects.get(id=int(request.GET['category_id']))
+        mps = MusicPack.objects.filter(category_id__in=cat.family())
+    else:
+        mps = MusicPack.objects.all()
     return JsonResponse([mp.backend() for mp in mps], safe=False)
 
 
