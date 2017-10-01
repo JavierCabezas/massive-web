@@ -3,18 +3,8 @@ from django.conf import settings
 from .models import MusicPack
 
 def music_packs(request):
-    out = []
-    for p in MusicPack.objects.all():
-        out.append({
-            'id': p.id,
-            'img': settings.BASE_URL + p.image.name,
-            'title': p.name,
-            'title_es': p.name_es,
-            'text': p.short_description,
-            'text_es': p.short_description_es,
-            'price': p.price
-        })
-    return JsonResponse(out, safe=False)
+    mps = MusicPack.objects.all()
+    return JsonResponse([mp.backend() for mp in mps], safe=False)
 
 def music_pack(request, id):
     p = MusicPack.objects.get(id=id)

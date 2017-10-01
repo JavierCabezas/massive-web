@@ -3,6 +3,7 @@ from django.db import models
 from ..categories.models import Category
 from ..tags.models import Tag
 from ..music_tracks.models import MusicTrack
+from django.conf import settings
 
 class MusicPack(models.Model):
     name = models.TextField(
@@ -54,3 +55,14 @@ class MusicPack(models.Model):
 
     def __str__(self):
         return self.name
+
+    def backend(self):
+        return {
+            'id': self.id,
+            'img': settings.BASE_URL + self.image.name,
+            'title': self.name,
+            'title_es': self.name_es,
+            'text': self.short_description,
+            'text_es': self.short_description_es,
+            'price': self.price
+        }
