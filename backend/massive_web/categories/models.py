@@ -29,6 +29,15 @@ class Category(models.Model):
                 self.name,
             )
 
+    def backend(self):
+        return {
+            'id': self.id,
+            'name_en': self.name,
+            'name_es': self.name_es,
+            'parent_category_id': self.parent_category,
+            'level': self.level
+        }
+
     class Meta:
         verbose_name = 'Categoría'
         verbose_name_plural = 'Categorías'
