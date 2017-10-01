@@ -9,15 +9,15 @@
         <div class="space-60"></div>
         <div class="row">
             <div class="col-md-8">
-                <ul class="product-filter-block list-inline clearfix">
-                    <li> Title </li>
-                    <li class="active"><a href="#">Top rated</a></li>
-                    <li><a href="#">Otra categoría</a></li>
-                    <li><a href="#"> Una última</a></li>
-                </ul>
+                <h4 v-if="selected_category_index == -1"> {{ t('view_all') }}</h4>
+                <h4 v-if="selected_category_index > 0">
+                    {{t('view_one') }}
+                    <span v-if="$translate.current == 'en_US'"> {{ categories[selected_category_index].name_en }}</span>
+                    <span v-if="$translate.current == 'es_ES'"> {{ categories[selected_category_index].name_es }}</span>
+                </h4>
 
-                <music-pack-list :items="items"></music-pack-list>
-
+                <music-pack-list :items="items" v-if="items.length > 0"></music-pack-list>
+                <p v-if="items.length === 0"> {{ t('no_elements') }} </p>
             </div>
 
             <div class="col-md-3 col-md-offset-1">
@@ -25,9 +25,9 @@
                     <h3> {{ t('filter') }}</h3>
                     <ul class="list-unstyled">
                         <li><a href="#" @click.prevent="load_music_packs()"> {{ t('all_categories') }} </a></li>
-                        <li v-for="c in categories">
-                            <a v-if="$translate.current == 'en_US'" href="#" @click.prevent="load_music_packs(c.id)"> {{c.name_en}} </a>
-                            <a v-if="$translate.current == 'es_ES'" href="#" @click.prevent="load_music_packs(c.id)"> {{c.name_es}} </a>
+                        <li v-for="(c, idx) in categories">
+                            <a v-if="$translate.current == 'en_US'" href="#" @click.prevent="load_music_packs(idx)"> {{c.name_en}} </a>
+                            <a v-if="$translate.current == 'es_ES'" href="#" @click.prevent="load_music_packs(idx)"> {{c.name_es}} </a>
                         </li>
                     </ul>
                 </div>
@@ -46,18 +46,25 @@
             es_ES: {
                 music_packs: 'Packs de música',
                 filter: 'Filtro por categoría',
-                all_categories: 'Todas'
+                all_categories: 'Todas',
+                view_all: 'Viendo todas las categorías',
+                view_one: 'Viendo elementos de ',
+                no_elements: 'No hay elementos disponibles para estos filtros'
             },
             en_US: {
                 music_packs: 'Music packs',
                 filter: 'Filter by category',
-                all_categories: 'All'
+                all_categories: 'All',
+                view_all: 'Showing all categories',
+                view_one: 'Showing elements from ',
+                no_elements: 'There are no avaiable elements for this filter'
             }
         },
         data () {
             return {
                 items: [],
-                categories: []
+                categories: [],
+                selected_category_index: -1
             }
         },
         created: function () {
@@ -65,8 +72,14 @@
             this.get_categories();
         },
         methods: {
-            load_music_packs: function(category_id = -1) {
+            load_music_packs: function(category_index = -1) {
                 let vm = this;
+                let category_id = -1;
+
+                if(category_index > -1){
+                    category_id = vm.categories[category_index].id;
+                    vm.selected_category_index = category_index;
+                }
                 $.ajax({
                     url: vm.url_backend + 'music_pack/index',
                     data: { category_id: category_id },
