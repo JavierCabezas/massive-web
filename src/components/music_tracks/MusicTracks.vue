@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import MusicTrackList from './MusicTrackList.vue',
+    import MusicTrackList from './MusicTrackList.vue'
     import BreadCrumbs from '../main/Breadcrumbs.vue'
 
     export default {
