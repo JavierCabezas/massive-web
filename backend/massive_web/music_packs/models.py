@@ -66,3 +66,19 @@ class MusicPack(models.Model):
             'text_es': self.short_description_es,
             'price': self.price
         }
+
+    def backend_detail(self):
+        return {
+            'id': self.id,
+            'img' : settings.BASE_URL + self.image.name,
+            'title': self.name,
+            'title_es': self.name_es,
+            'price': self.price,
+            'author': "TO-DO",
+            'short_description': self.short_description,
+            'short_description_es': self.short_description_es,
+            'long_description': self.long_description,
+            'long_description_es': self.long_description_es,
+            'tracks': [song.backend() for song in self.music_tracks.all()],
+            'category': self.category.name
+        }
