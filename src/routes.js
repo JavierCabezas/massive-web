@@ -73,16 +73,16 @@ const Profile = resolve => {
 
 export const routes = [
     { path: '', component: Home },
-    { path: '/home', component: Home },
-    { path: '/about', component: About },
-    { path: '/faq', component: Faq },
-    { path: '/blog', component: Blog },
-    { path: '/blog/:id', component: BlogPost },
-    { path: '/music-pack', component: MusicPacks },
-    { path: '/music-pack/search', component: MusicPackSearch },
-    { path: '/music-track', component: MusicTracks },
-    { path: '/music-pack/:id', component: MusicPackDetail, name: 'musicPackDetail' },
+    { path: '/home', component: Home , name: 'home'},
+    { path: '/about', component: About, name: 'about-us'},
+    { path: '/faq', component: Faq, name: 'faq'},
+    { path: '/blog', component: Blog, name: 'blog'},
+    { path: '/blog/:id', component: BlogPost, name: 'blog-post'},
+    { path: '/music-pack', component: MusicPacks, name:'music-packs' },
+    { path: '/music-pack/search', component: MusicPackSearch, name: 'music-pack-search' },
+    { path: '/music-track', component: MusicTracks, name: 'music-tracks' },
+    { path: '/music-pack/:id', component: MusicPackDetail, name: 'music-pack-detail' },
     { path: '/user/login', component: User, name: 'login' },
-    { path: '/user/profile', component: Profile }
+    { path: '/user/profile', component: Profile, name: 'profile' }
 
 ];
