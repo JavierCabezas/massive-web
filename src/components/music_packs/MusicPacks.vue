@@ -20,29 +20,11 @@
                 <p v-if="items.length === 0"> {{ t('no_elements') }} </p>
             </div>
 
-            <div class="col-md-3 col-md-offset-1">
-                <div class="sidebar-widget">
-                    <h3> {{ t('filter') }}</h3>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#" @click.prevent="load_music_packs()">
-                                <span v-if="selected_category_index !== -1"> {{ t('all_categories') }} </span>
-                                <b v-if="selected_category_index === -1"> {{ t('all_categories') }} </b>
-                            </a>
-                        </li>
-                        <li v-for="(c, idx) in categories">
-                            <a v-if="$translate.current == 'en_US'" href="#" @click.prevent="load_music_packs(idx)">
-                                <span v-if="selected_category_index !== idx"> {{c.name_en}} </span>
-                                <b v-if="selected_category_index === idx"> {{c.name_en}} </b>
-                            </a>
-                            <a v-if="$translate.current == 'es_ES'" href="#" @click.prevent="load_music_packs(idx)">
-                                <span v-if="selected_category_index !== idx"> {{c.name_es}} </span>
-                                <b v-if="selected_category_index === idx"> {{c.name_es}} </b>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <music-categories :categories="categories"
+                              :selected_category_index="selected_category_index"
+                              @category_changed="load_music_packs"
+            ></music-categories>
+
         </div>
         <div class="space-60"></div>
     </div>
@@ -51,21 +33,18 @@
 <script>
     import MusicpackList from './MusicPackList.vue'
     import BreadCrumbs from '../main/Breadcrumbs.vue'
+    import MusicCategories from './MusicPacksCategories.vue'
 
     export default {
         locales: {
             es_ES: {
                 music_packs: 'Packs de música',
-                filter: 'Filtro por categoría',
-                all_categories: 'Todas',
                 view_all: 'Viendo todas las categorías',
                 view_one: 'Viendo elementos de ',
                 no_elements: 'No hay elementos disponibles para estos filtros'
             },
             en_US: {
                 music_packs: 'Music packs',
-                filter: 'Filter by category',
-                all_categories: 'All',
                 view_all: 'Showing all categories',
                 view_one: 'Showing elements from ',
                 no_elements: 'There are no avaiable elements for this filter'
@@ -126,7 +105,8 @@
         },
         components: {
             musicPackList: MusicpackList,
-            breadCrumbs: BreadCrumbs
+            breadCrumbs: BreadCrumbs,
+            musicCategories: MusicCategories
         }
     }
 </script>
