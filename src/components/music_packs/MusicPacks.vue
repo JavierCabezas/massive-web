@@ -5,7 +5,7 @@
                 <h1> {{t('music_packs')}}</h1>
             </div>
         </div>
-        <bread-crumbs></bread-crumbs>
+        <bread-crumbs :crumbs="crumbs"></bread-crumbs>
         <div class="space-60"></div>
         <div class="row">
             <div class="col-md-8">
@@ -75,7 +75,25 @@
             return {
                 items: [],
                 categories: [],
-                selected_category_index: -1
+                selected_category_index: -1,
+                crumbs: {
+                    nav: [
+                        {
+                            link: '#',
+                            name_en: 'Link 1',
+                            name_es: 'Link 2'
+                        },
+                        {
+                            link: '#',
+                            name_en: 'Link 2',
+                            name_es: 'Link 2'
+                        }
+                    ],
+                    current: {
+                        es: 'Packs de música',
+                        en: 'Music Packs'
+                    }
+                }
             }
         },
         created: function () {

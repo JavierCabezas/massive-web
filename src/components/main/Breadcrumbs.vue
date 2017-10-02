@@ -1,42 +1,45 @@
 <template>
     <div>
         <ul class="breadcrumb">
-            <li v-for="item in breadcrumbs">
-                <a :href="item.link">{{item.name}}</a>
+            <li v-for="item in crumbs.nav">
+                <router-link to="item.link" v-if="$translate.current == 'en_US'">
+                    {{item.name_en }}
+                </router-link>
+                <router-link :to="item.link" v-if="$translate.current == 'es_ES'">
+                    {{item.name_es}}
+                </router-link>
             </li>
-            <li v-for="item in currentBreadcrumb" class="current">
-               {{item.name}}
+            <li class="current">
+                <span v-if="$translate.current == 'en_US'"> {{crumbs.current.en}} </span>
+                <span v-if="$translate.current == 'es_ES'"> {{crumbs.current.es}} </span>
             </li>
         </ul>
+
     </div>
 </template>
 
 <script>
     export default {
-        data () {
-            return {
-                breadcrumbs: [
-                    {
-                        link: '#',
-                        name: 'Link 1',
-                    },
-                    {
-                        link: '#',
-                        name: 'Link 2',
-                    },
-                    {
-                        link: '#',
-                        name: 'Link 3',
-                    }
-                ],
-                currentBreadcrumb: [
-                    {
-                        link: 'src/img/portfolio/pms.jpg',
-                        name: 'Link actual'
-                    }
-                ]
+        /*
+            Crumbs must be in the format:
+            'nav' : Array of object in the format [
+                {
+                    link: string,
+                    name_es: string,
+                    name_en: string
+                },
+                {
+                    ...
+                },
+                ...
+            ],
+            'current: {
+                'es': string
+                'en': string
+                }
             }
-        },
+         */
+        props: [ 'crumbs' ]
     }
 </script>
 
