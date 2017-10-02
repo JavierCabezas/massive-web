@@ -2,9 +2,10 @@
     <div>
         <div class="breadcrumb-wrapper">
             <div class="container">
-                <h1>FAQ</h1>
+                <h1> {{ t('faq') }}</h1>
             </div>
         </div>
+        <bread-crumbs :crumbs="crumbs"></bread-crumbs>
 
         <div class="space-60"></div>
 
@@ -40,3 +41,38 @@
         </div>
     </div>
 </template>
+
+<script>
+    import BreadCrumbs from '../main/Breadcrumbs.vue'
+
+    export default {
+         locales: {
+            es_ES: {
+                faq: 'Preguntas frecuentes',
+            },
+            en_US: {
+                faq: 'Frequently asked questions',
+            }
+        },
+        data () {
+            return {
+                 crumbs: {
+                     nav: [
+                         {
+                             link: 'home',
+                             name_en: 'Home',
+                             name_es: 'Inicio'
+                         }
+                     ],
+                     current: {
+                         es: 'Preguntas frecuentes',
+                         en: 'Frequently asked questions'
+                     }
+                 }
+            }
+        },
+        components: {
+            BreadCrumbs
+        }
+    }
+</script>

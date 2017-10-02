@@ -1,6 +1,6 @@
 <template>
     <div>
-        <bread-crumbs></bread-crumbs>
+        <bread-crumbs :crumbs="crumbs"></bread-crumbs>
         <div class="space-60"></div>
         <div class="container">
             <div  class="row single-product">
@@ -73,7 +73,25 @@
                     { id: 1,  img: "../../src/img/women/1.jpg",  link: '#' },  { id: 2,  img: "../../src/img/women/2.jpg",  link: '#' },  { id: 3,  img: "../../src/img/women/3.jpg",  link: '#' },
                     { id: 4,  img: "../../src/img/women/4.jpg",  link: '#' },  { id: 5,  img: "../../src/img/women/5.jpg",  link: '#' },  { id: 6,  img: "../../src/img/women/6.jpg",  link: '#' },
                     { id: 7,  img: "../../src/img/women/7.jpg",  link: '#' },  { id: 8,  img: "../../src/img/men/1.jpg",  link: '#' },  { id: 9,  img: "../../src/img/men/2.jpg",  link: '#' }, { id: 10,  img: "../../src/img/men/3.jpg",  link: '#' }, { id: 11,  img: "../../src/img/men/4.jpg",  link: '#' },
-                ]
+                ],
+                crumbs: {
+                    nav: [
+                        {
+                            link: 'home',
+                            name_en: 'Home',
+                            name_es: 'Inicio'
+                        },
+                        {
+                            link: 'music-packs',
+                            name_en: 'Music packs',
+                            name_es: 'Packs de música'
+                        }
+                    ],
+                    current: {
+                        es: '-',
+                        en: '-'
+                    }
+                }
             }
         },
         mounted () {
@@ -119,6 +137,8 @@
                 url: url,
                 success: function (result) {
                     vm.product = result;
+                    vm.crumbs.current.en = result.title;
+                    vm.crumbs.current.es = result.title_es;
                 }
             });
         },

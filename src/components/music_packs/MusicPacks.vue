@@ -18,6 +18,7 @@
 
                 <music-pack-list :items="items" v-if="items.length > 0"></music-pack-list>
                 <p v-if="items.length === 0"> {{ t('no_elements') }} </p>
+
             </div>
 
             <music-categories :categories="categories"

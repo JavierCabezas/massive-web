@@ -5,6 +5,7 @@
                 <h1>Blog</h1>
             </div>
         </div>
+        <bread-crumbs :crumbs="crumbs"></bread-crumbs>
 
         <div class="space-60"></div>
         <div class="container" id="blog-post-list">
@@ -42,6 +43,7 @@
 
 <script>
     import Paginate from 'vuejs-paginate'
+    import BreadCrumbs from '../main/Breadcrumbs.vue'
 
     export default {
         name: 'blog-post-list',
@@ -49,7 +51,20 @@
             return {
                 posts: [ ],
                 items_per_page: 3,
-                current_page: 1
+                current_page: 1,
+                crumbs: {
+                    nav: [
+                        {
+                            link: 'home',
+                            name_en: 'Home',
+                            name_es: 'Inicio'
+                        }
+                    ],
+                    current: {
+                        es: 'Blog',
+                        en: 'Blog'
+                    }
+                }
             }
         },
         created: function () {
@@ -64,7 +79,8 @@
             });
         },
         components: {
-            paginate: Paginate
+            Paginate,
+            BreadCrumbs
         },
         methods: {
             clickCallback: function(page) {

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-4" v-for="(item, index) in items" v-if="is_index_in_range(index)">
             <div class="item_holder">
-                <router-link  tag="a" :to="{ name: 'musicPackDetail', params: { id: item.id} }" >
+                <router-link  tag="a" :to="{ name: 'music-pack-detail', params: { id: item.id} }" >
                     <img :src="item.img" :alt="item.title" class="img-responsive">
                 </router-link>
 
