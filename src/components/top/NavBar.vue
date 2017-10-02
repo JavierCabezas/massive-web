@@ -12,12 +12,12 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><router-link to="/"> {{ t('home') }} </router-link></li>
-                    <li><router-link to="/about">{{ t('about') }}</router-link></li>
-                    <li><router-link to="/music-pack"> {{ t('music_pack') }} </router-link></li>
-                    <li><router-link to="/music-track"> {{ t('music_track') }} </router-link></li>
-                    <li><router-link to="/faq">{{ t('faq') }}</router-link></li>
-                    <li><router-link to="/blog">Blog</router-link></li>
+                    <li><router-link :to="{name: 'home'}"> {{ t('home') }} </router-link></li>
+                    <li><router-link :to="{name: 'about-us'}">{{ t('about') }}</router-link></li>
+                    <li><router-link :to="{name: 'music-packs'}"> {{ t('music_pack') }} </router-link></li>
+                    <li><router-link :to="{name: 'music-tracks'}"> {{ t('music_track') }} </router-link></li>
+                    <li><router-link :to="{name: 'faq'}">{{ t('faq') }}</router-link></li>
+                    <li><router-link :to="{name: 'blog'}">Blog</router-link></li>
                 </ul>
             </div>
         </div>
