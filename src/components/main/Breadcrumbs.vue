@@ -1,8 +1,12 @@
 <template>
     <div>
         <ul class="breadcrumb">
-            <li v-for="item in breadcrumbs"><a :href="item.link">{{item.name}}</a></li>
-            <li v-for="item in currentBreadcrumb" class="current"><a :href="item.link">{{item.name}}</a></li>
+            <li v-for="item in breadcrumbs">
+                <a :href="item.link">{{item.name}}</a>
+            </li>
+            <li v-for="item in currentBreadcrumb" class="current">
+               {{item.name}}
+            </li>
         </ul>
     </div>
 </template>

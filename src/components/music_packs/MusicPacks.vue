@@ -24,10 +24,21 @@
                 <div class="sidebar-widget">
                     <h3> {{ t('filter') }}</h3>
                     <ul class="list-unstyled">
-                        <li><a href="#" @click.prevent="load_music_packs()"> {{ t('all_categories') }} </a></li>
+                        <li>
+                            <a href="#" @click.prevent="load_music_packs()">
+                                <span v-if="selected_category_index !== -1"> {{ t('all_categories') }} </span>
+                                <b v-if="selected_category_index === -1"> {{ t('all_categories') }} </b>
+                            </a>
+                        </li>
                         <li v-for="(c, idx) in categories">
-                            <a v-if="$translate.current == 'en_US'" href="#" @click.prevent="load_music_packs(idx)"> {{c.name_en}} </a>
-                            <a v-if="$translate.current == 'es_ES'" href="#" @click.prevent="load_music_packs(idx)"> {{c.name_es}} </a>
+                            <a v-if="$translate.current == 'en_US'" href="#" @click.prevent="load_music_packs(idx)">
+                                <span v-if="selected_category_index !== idx"> {{c.name_en}} </span>
+                                <b v-if="selected_category_index === idx"> {{c.name_en}} </b>
+                            </a>
+                            <a v-if="$translate.current == 'es_ES'" href="#" @click.prevent="load_music_packs(idx)">
+                                <span v-if="selected_category_index !== idx"> {{c.name_es}} </span>
+                                <b v-if="selected_category_index === idx"> {{c.name_es}} </b>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -79,6 +90,8 @@
                 if(category_index > -1){
                     category_id = vm.categories[category_index].id;
                     vm.selected_category_index = category_index;
+                }else{
+                    vm.selected_category_index = -1;
                 }
                 $.ajax({
                     url: vm.url_backend + 'music_pack/index',
