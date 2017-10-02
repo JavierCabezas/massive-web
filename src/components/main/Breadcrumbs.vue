@@ -2,7 +2,7 @@
     <div>
         <ul class="breadcrumb">
             <li v-for="item in crumbs.nav">
-                <router-link to="item.link" v-if="$translate.current == 'en_US'">
+                <router-link :to="{name: item.link}" v-if="$translate.current == 'en_US'">
                     {{item.name_en }}
                 </router-link>
                 <router-link :to="item.link" v-if="$translate.current == 'es_ES'">
@@ -14,7 +14,6 @@
                 <span v-if="$translate.current == 'es_ES'"> {{crumbs.current.es}} </span>
             </li>
         </ul>
-
     </div>
 </template>
 

@@ -79,14 +79,9 @@
                 crumbs: {
                     nav: [
                         {
-                            link: '#',
-                            name_en: 'Link 1',
-                            name_es: 'Link 2'
-                        },
-                        {
-                            link: '#',
-                            name_en: 'Link 2',
-                            name_es: 'Link 2'
+                            link: 'home',
+                            name_en: 'Home',
+                            name_es: 'Inicio'
                         }
                     ],
                     current: {
