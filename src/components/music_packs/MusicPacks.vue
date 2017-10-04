@@ -67,7 +67,8 @@
                     current: {
                         es: 'Packs de música',
                         en: 'Music Packs'
-                    }                }
+                    }
+                }
             }
         },
         created: function () {
