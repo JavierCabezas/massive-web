@@ -68,6 +68,7 @@ class MusicPack(models.Model):
         }
 
     def backend_detail(self):
+        similar_packs = MusicPack.objects.filter(category_id__in=self.category.family()).exclude(id=self.id)
         return {
             'id': self.id,
             'img' : settings.BASE_URL + self.image.name,
@@ -80,5 +81,6 @@ class MusicPack(models.Model):
             'long_description': self.long_description,
             'long_description_es': self.long_description_es,
             'tracks': [song.backend() for song in self.music_tracks.all()],
-            'category': self.category.name
+            'category': self.category.name,
+            'similar': [s.backend() for s in similar_packs]
         }
