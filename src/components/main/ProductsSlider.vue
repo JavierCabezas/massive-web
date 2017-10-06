@@ -31,18 +31,26 @@
         props: ['products'],
         data () {
             return {
-
+                slider: null
             }
         },
         watch: {
             products: function (val) {
               this.start_slider();
+            },
+            '$route.params.id'(newId) {
+                this.$emit('changed_user', newId);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
             }
         },
         methods:{
             start_slider() {
+                if(this.slider !== null){
+                    this.slider.destroySlider();
+                }
+
                 this.$nextTick(function() {
-                    $(".popularslider").bxSlider({
+                    this.slider = $(".popularslider").bxSlider({
                         slideWidth: 200,
                         minSlides: 1,
                         maxSlides: 6,

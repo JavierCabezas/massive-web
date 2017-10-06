@@ -51,7 +51,7 @@
             <div class="space-60"></div>
             <div class="similar-products">
                 <div class="row">
-                    <product-slider :products="product.similar"></product-slider>
+                    <product-slider :products="product.similar" @changed_user="load_product"></product-slider>
                 </div>
             </div>
         </div>
@@ -89,9 +89,6 @@
                 }
             }
         },
-        mounted () {
-            this.start_slider()
-        },
         locales: {
             es_ES: {
                 description: 'Descripción',
@@ -125,26 +122,20 @@
             breadCrumbs: BreadCrumbs
         },
         created: function () {
-            let vm = this;
-            let url = vm.url_backend + 'music_pack/' + vm.id;
-
-            $.ajax({
-                url: url,
-                success: function (result) {
-                    vm.product = result;
-                    vm.crumbs.current.en = result.title;
-                    vm.crumbs.current.es = result.title_es;
-                }
-            });
+            this.load_product(this.id);
         },
         methods:{
-            start_slider(){
-                $(".popularslider").bxSlider({
-                    slideWidth: 200,
-                    minSlides: 3,
-                    maxSlides: 6,
-                    slideMargin: 10,
-                    auto: true
+            load_product(id){
+                let vm = this;
+                let url = vm.url_backend + 'music_pack/' + id;
+                console.log(url);
+                $.ajax({
+                    url: url,
+                    success: function (result) {
+                        vm.product = result;
+                        vm.crumbs.current.en = result.title;
+                        vm.crumbs.current.es = result.title_es;
+                    }
                 });
             }
         }
