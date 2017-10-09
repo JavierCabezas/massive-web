@@ -14,7 +14,11 @@
                             <router-link  tag="a" :to="{ name: 'shopping-cart'}" > <i class="fa fa-shopping-cart"></i>{{ t('shopping_cart') }} </router-link>
                         </li>
                         <li class="lang-dropdown">
-                            <a> {{ t('active_lang') }}  </a>
+                            <a>
+                                <img v-if="$translate.current == 'en_US'" src="../../img/flag_en.png">
+                                <img v-if="$translate.current == 'es_ES'" src="../../img/flag_esg.png">
+                                {{ t('active_lang') }}
+                            </a>
                             <div class="lang-drop-menu">
                                 <a @click.prevent="changeLang('en_US')"><img src="../../img/flag_en.png"> English </a>
                                 <a @click.prevent="changeLang('es_ES')"><img src="../../img/flag_es.png"> Spanish </a>
