@@ -41,11 +41,16 @@ export const store = new Store({
           state.token = null;
       },
       add_music_pack_to_cart(state, payload){
-          console.log(payload.music_pack);
           state.music_packs_on_cart[payload.music_pack.id] = payload.music_pack;
       },
       add_music_track_to_cart(state, payload){
           state.music_tracks_on_cart[payload.music_track.id] = music_track;
+      },
+      remove_music_pack_from_cart(state, payload){
+          delete state.music_packs_on_cart[payload.music_pack_id];
+      },
+      remove_music_track_from_cart(state, payload){
+          delete state.music_tracks_on_cart[payload.music_track_id] ;
       }
   }
 });
