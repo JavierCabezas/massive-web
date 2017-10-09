@@ -143,6 +143,7 @@
             add_item_to_cart(){
                 let vm = this;
                 store.commit('add_music_pack_to_cart', {music_pack: vm.product, quantity: 1});
+                this.$swal('hello')
             }
         }
     }

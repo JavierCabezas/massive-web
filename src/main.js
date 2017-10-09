@@ -7,12 +7,16 @@ import GSignInButton from 'vue-google-signin-button'
 import FBSignInButton from 'vue-facebook-signin-button'
 import Vuex, { Store } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
+import VueSweetAlert from 'vue-sweetalert'
+
 
 Vue.use(Vuex);
 Vue.use(GSignInButton);
 Vue.use(VueRouter);
 Vue.use(VueTranslate);
 Vue.use(FBSignInButton);
+Vue.use(VueSweetAlert);
+
 
 const router = new VueRouter({
     routes
