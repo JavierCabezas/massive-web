@@ -34,7 +34,7 @@
 
                     <tr>
                         <td colspan="2"> <b> TOTAL </b></td>
-                        <td> {{ total_price | cash }} </td>
+                        <td> {{ total_price() | cash }} </td>
                         <td> - </td>
                     </tr>
                 </tbody>
@@ -68,18 +68,6 @@
             },
             has_products(){
                 return this.has_music_packs || this.has_music_tracks;
-            },
-            total_price(){
-                var vm = this;
-                var sum = 0;
-                Object.keys(vm.store.state.music_packs_on_cart).forEach(function(idx) {
-                      sum += vm.store.state.music_packs_on_cart[idx].price;
-                });
-                Object.keys(vm.store.state.music_tracks_on_cart).forEach(function(idx) {
-                      sum += vm.store.state.music_tracks_on_cart[idx].price;
-                });
-
-                return sum;
             }
         },
          filters: {
@@ -125,6 +113,18 @@
             }
         },
         methods: {
+            total_price: function(){
+                var vm = this;
+                var sum = 0;
+                Object.keys(vm.store.state.music_packs_on_cart).forEach(function(idx) {
+                      sum += vm.store.state.music_packs_on_cart[idx].price;
+                });
+                Object.keys(vm.store.state.music_tracks_on_cart).forEach(function(idx) {
+                      sum += vm.store.state.music_tracks_on_cart[idx].price;
+                });
+
+                return sum;
+            },
             remove_element: function(type, id){
                 let swal_texts = { 'swal_title':'', 'text': '', 'confirm_button_text': '', 'cancel_button_text': '' };
                  if(this.$translate.current === 'en_US'){
