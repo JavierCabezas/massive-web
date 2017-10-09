@@ -59,7 +59,12 @@
             add_item_to_cart(){
                 let vm = this;
                 let swal_texts = { 'swal_title':'', 'text': '', 'confirm_button_text': '', 'cancel_button_text': '' };
-                store.commit('add_music_pack_to_cart', vm.product);
+                if(this.is_music_pack){
+                    store.commit('add_music_pack_to_cart', {music_pack: vm.selected_product} );
+                }else{
+                    store.commit('add_music_track_to_cart', {music_track: vm.selected_product} );
+                }
+
                 if(this.$translate.current === 'en_US'){
                     swal_texts.title = 'Success';
                     swal_texts.text = 'You added ' + vm.selected_product.title + ' to your shopping cart. Do you want to continue shopping?';

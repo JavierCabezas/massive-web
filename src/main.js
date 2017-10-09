@@ -40,15 +40,12 @@ export const store = new Store({
           state.is_logged_in = false;
           state.token = null;
       },
-      add_music_pack_to_cart(state, music_pack){
-          if(state.music_packs_on_cart[music_pack.id] === undefined){
-              state.music_packs_on_cart[music_pack.id] = music_pack;
-          }
+      add_music_pack_to_cart(state, payload){
+          console.log(payload.music_pack);
+          state.music_packs_on_cart[payload.music_pack.id] = payload.music_pack;
       },
-      add_music_track_to_cart(state, music_track){
-            if(state.music_tracks_on_cart[music_track.id] === undefined){
-              state.music_tracks_on_cart[music_track.id] = music_track;
-          }
+      add_music_track_to_cart(state, payload){
+          state.music_tracks_on_cart[payload.music_track.id] = music_track;
       }
   }
 });
