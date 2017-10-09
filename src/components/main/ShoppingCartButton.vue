@@ -17,11 +17,6 @@
 
     export default {
         name: 'shopping-cart-button',
-        data () {
-            return {
-                id: this.$route.params.id,
-            }
-        },
         props:{
             'music_pack': { 'default': null },
             'music_track': { 'default': null },
@@ -34,10 +29,10 @@
                 return this.is_music_pack ? this.music_pack : this.music_track;
             },
             has_music_pack(){
-                return this.music_pack !== null && store.state.music_pack_on_cart[this.music_pack.id] !== undefined;
+                return this.music_pack !== null && store.state.music_packs_on_cart[this.music_pack.id] !== undefined;
             },
             has_music_track(){
-                return this.music_track !== null && store.state.music_music_track_on_cart[this.music_track.id] !== undefined;
+                return this.music_track !== null && store.state.music_tracks_on_cart[this.music_track.id] !== undefined;
             },
             is_button_disabled(){
                 return this.has_music_pack || this.has_music_track
@@ -64,10 +59,10 @@
             add_item_to_cart(){
                 let vm = this;
                 let swal_texts = { 'swal_title':'', 'text': '', 'confirm_button_text': '', 'cancel_button_text': '' };
-                store.commit('add_music_pack_to_cart', {music_pack: vm.product});
+                store.commit('add_music_pack_to_cart', vm.product);
                 if(this.$translate.current === 'en_US'){
                     swal_texts.title = 'Success';
-                    swal_texts.text = 'You added ' + vm.selected_product + ' to your shopping cart. Do you want to continue shopping?';
+                    swal_texts.text = 'You added ' + vm.selected_product.title + ' to your shopping cart. Do you want to continue shopping?';
                     swal_texts.confirm_button_text = 'Yes, I will add more items';
                     swal_texts.cancel_button_text = 'No, take me to checkout';
                 }

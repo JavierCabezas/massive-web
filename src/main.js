@@ -27,7 +27,7 @@ export const store = new Store({
       is_logged_in: false,
       token: null,
       number_of_items_on_cart: 0,
-      music_pack_on_cart: {},
+      music_packs_on_cart: {},
       music_tracks_on_cart: {}
   },
   plugins: [createPersistedState()],
@@ -41,8 +41,8 @@ export const store = new Store({
           state.token = null;
       },
       add_music_pack_to_cart(state, music_pack){
-          if(state.music_pack_on_cart[music_pack.id] === undefined){
-              state.music_pack_on_cart[music_pack.id] = music_pack;
+          if(state.music_packs_on_cart[music_pack.id] === undefined){
+              state.music_packs_on_cart[music_pack.id] = music_pack;
           }
       },
       add_music_track_to_cart(state, music_track){
