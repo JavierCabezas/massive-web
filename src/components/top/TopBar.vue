@@ -5,10 +5,13 @@
                 <div class="col-sm-12 text-right">
                     <ul class="list-inline">
                         <li v-if="!is_user_logged_in">
-                            <a href="#/user/login"><i class="fa fa-user"></i>{{ t('login') }} </a>
+                            <router-link  tag="a" :to="{ name: 'login'}" > <i class="fa fa-user"></i>{{ t('login') }} </router-link>
                         </li>
                         <li v-if="is_user_logged_in">
-                            <a href="#/user/profile"><i class="fa fa-user"></i>{{ t('account') }} </a>
+                            <router-link  tag="a" :to="{ name: 'profile'}" > <i class="fa fa-user"></i>{{ t('account') }} </router-link>
+                        </li>
+                        <li v-if="is_user_logged_in">
+                            <router-link  tag="a" :to="{ name: 'shopping-cart'}" > <i class="fa fa-shopping-cart"></i>{{ t('shopping_cart') }} </router-link>
                         </li>
                         <li class="lang-dropdown">
                             <a> {{ t('active_lang') }}  </a>
@@ -33,12 +36,14 @@
             es_ES: {
                 account: 'Mi cuenta',
                 login: 'Ingresar',
-                active_lang: 'Español'
+                active_lang: 'Español',
+                shopping_cart: 'Carrito de compras'
             },
             en_US: {
                 account: 'My account',
                 login: 'Login',
-                active_lang: 'English'
+                active_lang: 'English',
+                shopping_cart: 'Shopping cart'
             }
         },
         computed: {
