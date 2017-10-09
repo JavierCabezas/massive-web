@@ -5,13 +5,14 @@
                 <div class="col-sm-12 text-right">
                     <ul class="list-inline">
                         <li v-if="!is_user_logged_in">
-                            <router-link  tag="a" :to="{ name: 'login'}" > <i class="fa fa-user"></i>{{ t('login') }} </router-link>
+                            <router-link  tag="a" :to="{ name: 'login'}" > <i class="fa fa-user"></i>{{ t('login') }}</router-link>
                         </li>
                         <li v-if="is_user_logged_in">
                             <router-link  tag="a" :to="{ name: 'profile'}" > <i class="fa fa-user"></i>{{ t('account') }} </router-link>
                         </li>
                         <li v-if="is_user_logged_in">
                             <router-link  tag="a" :to="{ name: 'shopping-cart'}" > <i class="fa fa-shopping-cart"></i>{{ t('shopping_cart') }} </router-link>
+                            <span class="num">2</span>
                         </li>
                         <li class="lang-dropdown">
                             <a>

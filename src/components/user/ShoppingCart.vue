@@ -1,6 +1,10 @@
 <template>
     <div class="container">
-        <h1> {{ t('shopping_cart_title') }} </h1>
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <h1>{ t('shopping_cart_title') }}</h1>
+            </div>
+        </div>
 
         <div v-if="!has_products">
             <h4 > {{ t('cart_without_products_1') }} </h4>
