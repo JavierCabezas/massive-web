@@ -26,8 +26,9 @@
                                 <p v-if="$translate.current == 'es_ES'">{{product.short_description_es}}</p>
 
                                 <div class="add-buttons">
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Add to cart"
-                                       class="btn btn-skin btn-lg"><i class="fa fa-shopping-cart"></i> {{ t('add_cart') }}</a>
+                                    <a @click.prevent="add_item_to_cart()" href="#" data-toggle="tooltip" data-placement="top" title="Add to cart"  class="btn btn-skin btn-lg">
+                                        <i class="fa fa-shopping-cart"></i> {{ t('add_cart') }}
+                                    </a>
                                 </div>
                                 <playlist :tracks="product.tracks"></playlist>
                             </div>
@@ -62,6 +63,7 @@
     import ProductSlider from '../main/ProductsSlider.vue'
     import Playlist from './Playlist.vue'
     import BreadCrumbs from '../main/Breadcrumbs.vue'
+    import { store } from '../../main'
 
     export default {
         name: 'featured-products',
@@ -137,6 +139,10 @@
                         vm.crumbs.current.es = result.title_es;
                     }
                 });
+            },
+            add_item_to_cart(){
+                let vm = this;
+                store.commit('add_music_pack_to_cart', {music_pack: vm.product, quantity: 1});
             }
         }
     }

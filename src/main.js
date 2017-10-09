@@ -21,7 +21,10 @@ const router = new VueRouter({
 export const store = new Store({
   state: {
       is_logged_in: false,
-      token: null
+      token: null,
+      number_of_items_on_cart: 0,
+      music_pack_on_cart: {},
+      music_tracks_on_cart: {}
   },
   plugins: [createPersistedState()],
   mutations: {
@@ -32,6 +35,16 @@ export const store = new Store({
       delete_token_and_logout(state){
           state.is_logged_in = false;
           state.token = null;
+      },
+      add_music_pack_to_cart(state, music_pack, quantity = 1){
+          if(state.music_pack_on_cart[music_pack.id] === undefined){
+              state.music_pack_on_cart[music_pack.id] = music_pack;
+              state.music_pack_on_cart[music_pack.id]['quantity'] = 0;
+          }
+          state.music_pack_on_cart[music_pack.id]['quantity'] += quantity;
+      },
+      add_music_track_to_cart(music_track, quantity = 1){
+
       }
   }
 });
