@@ -1,0 +1,94 @@
+<template>
+     <div class="add-buttons">
+         <a href="#" data-toggle="tooltip"
+            data-placement="top"
+            title="Add to cart"
+            class="btn btn-skin btn-lg"
+            @click.prevent="add_item_to_cart()"
+            :class="{'disabled': is_button_disabled }"
+         >
+             <i class="fa fa-shopping-cart"></i> {{ t('add_cart') }}
+         </a>
+     </div>
+</template>
+
+<script>
+    import { store } from '../../main'
+
+    export default {
+        name: 'shopping-cart-button',
+        data () {
+            return {
+                id: this.$route.params.id,
+            }
+        },
+        props:{
+            'music_pack': { 'default': null },
+            'music_track': { 'default': null },
+        },
+        computed: {
+            is_music_pack() {
+                return this.music_track === null;
+            },
+            selected_product(){
+                return this.is_music_pack ? this.music_pack : this.music_track;
+            },
+            has_music_pack(){
+                return this.music_pack !== null && store.state.music_pack_on_cart[this.music_pack.id] !== undefined;
+            },
+            has_music_track(){
+                return this.music_track !== null && store.state.music_music_track_on_cart[this.music_track.id] !== undefined;
+            },
+            is_button_disabled(){
+                return this.has_music_pack || this.has_music_track
+            }
+        },
+        locales: {
+            es_ES: { add_cart: 'Añadir al carro' },
+            en_US: { add_cart: 'Add to cart' }
+        },
+        methods: {
+            load_product(id){
+                let vm = this;
+                let url = vm.url_backend + 'music_pack/' + id;
+                console.log(url);
+                $.ajax({
+                    url: url,
+                    success: function (result) {
+                        vm.product = result;
+                        vm.crumbs.current.en = result.title;
+                        vm.crumbs.current.es = result.title_es;
+                    }
+                });
+            },
+            add_item_to_cart(){
+                let vm = this;
+                let swal_texts = { 'swal_title':'', 'text': '', 'confirm_button_text': '', 'cancel_button_text': '' };
+                store.commit('add_music_pack_to_cart', {music_pack: vm.product});
+                if(this.$translate.current === 'en_US'){
+                    swal_texts.title = 'Success';
+                    swal_texts.text = 'You added ' + vm.selected_product + ' to your shopping cart. Do you want to continue shopping?';
+                    swal_texts.confirm_button_text = 'Yes, I will add more items';
+                    swal_texts.cancel_button_text = 'No, take me to checkout';
+                }
+                else{
+                    swal_texts.title = 'Éxito';
+                    swal_texts.text = 'Agregaste ' + vm.selected_product.title_es + ' a tu carro de compras. ¿Quieres continuar comprando?';
+                    swal_texts.confirm_button_text = 'Sí, quiero agregar más productos';
+                    swal_texts.cancel_button_text = 'No, llevarme al carro';
+                }
+
+                this.$swal({
+                    title: swal_texts.title,
+                    text: swal_texts.text,
+                    type: 'success',
+                    showCancelButton: true,
+                    confirmButtonText: swal_texts.confirm_button_text,
+                    cancelButtonText: swal_texts.cancel_button_text
+                }).then(function() {
+                    alert("cambiar de página aquí!");
+                }, function(dismiss) { });
+            }
+        }
+    }
+</script>

@@ -25,11 +25,10 @@
                                 <p v-if="$translate.current == 'en_US'">{{product.short_description}}</p>
                                 <p v-if="$translate.current == 'es_ES'">{{product.short_description_es}}</p>
 
-                                <div class="add-buttons">
-                                    <a @click.prevent="add_item_to_cart()" href="#" data-toggle="tooltip" data-placement="top" title="Add to cart"  class="btn btn-skin btn-lg">
-                                        <i class="fa fa-shopping-cart"></i> {{ t('add_cart') }}
-                                    </a>
-                                </div>
+                                <shopping-cart-button
+                                        :music_track="null"
+                                        :music_pack="product"
+                                ></shopping-cart-button>
                                 <playlist :tracks="product.tracks"></playlist>
                             </div>
                         </div>
@@ -63,7 +62,7 @@
     import ProductSlider from '../main/ProductsSlider.vue'
     import Playlist from './Playlist.vue'
     import BreadCrumbs from '../main/Breadcrumbs.vue'
-    import { store } from '../../main'
+    import ShoppingCartButton from '../main/ShoppingCartButton.vue'
 
     export default {
         name: 'featured-products',
@@ -94,13 +93,11 @@
         locales: {
             es_ES: {
                 description: 'Descripción',
-                add_cart: 'Añadir al carro',
                 author: 'Autor',
                 category: 'Categoría'
             },
             en_US: {
                 description: 'Description',
-                add_cart: 'Add to cart',
                 author: 'Author',
                 category: 'Category'
             }
@@ -119,14 +116,15 @@
             }
         },
         components: {
-            productSlider: ProductSlider,
-            playlist: Playlist,
-            breadCrumbs: BreadCrumbs
+            ProductSlider,
+            Playlist,
+            BreadCrumbs,
+            ShoppingCartButton
         },
         created: function () {
             this.load_product(this.id);
         },
-        methods:{
+        methods: {
             load_product(id){
                 let vm = this;
                 let url = vm.url_backend + 'music_pack/' + id;
@@ -139,34 +137,6 @@
                         vm.crumbs.current.es = result.title_es;
                     }
                 });
-            },
-            add_item_to_cart(){
-                let vm = this;
-                let swal_texts = { 'swal_title':'', 'text': '', 'confirm_button_text': '', 'cancel_button_text': '' };
-                store.commit('add_music_pack_to_cart', {music_pack: vm.product, quantity: 1});
-                if(this.$translate.current === 'en_US'){
-                    swal_texts.title = 'Success';
-                    swal_texts.text = 'You added ' + vm.title + ' to your shopping cart. Do you want to continue shopping?';
-                    swal_texts.confirm_button_text = 'Yes, I will add more items';
-                    swal_texts.cancel_button_text = 'No, take me to checkout';
-                }
-                else{
-                    swal_texts.title = 'Éxito';
-                    swal_texts.text = 'Agregaste ' + vm.title_es + ' a tu carro de compras. ¿Quieres continuar comprando?';
-                    swal_texts.confirm_button_text = 'Sí, quiero agregar más productos';
-                    swal_texts.cancel_button_text = 'No, llevarme al carro';
-                }
-
-                this.$swal({
-                    title: swal_texts.title,
-                    text: swal_texts.text,
-                    type: 'success',
-                    showCancelButton: true,
-                    confirmButtonText: swal_texts.confirm_button_text,
-                    cancelButtonText: swal_texts.cancel_button_text
-                }).then(function() {
-                    alert("cambiar de página aquí!");
-                }, function(dismiss) { });
             }
         }
     }
