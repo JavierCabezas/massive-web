@@ -142,8 +142,31 @@
             },
             add_item_to_cart(){
                 let vm = this;
+                let swal_texts = { 'swal_title':'', 'text': '', 'confirm_button_text': '', 'cancel_button_text': '' };
                 store.commit('add_music_pack_to_cart', {music_pack: vm.product, quantity: 1});
-                this.$swal('hello')
+                if(this.$translate.current === 'en_US'){
+                    swal_texts.title = 'Success';
+                    swal_texts.text = 'You added ' + vm.title + ' to your shopping cart. Do you want to continue shopping?';
+                    swal_texts.confirm_button_text = 'Yes, I will add more items';
+                    swal_texts.cancel_button_text = 'No, take me to checkout';
+                }
+                else{
+                    swal_texts.title = 'Éxito';
+                    swal_texts.text = 'Agregaste ' + vm.title_es + ' a tu carro de compras. ¿Quieres continuar comprando?';
+                    swal_texts.confirm_button_text = 'Sí, quiero agregar más productos';
+                    swal_texts.cancel_button_text = 'No, llevarme al carro';
+                }
+
+                this.$swal({
+                    title: swal_texts.title,
+                    text: swal_texts.text,
+                    type: 'success',
+                    showCancelButton: true,
+                    confirmButtonText: swal_texts.confirm_button_text,
+                    cancelButtonText: swal_texts.cancel_button_text
+                }).then(function() {
+                    alert("cambiar de página aquí!");
+                }, function(dismiss) { });
             }
         }
     }
