@@ -56,6 +56,7 @@
 
 <script>
     import { store } from '../../main'
+    import { router } from '../../main'
 
     export default {
         data () {
@@ -74,7 +75,12 @@
                 return this.has_music_packs || this.has_music_tracks;
             }
         },
-         filters: {
+        created: function () {
+            if(!store.state.is_logged_in){
+                router.push({name: 'home'});
+            }
+        },
+        filters: {
             cash: function (value) {
               const pieces = parseFloat(value).toFixed(2).split('');
               let ii = pieces.length - 3;

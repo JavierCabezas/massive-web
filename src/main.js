@@ -18,7 +18,7 @@ Vue.use(FBSignInButton);
 Vue.use(VueSweetAlert);
 
 
-const router = new VueRouter({
+export const router = new VueRouter({
     routes
 });
 

@@ -14,6 +14,7 @@
 
 <script>
     import { store } from '../../main'
+    import { router } from '../../main'
 
     export default {
         name: 'shopping-cart-button',
@@ -43,19 +44,6 @@
             en_US: { add_cart: 'Add to cart' }
         },
         methods: {
-            load_product(id){
-                let vm = this;
-                let url = vm.url_backend + 'music_pack/' + id;
-                console.log(url);
-                $.ajax({
-                    url: url,
-                    success: function (result) {
-                        vm.product = result;
-                        vm.crumbs.current.en = result.title;
-                        vm.crumbs.current.es = result.title_es;
-                    }
-                });
-            },
             add_item_to_cart(){
                 let vm = this;
                 let swal_texts = { 'swal_title':'', 'text': '', 'confirm_button_text': '', 'cancel_button_text': '' };
@@ -86,8 +74,16 @@
                     confirmButtonText: swal_texts.confirm_button_text,
                     cancelButtonText: swal_texts.cancel_button_text
                 }).then(function() {
-                    alert("cambiar de página aquí!");
-                }, function(dismiss) { });
+                    if(vm.is_music_pack){
+                        router.push({name: 'music-packs'});
+                    }else{
+                        router.push({name: 'music-tracks'});
+                    }
+
+
+                }, function(dismiss) {
+                     router.push({name: 'shopping-cart'});
+                });
             }
         }
     }

@@ -31,6 +31,7 @@
 
 <script>
     import { store } from '../../main'
+    import { router } from '../../main'
 
     export default {
         data () {
@@ -51,7 +52,8 @@
             }
         },
         created: function () {
-            var vm = this;
+            this.check_if_logged_in();
+            let vm = this;
             $.ajax({
                 url: vm.url_backend + 'user/get_user',
                 data: { token: vm.user_token },
@@ -64,12 +66,14 @@
         methods: {
             check_if_logged_in(){
                 if(!this.is_user_logged_in){
-//                    router.go('/user/login');
+                    if(!store.state.is_logged_in){
+                        router.push({name: 'login'});
+                    }
                 }
             },
             logout() {
-                store.commit('delete_token_and_logout')
-                this.check_if_logged_in()
+                store.commit('delete_token_and_logout');
+                this.check_if_logged_in();
             }
         }
     }

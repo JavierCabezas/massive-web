@@ -14,6 +14,7 @@
 
 <script>
     import { store } from '../../main'
+    import { router } from '../../main'
 
     export default {
         data () {
@@ -61,7 +62,8 @@
                 });
             },
             login(token) {
-              store.commit('login_with_token', token)
+                store.commit('login_with_token', token)
+                router.push({name: 'profile'});
             },
             logout() {
               store.commit('delete_token_and_logout')
