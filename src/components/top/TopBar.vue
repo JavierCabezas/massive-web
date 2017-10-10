@@ -17,7 +17,7 @@
                         <li class="lang-dropdown">
                             <a>
                                 <img v-if="$translate.current == 'en_US'" src="../../img/flag_en.png">
-                                <img v-if="$translate.current == 'es_ES'" src="../../img/flag_esg.png">
+                                <img v-if="$translate.current == 'es_ES'" src="../../img/flag_es.png">
                                 {{ t('active_lang') }}
                             </a>
                             <div class="lang-drop-menu">
