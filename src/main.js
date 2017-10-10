@@ -42,15 +42,19 @@ export const store = new Store({
       },
       add_music_pack_to_cart(state, payload){
           state.music_packs_on_cart[payload.music_pack.id] = payload.music_pack;
+          state.number_of_items_on_cart += 1;
       },
       add_music_track_to_cart(state, payload){
           state.music_tracks_on_cart[payload.music_track.id] = music_track;
+          state.number_of_items_on_cart += 1;
       },
       remove_music_pack_from_cart(state, payload){
           delete state.music_packs_on_cart[payload.music_pack_id];
+          state.number_of_items_on_cart -= 1;
       },
       remove_music_track_from_cart(state, payload){
           delete state.music_tracks_on_cart[payload.music_track_id] ;
+          state.number_of_items_on_cart -= 1;
       }
   }
 });

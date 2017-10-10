@@ -12,7 +12,9 @@
                         </li>
                         <li v-if="is_user_logged_in">
                             <router-link  tag="a" :to="{ name: 'shopping-cart'}" > <i class="fa fa-shopping-cart"></i>{{ t('shopping_cart') }} </router-link>
-                            <span class="num">2</span>
+                            <span class="num" v-if="store.state.number_of_items_on_cart > 0">
+                                {{store.state.number_of_items_on_cart}}
+                            </span>
                         </li>
                         <li class="lang-dropdown">
                             <a>
@@ -37,6 +39,11 @@
     import { store } from '../../main'
 
     export default {
+         data () {
+            return {
+                store: store
+            }
+        },
         locales: {
             es_ES: {
                 account: 'Mi cuenta',
