@@ -1221,6 +1221,12 @@ section.musictype-search .option {
   border: 1px solid #ddd;
   height: auto;
   overflow: auto;
+  .btn.btn-primary {
+    margin-left: 30%;
+    margin-right: auto;
+    width: 40%;
+    margin-bottom: 2%;
+  }
   h4 {
     text-align: center;
     margin-bottom: 4%;
@@ -1743,6 +1749,9 @@ section.musictype-search .option {
     a {
       margin: 5px;
     }
+    .disabled {
+      background-color: #DDD;
+    }
   }
 }
 
@@ -1865,4 +1874,57 @@ section.musictype-search .option {
 
 audio {
   width: 100%;
+}
+
+.shopping-table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  text-align: center;
+  thead {
+    background-color: #695C78;
+    border: 1px solid #695C78;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  tbody {
+    border: 1px solid #695C78;
+    background-color: #F4F4F4;
+    .shopping-total {
+      padding: 5%;
+      text-transform: uppercase;
+      font-weight: bold;
+      border-top: 5px solid #695C78;
+      font-size: 1.7em;
+      .text {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.shopping-info {
+  background-color: #B67E90;
+  padding: 2%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
+  color: #FFF;
+  text-align: center;
+  font-size: 1.4em;
+  a {
+    padding: 6px 2%;
+    background-color: #695C78;
+    font-weight: bold;
+    color: #FFF;
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+  a:hover {
+    background-color: #B67E90;
+    color: #695C78;
+  }
 }

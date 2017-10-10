@@ -15,7 +15,7 @@
             </ul>
         </div>
         <div v-else>
-            <table class="table">
+            <table class="table shopping-table">
                 <thead>
                     <tr>
                         <td> {{ t('type') }} </td>
@@ -36,19 +36,19 @@
                         </td>
                     </tr>
 
-                    <tr>
-                        <td colspan="2"> <b> TOTAL </b></td>
+                    <tr class="shopping-total">
+                        <td class="text" colspan="2">Total</td>
                         <td> {{ total_price() | cash }} </td>
                         <td> - </td>
                     </tr>
                 </tbody>
             </table>
 
-            <p>
+            <p class="shopping-info">
                 {{ t('add_more') }}
                 <router-link tag="a" :to="{name: 'music-packs'}"> {{t('music_files')}} </router-link>
                 {{t('or')}}
-                <router-link tag="a" :to="{name: 'music-tracks'}" > {{t('music_packs')}}. </router-link>
+                <router-link tag="a" :to="{name: 'music-tracks'}" > {{t('music_packs')}} </router-link>
              </p>
         </div>
     </div>

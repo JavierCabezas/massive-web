@@ -1128,6 +1128,12 @@ section.musictype-search .option {
   height: auto;
   overflow: auto;
 }
+.sky-form-login .btn.btn-primary {
+  margin-left: 30%;
+  margin-right: auto;
+  width: 40%;
+  margin-bottom: 2%;
+}
 .sky-form-login h4 {
   text-align: center;
   margin-bottom: 4%;
@@ -1608,6 +1614,9 @@ section.musictype-search .option {
 .product-detail-desc .add-buttons a {
   margin: 5px;
 }
+.product-detail-desc .add-buttons .disabled {
+  background-color: #DDD;
+}
 .item-more-info .tab-content {
   padding-top: 30px;
 }
@@ -1721,4 +1730,55 @@ section.musictype-search .option {
 }
 audio {
   width: 100%;
+}
+.shopping-table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+  text-align: center;
+}
+.shopping-table thead {
+  background-color: #695C78;
+  border: 1px solid #695C78;
+  color: #FFF;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.shopping-table tbody {
+  border: 1px solid #695C78;
+  background-color: #F4F4F4;
+}
+.shopping-table tbody .shopping-total {
+  padding: 5%;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-top: 5px solid #695C78;
+  font-size: 1.7em;
+}
+.shopping-table tbody .shopping-total .text {
+  text-align: right;
+}
+.shopping-info {
+  background-color: #B67E90;
+  padding: 2%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5%;
+  color: #FFF;
+  text-align: center;
+  font-size: 1.4em;
+}
+.shopping-info a {
+  padding: 6px 2%;
+  background-color: #695C78;
+  font-weight: bold;
+  color: #FFF;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+.shopping-info a:hover {
+  background-color: #B67E90;
+  color: #695C78;
 }
