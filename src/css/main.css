@@ -188,7 +188,7 @@ del {
   width: auto;
   margin-left: 0;
   height: auto;
-  font-weight: bold;
+  font-size: 1.5em;
 }
 .header .top-bar span {
   color: #999;
@@ -215,7 +215,7 @@ del {
   color: #333;
   display: block;
   float: left;
-  margin-top: 7%;
+  margin-top: 10%;
 }
 .header .top-bar ul li a img {
   margin-right: 5px;
@@ -660,6 +660,9 @@ del {
   margin: 20px auto;
   margin-top: 0;
   clear: both;
+}
+.bx-wrapper .slides .sliders {
+  width: auto !important;
 }
 /**revolution slider**/
 .slider-title {
