@@ -2,7 +2,7 @@
     <div class="container">
         <div class="breadcrumb-wrapper">
             <div class="container">
-                <h1>{ t('shopping_cart_title') }}</h1>
+                <h1> {{ t('shopping_cart_title') }}</h1>
             </div>
         </div>
 
@@ -46,9 +46,9 @@
 
             <p class="shopping-info">
                 {{ t('add_more') }}
-                <router-link tag="a" :to="{name: 'music-packs'}"> {{t('music_files')}} </router-link>
+                <router-link tag="a" :to="{name: 'music-tracks'}"> {{t('music_files')}} </router-link>
                 {{t('or')}}
-                <router-link tag="a" :to="{name: 'music-tracks'}" > {{t('music_packs')}} </router-link>
+                <router-link tag="a" :to="{name: 'music-packs'}" > {{t('music_packs')}} </router-link>
              </p>
         </div>
     </div>
