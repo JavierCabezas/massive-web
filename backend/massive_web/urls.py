@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^user/', include('massive_web.users.urls')),
     url(r'^categories/', include('massive_web.categories.urls')),
     url(r'^blog/', include('massive_web.blogs.urls')),
+    url(r'^newsletter/', include('massive_web.newsletter.urls')),
     url(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT
     })
