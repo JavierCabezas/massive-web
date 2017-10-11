@@ -11,22 +11,21 @@
         <div class="container" id="blog-post-list">
             <div v-for="(post, index) in posts">
                 <div class="blog-item col-sm-4" v-if="is_index_in_range(index)">
-                    <a href="#">
+                    <router-link  tag="a" :to="{ name: 'blog-post', params: { id: post.id} }" >
                         <img :src="post.image" class="img-responsive" :alt="post.name">
-                    </a>
+                    </router-link>
                     <div class="blog-desc">
                         <ul v-if="post.tags.length > 0">
                             <li v-for="tag in post.tags">
-                            <a href="#" class="tag">
+                            <a v-if="false" href="#" class="tag">
                                 <i class="fa fa-tag"></i> {{tag.name}} </a> &nbsp;
                             </li>
                         </ul>
                         <p v-else> <br> </p>
                         <h4 class="title">
-                            <a :href="'#/blog/'+post.id"> #{{post.id}} {{post.name}} </a>
+                            <router-link  tag="a" :to="{ name: 'blog-post', params: { id: post.id} }" >{{post.name}} </router-link>
                         </h4>
                         <p>  {{post.intro}} </p>
-                        <a :href="'#/blog/'+post.id" class="btn btn-skin">Continue</a>
                     </div>
                 </div>
             </div>
