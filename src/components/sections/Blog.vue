@@ -25,7 +25,8 @@
                         <h4 class="title">
                             <router-link  tag="a" :to="{ name: 'blog-post', params: { id: post.id} }" >{{post.name}} </router-link>
                         </h4>
-                        <p>  {{post.intro}} </p>
+                        <p v-if="$translate.current == 'en_US'">  {{post.intro}} </p>
+                        <p v-if="$translate.current == 'es_ES'">  {{post.intro_es}} </p>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,8 @@
     <div class="container">
         <div class="breadcrumb-wrapper">
             <div class="container">
-                <h1>{{post.name}}</h1>
+                <h1 v-if="$translate.current == 'en_US'">{{post.name}}</h1>
+                <h1 v-if="$translate.current == 'es_ES'">{{post.name_es}}</h1>
             </div>
         </div>
         <bread-crumbs :crumbs="crumbs"></bread-crumbs>
@@ -11,7 +12,8 @@
             <div class="blog-item blog-content col-sm-10 col-sm-offset-1">
                 <div class="blog-desc">
                     <img :src="post.image" class="img-responsive featured-blog" alt="">
-                    <p class="whitespace"> {{post.post}} </p>
+                    <p v-if="$translate.current == 'en_US'" class="whitespace">  {{post.post}} </p>
+                    <p v-if="$translate.current == 'es_ES'" class="whitespace">  {{post.post_es}} </p>
                     <div class="categories">
                         <p>Tags</p>
                         <ul>
