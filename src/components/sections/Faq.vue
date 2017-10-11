@@ -2,7 +2,7 @@
     <div>
         <div class="breadcrumb-wrapper">
             <div class="container">
-                <h1> {{ t('faq') }}</h1>
+                <h1> {{ t('faq_title') }}</h1>
             </div>
         </div>
         <bread-crumbs :crumbs="crumbs"></bread-crumbs>
@@ -48,10 +48,10 @@
     export default {
          locales: {
             es_ES: {
-                faq: 'Preguntas frecuentes',
+                faq_title: 'Preguntas frecuentes',
             },
             en_US: {
-                faq: 'Frequently asked questions',
+                faq_title: 'Frequently asked questions',
             }
         },
         data () {
