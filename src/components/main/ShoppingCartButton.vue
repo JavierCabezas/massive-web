@@ -1,6 +1,7 @@
 <template>
      <div class="add-buttons">
-         <a href="#" data-toggle="tooltip"
+         <a v-if="store.state.is_logged_in"
+            href="#" data-toggle="tooltip"
             data-placement="top"
             title="Add to cart"
             class="btn btn-skin btn-lg"
@@ -9,6 +10,9 @@
          >
              <i class="fa fa-shopping-cart"></i> {{ t('add_cart') }}
          </a>
+          <p v-if="!store.state.is_logged_in">
+              {{ t('how_to_add_text')}} <router-link :to="{ name: 'login'}"> {{ t('login') }} </router-link>
+          </p>
      </div>
 </template>
 
@@ -21,6 +25,11 @@
         props:{
             'music_pack': { 'default': null },
             'music_track': { 'default': null },
+        },
+         data () {
+            return {
+                store: store
+            }
         },
         computed: {
             is_music_pack() {
@@ -40,8 +49,16 @@
             }
         },
         locales: {
-            es_ES: { add_cart: 'Añadir al carro' },
-            en_US: { add_cart: 'Add to cart' }
+            es_ES: {
+                add_cart: 'Añadir al carro',
+                how_to_add_text: 'Para agregar este producto al carro necesitas de ingresar de ',
+                login: 'Ingresar a tu cuenta'
+            },
+            en_US: {
+                add_cart: 'Add to cart',
+                how_to_add_text: 'To add the product to your cart you need to ',
+                login: 'Login'
+            }
         },
         methods: {
             add_item_to_cart(){
