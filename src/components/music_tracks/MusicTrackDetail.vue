@@ -48,7 +48,6 @@
 </template>
 
 <script>
-    import ProductSlider from '../main/ProductsSlider.vue'
     import Playlist from './Player.vue'
     import BreadCrumbs from '../main/Breadcrumbs.vue'
 

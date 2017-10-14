@@ -44,8 +44,6 @@
 </template>
 
 <script>
-    import ProductSlider from '../main/ProductsSlider.vue'
-
     export default {
         name: 'featured-products',
         props: [ 'tracks' ],
