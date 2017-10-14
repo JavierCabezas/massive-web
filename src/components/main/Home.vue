@@ -6,7 +6,9 @@
         <features> </features>
         <div class='space-60'></div>
 
-        <products-slider :products="featured_products"></products-slider>
+        <products-slider :title="t('slider_title')"
+                         :products="featured_products"
+        ></products-slider>
         <div class="space-50"></div>
 
         <blog-entries :blog_posts="last_blog_posts"> </blog-entries>
@@ -15,28 +17,37 @@
         <partners> </partners>
 
         <newsletter> </newsletter>
-     </div>
- </template>
+    </div>
+</template>
 
- <script>
-     import Slider from './Slider.vue'
-     import Features from './Features.vue'
-     import ProductsSlider from './ProductsSlider.vue'
-     import BlogEntires from './BlogEntires.vue'
-     import Partners from './Partners.vue'
-     import Newsletter from './Newsletter.vue'
+<script>
+    import Slider from './Slider.vue'
+    import Features from './Features.vue'
+    import ProductsSlider from './ProductsSlider.vue'
+    import BlogEntires from './BlogEntires.vue'
+    import Partners from './Partners.vue'
+    import Newsletter from './Newsletter.vue'
 
-     export default {
-         data () {
-             return {
-                 featured_products: {},
-                 last_blog_posts: {}
-             }
-         },
-         created: function () {
+    export default {
+        locales: {
+            es_ES: {
+                slider_title: 'Últimos packs de música agregados',
+            },
+            en_US: {
+                slider_title: 'Last music packs added',
+            }
+        },
+        data () {
+            return {
+                featured_products: {},
+                last_blog_posts: {}
+            }
+        },
+        created: function () {
             this.get_blog_posts();
-         },
-         methods:{
+            this.get_featured_products();
+        },
+        methods:{
             get_blog_posts() {
                 let vm = this;
                 let url = vm.url_backend + 'blog/posts';
@@ -47,15 +58,26 @@
                         vm.last_blog_posts = result;
                     }
                 });
+            },
+            get_featured_products() {
+                let vm = this;
+                let url = vm.url_backend + 'music_pack/index';
+                $.ajax({
+                    url: url,
+                    data: { limit: 10 },
+                    success: function (result) {
+                        vm.featured_products = result;
+                    }
+                });
             }
-         },
-         components: {
-             slider: Slider,
-             features: Features,
-             productsSlider: ProductsSlider,
-             blogEntries: BlogEntires,
-             partners: Partners,
-             newsletter: Newsletter
-         }
-     }
- </script>
+        },
+        components: {
+            slider: Slider,
+            features: Features,
+            productsSlider: ProductsSlider,
+            blogEntries: BlogEntires,
+            partners: Partners,
+            newsletter: Newsletter
+        }
+    }
+</script>
