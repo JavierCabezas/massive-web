@@ -1,7 +1,7 @@
 <template>
     <section class="featured-products" id="featured-products">
         <div class="container">
-            <h2 class="section-heading"> {{ t('similar_items') }} </h2>
+            <h2 class="section-heading"> {{ title }} </h2>
             <div class="row">
                 <ul class="popularslider">
                     <li class="slide item_holder" v-for="p in products">
@@ -19,16 +19,8 @@
 
 <script>
     export default {
-        locales: {
-            es_ES: {
-                similar_items: 'Productos similares'
-            },
-            en_US: {
-                similar_items: 'Similar items'
-            }
-        },
         name: 'featured-products',
-        props: ['products'],
+        props: ['products', 'title'],
         data () {
             return {
                 slider: null
