@@ -3,7 +3,10 @@
         <bread-crumbs :crumbs="crumbs"></bread-crumbs>
         <div class="space-60"></div>
         <div class="container">
-            <div  class="row single-product">
+            <div class="row text-center"  v-show="!has_loaded">
+                <img src="../../img/loading.gif" />
+            </div>
+            <div  class="row single-product" v-show="has_loaded">
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-5 margin-b-30">
@@ -51,7 +54,7 @@
             <div class="space-60"></div>
             <div class="similar-products">
                 <div class="row">
-                    <product-slider :products="product.similar" @changed_user="load_product"></product-slider>
+                    <product-slider :title="t('similar_products') ":products="product.similar" @changed_user="load_product"></product-slider>
                 </div>
             </div>
         </div>
@@ -87,19 +90,22 @@
                         es: '-',
                         en: '-'
                     }
-                }
+                },
+                has_loaded: false
             }
         },
         locales: {
             es_ES: {
                 description: 'Descripción',
                 author: 'Autor',
-                category: 'Categoría'
+                category: 'Categoría',
+                similar_products: 'Productos similares'
             },
             en_US: {
                 description: 'Description',
                 author: 'Author',
-                category: 'Category'
+                category: 'Category',
+                similar_products: 'Similar products'
             }
         },
         filters: {
@@ -135,6 +141,7 @@
                         vm.product = result;
                         vm.crumbs.current.en = result.title;
                         vm.crumbs.current.es = result.title_es;
+                        vm.has_loaded = true;
                     }
                 });
             }
