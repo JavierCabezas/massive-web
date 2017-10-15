@@ -2,7 +2,7 @@
     <div class="container">
         <div class="breadcrumb-wrapper">
             <div class="container">
-                <h1>Music Tracks</h1>
+                <h1> {{ t('music_tracks') }}</h1>
             </div>
         </div>
         <bread-crumbs :crumbs="crumbs"></bread-crumbs>
@@ -25,6 +25,14 @@
     import MusicCategories from './../music_packs/MusicPacksCategories.vue'
 
     export default {
+        locales: {
+            es_ES: {
+                music_tracks: 'Canciones sueltas',
+            },
+            en_US: {
+                music_tracks: 'Music Tracks',
+            }
+        },
         data () {
             return {
                 items: [ ],
