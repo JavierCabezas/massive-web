@@ -28,6 +28,7 @@
         data () {
             return {
                 items: [ ],
+                packs: {},
                 categories: {},
                 selected_category_index: -1,
                 crumbs: {
@@ -48,6 +49,7 @@
         created: function () {
             this.get_categories();
             this.get_music_tracks();
+            this.get_music_packs();
         },
         methods: {
             get_music_tracks: function(category_index = -1) {
@@ -66,6 +68,16 @@
                     data: { category_id: category_id },
                     success: function (result) {
                         vm.items = result;
+                    }
+                });
+            },
+            get_music_packs: function(){
+                let vm = this;
+                let url = vm.url_backend + 'music_track/index';
+                $.ajax({
+                    url: url,
+                    success: function (result) {
+                        vm.packs = result;
                     }
                 });
             },

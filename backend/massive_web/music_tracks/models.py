@@ -70,7 +70,7 @@ class MusicTrack(models.Model):
     def __str__(self):
         return self.name
 
-    def backend(self):
+    def backend(self, full=False):
         return {
             'id': self.id,
             'name': self.name,

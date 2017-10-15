@@ -15,4 +15,4 @@ def music_tracks(request):
 
 def music_track(request, id):
     mt = MusicTrack.objects.get(id=id)
-    return JsonResponse(mt.backend_detail(), safe=False)
+    return JsonResponse(mt.backend(True), safe=False)
