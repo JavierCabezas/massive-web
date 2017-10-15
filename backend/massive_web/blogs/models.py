@@ -7,6 +7,7 @@ from ..authors.models import Author
 from ..music_tracks.models import MusicTrack
 from ..music_packs.models import MusicPack
 
+
 class Blog(models.Model):
     name = models.TextField(
         max_length=200,

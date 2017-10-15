@@ -54,7 +54,7 @@ const MusicPackDetail = resolve => {
 const MusicTrackDetail = resolve => {
     require.ensure(['./components/music_tracks/MusicTrackDetail.vue'], () => {
         resolve(require('./components/music_tracks/MusicTrackDetail.vue'));
-    }, 'music-track');
+    }, 'music-track-detail');
 };
 
 const User = resolve => {

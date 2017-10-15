@@ -71,10 +71,22 @@ class MusicTrack(models.Model):
         return self.name
 
     def backend(self, full=False):
-        return {
+        base = {
             'id': self.id,
             'name': self.name,
             'name_es': self.name_es,
-            'length': self.duration,
+            'short_description': self.short_description,
+            'short_description_es': self.short_description_es,
+            'image': settings.BASE_URL + self.image.name,
+            'price': self.price,
             'file': settings.BASE_URL + self.song_preview.name
         }
+        if full:
+            base['author_id'] = self.author_id
+            base['long_description'] = self.long_description
+            base['long_description_es'] = self.long_description_es
+            base['preview'] = self.song_preview
+            base['length'] = self.duration
+            base['file'] = settings.BASE_URL + self.song_preview.name
+
+        return base

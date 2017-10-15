@@ -1,16 +1,18 @@
 <template>
     <div class="row">
 
-        <div class="col-sm-4" v-for="(item, index) in items" v-if="is_index_in_range(index)">
+        <div class="col-sm-4" v-for="(item,index) in items" v-if="is_index_in_range(index)">
             <div class="item_holder">
-                <router-link  tag="a" :to="{ name: 'musicTrackDetail', params: { id: item.id} }" >
-                    <img :src="item.img" :alt="item.title" class="img-responsive">
+                <router-link  tag="a" :to="{ name: 'music-track-detail', params: { id: item.id} }" >
+                    <img :src="item.image" :alt="item.title" class="img-responsive">
                 </router-link>
 
                 <div class="title">
-                    <h5>{{index}} : {{item.title}}</h5>
+                    <h5 v-if="$translate.current == 'en_US'"> {{index}} : {{item.name}}</h5>
+                    <h5 v-if="$translate.current == 'es_ES'"> {{index}} : {{item.name_es}}</h5>
                     <span class="price">{{item.price}}</span>
-                    <p>{{item.text}}</p>
+                    <p v-if="$translate.current == 'es_ES'">{{item.short_description_es}}</p>
+                    <p v-if="$translate.current == 'en_US'">{{item.short_description}}</p>
                 </div>
             </div>
         </div>
