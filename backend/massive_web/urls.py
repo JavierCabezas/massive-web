@@ -26,7 +26,16 @@ urlpatterns = [
     url(r'^categories/', include('massive_web.categories.urls')),
     url(r'^blog/', include('massive_web.blogs.urls')),
     url(r'^newsletter/', include('massive_web.newsletter.urls')),
-    url(r'^media/(?P<path>.*)$', serve, {
-        'document_root': settings.MEDIA_ROOT
+    url(r'^media/authors/(?P<path>.*)$', serve, {
+        'document_root': settings.MEDIA_ROOT + '/authors'
+    }),
+    url(r'^media/blog/(?P<path>.*)$', serve, {
+        'document_root': settings.MEDIA_ROOT + '/blog'
+    }),
+    url(r'^media/music_packs/(?P<path>.*)$', serve, {
+        'document_root': settings.MEDIA_ROOT + '/music_packs'
+    }),
+    url(r'^media/music_tracks/(?P<path>.*)$', serve, {
+        'document_root': settings.MEDIA_ROOT + '/music_tracks'
     })
 ]
