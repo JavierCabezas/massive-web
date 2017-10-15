@@ -45,7 +45,7 @@ export const store = new Store({
           state.number_of_items_on_cart += 1;
       },
       add_music_track_to_cart(state, payload){
-          state.music_tracks_on_cart[payload.music_track.id] = music_track;
+          state.music_tracks_on_cart[payload.music_track.id] = payload.music_track;
           state.number_of_items_on_cart += 1;
       },
       remove_music_pack_from_cart(state, payload){

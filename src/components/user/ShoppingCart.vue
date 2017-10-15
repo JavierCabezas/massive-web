@@ -36,6 +36,17 @@
                         </td>
                     </tr>
 
+                     <tr v-for="mt in this.store.state.music_tracks_on_cart">
+                        <td> {{t('music_file')}} </td>
+                        <td v-if="$translate.current == 'en_US'"> {{ mt.name }} </td>
+                        <td v-if="$translate.current == 'es_ES'"> {{ mt.name_es }}</td>
+                        <td> {{ mt.price | cash }} </td>
+                        <td> <a href="#" @click.prevent="remove_element('music_track', mt.id)">
+                                <span class="fa fa-remove"> </span>
+                             </a>
+                        </td>
+                    </tr>
+
                     <tr class="shopping-total">
                         <td class="text" colspan="2">Total</td>
                         <td> {{ total_price() | cash }} </td>
