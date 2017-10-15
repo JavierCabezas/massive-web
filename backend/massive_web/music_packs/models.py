@@ -85,3 +85,15 @@ class MusicPack(models.Model):
             'category': self.category.name,
             'similar': [s.backend() for s in similar_packs]
         }
+
+    @staticmethod
+    def id_dict():
+        """
+        Returns a dictionary with all the objects of this class instance
+        :return: Dictionary in the format { id: MusicPack instance model , id:MusicPack instance 2... }
+        """
+        out = {}
+        for mp in MusicPack.objects.all():
+            out[mp.id] = mp
+        return out
+

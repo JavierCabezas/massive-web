@@ -30,6 +30,18 @@ class Author(models.Model):
 
     admin_image.allow_tags = True
 
+    @staticmethod
+    def id_dict():
+        """
+        Returns a dictionary with all the objects of this class instance
+        :return: Dictionary in the format { id: Author instance model , id:MusicPack instance 2... }
+        """
+        out = {}
+        for a in Author.objects.all():
+            out[a.id] = a
+        return out
+
+
     class Meta:
         verbose_name = 'Autor'
         verbose_name_plural = 'Autores'
