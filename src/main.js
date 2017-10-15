@@ -69,6 +69,16 @@ Vue.mixin({
     }
 });
 
+Vue.filter('cash', function(value) {
+   const pieces = parseFloat(value).toFixed(2).split('');
+    let ii = pieces.length - 3;
+    while ((ii-=3) > 0) {
+        pieces.splice(ii, 0, ',')
+    }
+    return "$" + pieces.join('')
+});
+
+
 new Vue({
     el: '#app',
     router,

@@ -40,16 +40,6 @@
                 current_page: 1
             }
         },
-        filters: {
-            cash: function (value) {
-              const pieces = parseFloat(value).toFixed(2).split('');
-              let ii = pieces.length - 3;
-              while ((ii-=3) > 0) {
-                pieces.splice(ii, 0, ',')
-              }
-              return "$" + pieces.join('')
-            }
-        },
         components: {
             paginate: Paginate,
             breadCrumbs: BreadCrumbs

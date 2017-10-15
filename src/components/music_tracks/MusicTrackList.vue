@@ -10,7 +10,7 @@
                 <div class="title">
                     <h5 v-if="$translate.current == 'en_US'"> {{index}} : {{item.name}}</h5>
                     <h5 v-if="$translate.current == 'es_ES'"> {{index}} : {{item.name_es}}</h5>
-                    <span class="price">{{item.price}}</span>
+                    <span class="price">{{item.price | cash }}</span>
                     <p v-if="$translate.current == 'es_ES'">{{item.short_description_es}}</p>
                     <p v-if="$translate.current == 'en_US'">{{item.short_description}}</p>
                 </div>
