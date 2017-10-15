@@ -14,6 +14,15 @@
                     <p v-if="$translate.current == 'es_ES'">{{item.short_description_es}}</p>
                     <p v-if="$translate.current == 'en_US'">{{item.short_description}}</p>
                 </div>
+                <p>
+                    <a href="#" @click.prevent="console.log('hi')" class="btn btn-primary">
+                        <span class="fa fa-eye">  </span> {{ t('details') }}
+                    </a>
+                    <shopping-cart-button
+                        :music_track="item"
+                        btn_size="btn_xs"
+                    ></shopping-cart-button>
+                </p>
             </div>
         </div>
         <paginate
@@ -27,9 +36,18 @@
 
 <script>
     import Paginate from 'vuejs-paginate'
+    import ShoppingCartButton from '../main/ShoppingCartButton.vue'
 
     export default {
         props: [ 'items' ],
+        locales: {
+            es_ES: {
+                details: 'Ver más detalles'
+            },
+            en_US: {
+                details: 'See details'
+            }
+        },
         computed: {
             computedItems: function () {
                 return  ( this.items !== null ) ?  this.items : [];
@@ -42,7 +60,8 @@
             }
         },
         components: {
-            paginate: Paginate
+            Paginate,
+            ShoppingCartButton
         },
         methods: {
             clickCallback: function(page) {

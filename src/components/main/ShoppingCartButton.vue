@@ -4,9 +4,9 @@
             href="#" data-toggle="tooltip"
             data-placement="top"
             title="Add to cart"
-            class="btn btn-skin btn-lg"
+            class="btn btn-skin"
             @click.prevent="add_item_to_cart()"
-            :class="{'disabled': is_button_disabled }"
+            :class="[is_button_disabled? 'disabled':'', btn_size ]"
          >
              <i class="fa fa-shopping-cart"></i> {{ t('add_cart') }}
          </a>
@@ -25,6 +25,7 @@
         props:{
             'music_pack': { 'default': null },
             'music_track': { 'default': null },
+            'btn_size': { 'default': 'btn-lg' }
         },
          data () {
             return {
