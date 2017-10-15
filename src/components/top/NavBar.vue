@@ -31,14 +31,14 @@
                 home: 'Inicio',
                 about: 'Sobre nosotros',
                 music_pack: 'Packs de música',
-                music_track: 'Música suelta',
+                music_track: 'Canciones sueltas',
                 faq: 'Preguntas frecuentes',
             },
             en_US: {
                 home: 'Home',
                 about: 'About us',
                 music_pack: 'Music packs',
-                music_track: 'Music files',
+                music_track: 'Music tracks',
                 faq: 'FAQ',
             }
         },
