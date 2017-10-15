@@ -21,6 +21,7 @@ from django.views.static import serve
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^music_pack/', include('massive_web.music_packs.urls')),
+    url(r'^music_track/', include('massive_web.music_tracks.urls')),
     url(r'^user/', include('massive_web.users.urls')),
     url(r'^categories/', include('massive_web.categories.urls')),
     url(r'^blog/', include('massive_web.blogs.urls')),

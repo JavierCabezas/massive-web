@@ -5,6 +5,7 @@ from ..tags.models import Tag
 from ..music_tracks.models import MusicTrack
 from django.conf import settings
 
+
 class MusicPack(models.Model):
     name = models.TextField(
         max_length=200,

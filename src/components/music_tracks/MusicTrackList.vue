@@ -30,7 +30,7 @@
         props: [ 'items' ],
         computed: {
             computedItems: function () {
-                return  ( this.items != null ) ?  this.items : [];
+                return  ( this.items !== null ) ?  this.items : [];
             }
         },
         data () {

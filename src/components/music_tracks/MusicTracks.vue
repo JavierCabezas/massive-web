@@ -5,17 +5,10 @@
                 <h1>Music Tracks</h1>
             </div>
         </div>
-        <bread-crumbs></bread-crumbs>
+        <bread-crumbs :crumbs="crumbs"></bread-crumbs>
         <div class="space-60"></div>
         <div class="row">
             <div class="col-md-12">
-                <ul class="product-filter-block list-inline clearfix">
-                    <li> Title </li>
-                    <li class="active"><a href="#">Top rated</a></li>
-                    <li><a href="#">Otra categoría</a></li>
-                    <li><a href="#">Una última</a></li>
-                </ul>
-
                 <music-track-list :items="items"></music-track-list>
             </div>
         </div>
@@ -29,12 +22,25 @@
     export default {
         data () {
             return {
-                items: [ ]
+                items: [ ],
+                crumbs: {
+                    nav: [
+                        {
+                            link: 'home',
+                            name_en: 'Home',
+                            name_es: 'Inicio'
+                        }
+                    ],
+                    current: {
+                        es: 'Canciones sueltas',
+                        en: 'Music tracks'
+                    }
+                }
             }
         },
         created: function () {
             let vm = this;
-            let url = vm.url_backend + '/site/music-tracks';
+            let url = vm.url_backend + 'music_track/index';
 
             $.ajax({
                 url: url,

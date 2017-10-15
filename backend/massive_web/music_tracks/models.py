@@ -75,6 +75,6 @@ class MusicTrack(models.Model):
             'id': self.id,
             'name': self.name,
             'name_es': self.name_es,
-            'lenght': self.duration,
+            'length': self.duration,
             'file': settings.BASE_URL + self.song_preview.name
         }
