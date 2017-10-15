@@ -79,14 +79,14 @@ class MusicTrack(models.Model):
             'short_description_es': self.short_description_es,
             'image': settings.BASE_URL + self.image.name,
             'price': self.price,
-            'file': settings.BASE_URL + self.song_preview.name
         }
         if full:
             base['author_id'] = self.author_id
+            base['author'] = self.author.name
             base['long_description'] = self.long_description
             base['long_description_es'] = self.long_description_es
-            base['preview'] = self.song_preview
-            base['length'] = self.duration
-            base['file'] = settings.BASE_URL + self.song_preview.name
-
+            base['preview'] = settings.BASE_URL + self.song_preview.name
+            base['length'] = self.duration,
+            base['category'] = self.category.name,
+            base['category_es'] = self.category.name_es,
         return base

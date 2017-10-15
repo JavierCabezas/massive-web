@@ -15,9 +15,9 @@
                     <p v-if="$translate.current == 'en_US'">{{item.short_description}}</p>
                 </div>
                 <p>
-                    <a href="#" @click.prevent="console.log('hi')" class="btn btn-primary">
+                    <router-link tag="a" :to="{ name: 'music-track-detail', params: { id: item.id} }" class="btn btn-primary">
                         <span class="fa fa-eye">  </span> {{ t('details') }}
-                    </a>
+                    </router-link>
                     <shopping-cart-button
                         :music_pack="item"
                         btn_size="btn_xs"

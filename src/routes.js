@@ -87,6 +87,7 @@ export const routes = [
     { path: '/music-pack', component: MusicPacks, name:'music-packs' },
     { path: '/music-pack/search', component: MusicPackSearch, name: 'music-pack-search' },
     { path: '/music-track', component: MusicTracks, name: 'music-tracks' },
+    { path: '/music-track/:id', component: MusicTrackDetail, name: 'music-track-detail' },
     { path: '/music-pack/:id', component: MusicPackDetail, name: 'music-pack-detail' },
     { path: '/user/login', component: User, name: 'login' },
     { path: '/user/profile', component: Profile, name: 'profile' },

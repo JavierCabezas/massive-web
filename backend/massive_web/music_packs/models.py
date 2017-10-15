@@ -76,13 +76,13 @@ class MusicPack(models.Model):
             'title': self.name,
             'title_es': self.name_es,
             'price': self.price,
-            'author': "TO-DO",
             'short_description': self.short_description,
             'short_description_es': self.short_description_es,
             'long_description': self.long_description,
             'long_description_es': self.long_description_es,
             'tracks': [song.backend() for song in self.music_tracks.all()],
             'category': self.category.name,
+            'category_es': self.category.name_es,
             'similar': [s.backend() for s in similar_packs]
         }
 
