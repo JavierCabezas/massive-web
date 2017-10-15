@@ -19,7 +19,7 @@
                         <span class="fa fa-eye">  </span> {{ t('details') }}
                     </a>
                     <shopping-cart-button
-                        :music_track="item"
+                        :music_pack="item"
                         btn_size="btn_xs"
                     ></shopping-cart-button>
                 </p>
