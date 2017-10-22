@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'massive_web.tags',
     'massive_web.music_tracks',
     'massive_web.music_packs',
-    'massive_web.newsletter'
+    'massive_web.newsletter',
+    'paypal.standard.ipn'
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,5 @@ MEDIA_ROOT = os.path.abspath(
 )
 
 MEDIA_URL = '/media/'
+
+PAYPAL_TEST = True
