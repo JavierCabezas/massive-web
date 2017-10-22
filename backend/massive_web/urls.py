@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^categories/', include('massive_web.categories.urls')),
     url(r'^blog/', include('massive_web.blogs.urls')),
     url(r'^newsletter/', include('massive_web.newsletter.urls')),
+    url(r'^payment/', include('massive_web.payment.urls')),
     url(r'^media/authors/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT + '/authors'
     }),
