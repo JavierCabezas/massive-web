@@ -7,6 +7,7 @@ STATUS_ADMIN_ACTIVE = 11
 STATUS_INACTIVE = 12
 GOOGLE_USER_ID = '629002016280-i54mtm5av310m0as2i279s7aq5cvl37l.apps.googleusercontent.com'
 
+
 class User(models.Model):
     name = models.TextField(max_length=200, null=False)
     surname = models.TextField(max_length=200, null=True)
@@ -30,6 +31,18 @@ class User(models.Model):
             'created_at': self.created_at
         }
 
+    @staticmethod
+    def get_user_by_token(token):
+        """
+        Returns an instance of the user given by the token passed as parameter
+        :param token:
+        :return:
+        """
+        if not User.objects.filter(token=token).exists():
+            return None
+        else:
+            return User.objects.get(token=token)
+
     def create_google_user(self, payload, user_data):
         """
         It does not check if the user is validated so we suposse that we already did that step.
@@ -52,7 +65,6 @@ class User(models.Model):
             u = User.objects.get(email=payload['email'])
 
         return u.token
-
 
     def generate_token(self):
         self.token = secrets.token_urlsafe(400)

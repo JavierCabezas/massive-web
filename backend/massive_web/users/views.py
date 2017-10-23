@@ -2,17 +2,19 @@ from django.http import JsonResponse, HttpResponse
 from .models import User
 import json
 
+
 def create_google_user(request):
     return JsonResponse(['a'], safe=False)
 
+
 def get_user(request):
     token = request.POST['token']
+    user = User.get_user_by_token(token)
 
-    if not User.objects.filter(token=token).exists():
+    if user is None:
         return HttpResponse('Not Found', status=404)
     else:
-        b = User.objects.get(token=token)
-        return JsonResponse(b.get_user(), safe=False)
+        return JsonResponse(user.get_user(), safe=False)
 
 
 def login(request):
