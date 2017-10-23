@@ -55,6 +55,12 @@
                 </tbody>
             </table>
 
+            <p>
+                <a href="#" @click.prevent="paypal()" class="btn btn-lg btn-primary pull-right" :class="{disabled: !has_products}">
+                    <span class="fa fa-paypal">  </span> {{ t('paypal') }}
+                </a>
+            </p>
+
             <p class="shopping-info">
                 {{ t('add_more') }}
                 <router-link tag="a" :to="{name: 'music-tracks'}"> {{t('music_files')}} </router-link>
@@ -62,6 +68,8 @@
                 <router-link tag="a" :to="{name: 'music-packs'}" > {{t('music_packs')}} </router-link>
              </p>
         </div>
+
+
     </div>
 </template>
 
@@ -105,7 +113,8 @@
                 name: 'Nombre',
                 price: 'Precio',
                 type: 'Tipo',
-                del: 'Borrar'
+                del: 'Borrar',
+                paypal: 'Pagar con Paypal'
             },
             en_US: {
                 shopping_cart_title: 'My shopping cart',
@@ -120,7 +129,8 @@
                 name: 'Name',
                 price: 'Price',
                 type: 'Type',
-                del: 'Delete'
+                del: 'Delete',
+                paypal: 'Pay with Paypal'
             }
         },
         methods: {
@@ -135,6 +145,24 @@
                 });
 
                 return sum;
+            },
+            paypal: function(){
+                let vm = this;
+                let data = {
+                    music_packs: Object.keys(vm.store.state.music_packs_on_cart),
+                    music_tracks: Object.keys(vm.store.state.music_tracks_on_cart),
+                    user_token: vm.store.state.token
+                };
+                $.ajax({
+                    url: vm.url_backend + 'payment/create_cart',
+                    method: 'POST',
+                    data: data,
+                    success: function (result) {
+                        vm.product = result;
+                        vm.crumbs.current.es = result.name_es;
+                        vm.crumbs.current.en = result.name
+                    }
+                });
             },
             remove_element: function(type, id){
                 let swal_texts = { 'swal_title':'', 'text': '', 'confirm_button_text': '', 'cancel_button_text': '' };
