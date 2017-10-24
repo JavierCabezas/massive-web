@@ -1,5 +1,5 @@
 <template>
-    <section class="new-arrivals">
+    <section class="new-arrivals new-blog">
         <div class="container">
             <h2 class="section-heading"> {{ t('last_entries') }} </h2>
             <div class="row">
