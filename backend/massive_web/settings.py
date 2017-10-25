@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'massive_web.music_tracks',
     'massive_web.music_packs',
     'massive_web.newsletter',
-    'paypal.standard.ipn'
+    'paypal.standard.ipn',
+    'massive_web.payment'
 ]
 
 MIDDLEWARE = [
