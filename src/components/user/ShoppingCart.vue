@@ -143,7 +143,6 @@
                 Object.keys(vm.store.state.music_tracks_on_cart).forEach(function(idx) {
                       sum += vm.store.state.music_tracks_on_cart[idx].price;
                 });
-
                 return sum;
             },
             paypal: function(){
@@ -158,9 +157,10 @@
                     method: 'POST',
                     data: data,
                     success: function (result) {
-                        vm.product = result;
-                        vm.crumbs.current.es = result.name_es;
-                        vm.crumbs.current.en = result.name
+
+                    },
+                    error: function () {
+                        console.log("This shouldn't happen")
                     }
                 });
             },
