@@ -22,8 +22,30 @@
             </section>
 
             <section class="music_profile col-sm-offset-1 col-sm-10">
-                <h3>Your Music Packs</h3>
-                <!--- AQUÍ SE PONEN LOS PACKS DE MÚSICA --->
+                <h3>{{ t('musicpacks') }}</h3>
+                <div class="container">
+                    <div class="row">
+                        <ul class="popularslider">
+                            <li class="slide item_holder">
+                                <h4 class="title"> Lalala </h4>
+                            </li>
+                            <li class="slide item_holder">
+                                <h4 class="title"> Lalala </h4>
+                            </li>
+                            <li class="slide item_holder">
+                                <h4 class="title"> Lalala </h4>
+                            </li>
+                            <li class="slide item_holder">
+                                <h4 class="title"> Lalala </h4>
+                            </li>
+                            <li class="slide item_holder">
+                                <h4 class="title"> Lalala </h4>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
             </section>
         </div>
     </div>
@@ -40,8 +62,8 @@
             }
         },
         locales: {
-            es_ES: { logout: 'Cerrar sesión' },
-            en_US: { logout: 'Logout' }
+            es_ES: { logout: 'Cerrar sesión', musicpacks: 'Tus Paquetes de Música' },
+            en_US: { logout: 'Logout', musicpacks: 'Your Music Packs' }
         },
         computed: {
             is_user_logged_in() {

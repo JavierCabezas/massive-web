@@ -14,7 +14,7 @@
                     <p v-if="$translate.current == 'es_ES'">{{item.text_es}}</p>
                 </div>
 
-                <p>
+
                     <a href="#" @click.prevent="console.log('hi')" class="btn btn-primary">
                         <span class="fa fa-eye">  </span> {{ t('details') }}
                     </a>
@@ -22,7 +22,7 @@
                         :music_track="item"
                         btn_size="btn_xs"
                     ></shopping-cart-button>
-                </p>
+                
             </div>
         </div>
         <paginate

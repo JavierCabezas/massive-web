@@ -4,12 +4,10 @@
         <div class="space-60"></div>
 
         <features> </features>
-        <div class='space-60'></div>
 
         <products-slider :title="t('slider_title')"
                          :products="featured_products"
         ></products-slider>
-        <div class="space-50"></div>
 
         <blog-entries :blog_posts="last_blog_posts"> </blog-entries>
         <div class="space-50"></div>

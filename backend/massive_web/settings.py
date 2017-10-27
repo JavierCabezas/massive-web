@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'massive_web.users',
     'massive_web.blogs',
     'massive_web.authors',
@@ -48,10 +49,12 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'massive_web.middleware.headerMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -131,11 +134,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+SERVER_URL = 'http://localhost:8000'
+FRONTEND_URL = 'http://localhost:8080'
 
-BASE_URL = "http://localhost:8000/media/"
+BASE_URL = SERVER_URL + "/media/"
 
 MEDIA_ROOT = os.path.abspath(
     os.path.join(BASE_DIR, 'media')
 )
 
 MEDIA_URL = '/media/'
+
+CORS_ORIGIN_WHITELIST = (
+    FRONTEND_URL
+)
+
+CSRF_TRUSTED_ORIGINS = (
+    FRONTEND_URL
+)

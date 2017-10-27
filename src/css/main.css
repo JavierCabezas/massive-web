@@ -661,6 +661,9 @@ del {
   margin-top: 0;
   clear: both;
 }
+.bx-wrapper .slides .sliders {
+  width: auto !important;
+}
 /**revolution slider**/
 .slider-title {
   font-size: 50px;
@@ -725,6 +728,22 @@ del {
 }
 .features-box.blue .text h3 {
   color: #FFF;
+}
+.new-blog a {
+  width: 100%;
+  clear: both;
+  float: left;
+  text-align: center;
+  padding: 1%;
+  color: #FFF;
+  background-color: #695C78;
+  font-weight: bold;
+}
+.new-blog a:hover {
+  color: #DD6D80;
+}
+.new-blog .img_preview {
+  max-width: 100% !important;
 }
 /**img**/
 .item_holder,
