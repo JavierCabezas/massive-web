@@ -86,21 +86,21 @@
                 }else{
                     vm.selected_category_index = -1;
                 }
-                $.ajax({
-                    url: vm.url_backend + 'music_pack/index',
-                    data: { category_id: category_id },
-                    success: function (result) {
-                        vm.items = result;
-                    }
-                });
+
+                this.$http.get(
+                    vm.url_backend + 'music_pack/index', {
+                        params: {
+                            category_id: category_id
+                        }
+                    })
+                    .then(function(result) {
+                       vm.items = result.body;
+                    });
             },
             get_categories: function(){
                 let vm = this;
-                $.ajax({
-                    url: vm.url_backend + 'categories/parents',
-                    success: function (result) {
-                        vm.categories = result;
-                    }
+                this.$http.get(vm.url_backend + 'categories/parents').then(function(result) {
+                       vm.categories = result.body;
                 });
             }
         },

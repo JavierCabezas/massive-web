@@ -8,7 +8,7 @@ import FBSignInButton from 'vue-facebook-signin-button'
 import Vuex, { Store } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
 import VueSweetAlert from 'vue-sweetalert'
-
+import VueResource from 'vue-resource'
 
 Vue.use(Vuex);
 Vue.use(GSignInButton);
@@ -16,6 +16,7 @@ Vue.use(VueRouter);
 Vue.use(VueTranslate);
 Vue.use(FBSignInButton);
 Vue.use(VueSweetAlert);
+Vue.use(VueResource);
 
 
 export const router = new VueRouter({
@@ -68,6 +69,7 @@ Vue.mixin({
         }
     }
 });
+
 
 Vue.filter('cash', function(value) {
    const pieces = parseFloat(value).toFixed(2).split('');
