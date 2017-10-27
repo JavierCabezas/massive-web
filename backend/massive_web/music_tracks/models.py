@@ -70,6 +70,13 @@ class MusicTrack(models.Model):
     def __str__(self):
         return self.name
 
+    def downloaded_file_name(self):
+        """
+        Returns the filename of the downlodaded file
+        :return: string
+        """
+        return self.name  + '.' + self.song.url.split(".")[-1]
+
     def backend(self, full=False):
         base = {
             'id': self.id,
